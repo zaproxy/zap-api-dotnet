@@ -1,4 +1,4 @@
-﻿/* Zed Attack Proxy (ZAP) and its related class files.
+/* Zed Attack Proxy (ZAP) and its related class files.
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
@@ -19,6 +19,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -26,36 +27,49 @@ using System.Threading.Tasks;
 
 namespace OWASPZAPDotNetAPI
 {
-    class SystemWebClient : IWebClient, IDisposable
+    public class SystemWebClient : WebClient, IWebClient
     {
-        WebClient webClient;
-        WebProxy webProxy;
+        private WebProxy webProxy;
+        public CookieContainer CookieContainer { get; set; }
 
-        public SystemWebClient(string proxyHost, int proxyPort)
+
+        public SystemWebClient(string proxyHost, int proxyPort) : this(proxyHost, proxyPort, new CookieContainer())
+        {
+        }
+
+        public SystemWebClient(string proxyHost, int proxyPort, CookieContainer cookies)
         {
             webProxy = new WebProxy(proxyHost, proxyPort);
-            webClient = new WebClient();
-            webClient.Proxy = webProxy;
+            Proxy = webProxy;
+            this.CookieContainer = cookies;
+        }
+        
+        protected override WebRequest GetWebRequest(Uri address)
+        {
+            WebRequest request = base.GetWebRequest(address);
+            if (request is HttpWebRequest)
+            {
+                (request as HttpWebRequest).CookieContainer = this.CookieContainer;
+            }
+            HttpWebRequest httpRequest = (HttpWebRequest)request;
+            httpRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            return httpRequest;
         }
 
-        public string DownloadString(string address)
+        protected override WebResponse GetWebResponse(WebRequest request)
         {
-            return webClient.DownloadString(address);
-        }
+            WebResponse response = base.GetWebResponse(request);
+            String setCookieHeader = response.Headers[HttpResponseHeader.SetCookie];
 
-        public string DownloadString(Uri uri)
-        {
-            return webClient.DownloadString(uri);
-        }
+            //do something if needed to parse out the cookie.
+            if (setCookieHeader != null)
+            {
+                Cookie cookie = new Cookie();
+                this.CookieContainer.Add(cookie);
+            }
 
-        public byte[] DownloadData(Uri uri)
-        {
-            return webClient.DownloadData(uri);
-        }
-
-        public void Dispose()
-        {
-            webClient.Dispose();
+            return response;
         }
     }
 }
+
