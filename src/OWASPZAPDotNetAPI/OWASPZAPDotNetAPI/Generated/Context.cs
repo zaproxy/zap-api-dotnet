@@ -138,11 +138,28 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("context", "action", "newContext", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse exportContext(string apikey, string contextname, string contextfile)
+        /// <summary>
+        ///Removes a context in the current session
+        ///This component is optional and therefore the API will only work if it is installed
+        /// </summary>
+        /// <returns></returns>
+        public IApiResponse removeContext(string apikey, string contextname)
+        {
+            Dictionary<string, string> parameters = null;
+            parameters = new Dictionary<string, string>();
+            if (string.IsNullOrWhiteSpace(apikey))
+            {
+                parameters.Add("apikey", apikey);
+            }
+            parameters.Add("contextName", contextname);
+            return api.CallApi("context", "action", "removeContext", parameters);
+        }
+
+        /// <summary>
+        ///This component is optional and therefore the API will only work if it is installed
+        /// </summary>
+        /// <returns></returns>
+        public IApiResponse exportContext(string apikey, string contextname, string contextfile)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
