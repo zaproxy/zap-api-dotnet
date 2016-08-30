@@ -1,0 +1,2 @@
+.NET Core library for interacting with OWASP ZAP proxy.
+Fixes issue with api key and exposes api methods in async way.
