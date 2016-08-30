@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,133 +43,133 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse usersList(string contextid)
+		public async Task<IApiResponse> usersList(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("contextId", contextid);
-			return api.CallApi("users", "view", "usersList", parameters);
+			return await api.CallApi("users", "view", "usersList", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getUserById(string contextid, string userid)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("contextId", contextid);
-			parameters.Add("userId", userid);
-			return api.CallApi("users", "view", "getUserById", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse getAuthenticationCredentialsConfigParams(string contextid)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("contextId", contextid);
-			return api.CallApi("users", "view", "getAuthenticationCredentialsConfigParams", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse getAuthenticationCredentials(string contextid, string userid)
+		public async Task<IApiResponse> getUserById(string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
-			return api.CallApi("users", "view", "getAuthenticationCredentials", parameters);
+			return await api.CallApi("users", "view", "getUserById", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse newUser(string apikey, string contextid, string name)
+		public async Task<IApiResponse> getAuthenticationCredentialsConfigParams(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			parameters.Add("contextId", contextid);
+			return await api.CallApi("users", "view", "getAuthenticationCredentialsConfigParams", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public async Task<IApiResponse> getAuthenticationCredentials(string contextid, string userid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextId", contextid);
+			parameters.Add("userId", userid);
+			return await api.CallApi("users", "view", "getAuthenticationCredentials", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public async Task<IApiResponse> newUser(string apikey, string contextid, string name)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("name", name);
-			return api.CallApi("users", "action", "newUser", parameters);
+			return await api.CallApi("users", "action", "newUser", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeUser(string apikey, string contextid, string userid)
+		public async Task<IApiResponse> removeUser(string apikey, string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
-			return api.CallApi("users", "action", "removeUser", parameters);
+			return await api.CallApi("users", "action", "removeUser", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setUserEnabled(string apikey, string contextid, string userid, string enabled)
+		public async Task<IApiResponse> setUserEnabled(string apikey, string contextid, string userid, string enabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
 			parameters.Add("enabled", enabled);
-			return api.CallApi("users", "action", "setUserEnabled", parameters);
+			return await api.CallApi("users", "action", "setUserEnabled", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setUserName(string apikey, string contextid, string userid, string name)
+		public async Task<IApiResponse> setUserName(string apikey, string contextid, string userid, string name)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
 			parameters.Add("name", name);
-			return api.CallApi("users", "action", "setUserName", parameters);
+			return await api.CallApi("users", "action", "setUserName", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setAuthenticationCredentials(string apikey, string contextid, string userid, string authcredentialsconfigparams)
+		public async Task<IApiResponse> setAuthenticationCredentials(string apikey, string contextid, string userid, string authcredentialsconfigparams)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
 			parameters.Add("authCredentialsConfigParams", authcredentialsconfigparams);
-			return api.CallApi("users", "action", "setAuthenticationCredentials", parameters);
+			return await api.CallApi("users", "action", "setAuthenticationCredentials", parameters);
 		}
 
 	}

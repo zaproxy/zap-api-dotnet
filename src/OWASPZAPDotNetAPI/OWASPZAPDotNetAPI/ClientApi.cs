@@ -21,8 +21,6 @@
 using OWASPZAPDotNetAPI.Generated;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -101,10 +99,10 @@ namespace OWASPZAPDotNetAPI
             var output = webClient.DownloadString(url);
         }
 
-        public List<Alert> GetAlerts(string baseUrl, int start, int count)
+        public async Task<List<Alert>> GetAlerts(string baseUrl, int start, int count)
         {
             List<Alert> alerts = new List<Alert>();
-            IApiResponse response = core.alerts(baseUrl, Convert.ToString(start), Convert.ToString(count));
+            IApiResponse response = await core.alerts(baseUrl, Convert.ToString(start), Convert.ToString(count));
             if (response != null && response is ApiResponseList)
             {
                 ApiResponseList apiResponseList = (ApiResponseList)response;
@@ -140,25 +138,25 @@ namespace OWASPZAPDotNetAPI
                                 
         }
 
-        public IApiResponse CallApi(string component, string operationType, string operationName, Dictionary<string, string> parameters)
+        public async Task<IApiResponse> CallApi(string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
-            XmlDocument xmlDocument = this.CallApiRaw(component, operationType, operationName, parameters);
+            XmlDocument xmlDocument = await this.CallApiRaw(component, operationType, operationName, parameters);
             return ApiResponseFactory.GetResponse(xmlDocument.ChildNodes[1]);
         }
 
-        private XmlDocument CallApiRaw(string component, string operationType, string operationName, Dictionary<string, string> parameters)
+        private async Task<XmlDocument> CallApiRaw(string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
             Uri requestUrl = BuildZapRequestUrl(this.zapAddress, this.zapPort, this.format, component, operationType, operationName, parameters);
-            string responseString = webClient.DownloadString(requestUrl);
+            string responseString = await webClient.DownloadString(requestUrl);
             XmlDocument responseXmlDocument = new XmlDocument();
             responseXmlDocument.LoadXml(responseString);
             return responseXmlDocument;
         }
 
-        public byte[] CallApiOther(string component, string operationType, string operationName, Dictionary<string, string> parameters)
+        public async Task<byte[]> CallApiOther(string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
             Uri requestUrl = BuildZapRequestUrl(this.zapAddress, this.zapPort, this.otherFormat, component, operationType, operationName, parameters);
-            byte[] response = webClient.DownloadData(requestUrl);
+            byte[] response = await webClient.DownloadData(requestUrl);
             return response;
         }
 

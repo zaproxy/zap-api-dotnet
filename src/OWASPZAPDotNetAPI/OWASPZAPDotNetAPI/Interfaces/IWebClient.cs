@@ -19,17 +19,14 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OWASPZAPDotNetAPI
 {
     public interface IWebClient
     {
-        string DownloadString(string address);
-        string DownloadString(Uri uri);
-        byte[] DownloadData(Uri uri);
+        Task<string> DownloadString(string address);
+        Task<string> DownloadString(Uri uri);
+        Task<byte[]> DownloadData(Uri uri);
     }
 }

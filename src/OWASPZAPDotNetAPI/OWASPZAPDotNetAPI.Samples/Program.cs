@@ -28,17 +28,22 @@ namespace OWASPZAPDotNetAPI.Samples
 {
     class Program
     {
+        static async Task AsyncMain(string[] args)
+        {
+            await Console.Out.WriteLineAsync("ZAP.StartZapUI() helps you get started on how to start ZAP UI (that is the ZAP Desktop)" + Environment.NewLine);
+            //await ZAP.StartZapUI();
+            await Console.Out.WriteLineAsync("ZAP.StartZAPDaemon() helps you get started on how to start ZAP in daemon mode (that is the headless mode - without the UI)" + Environment.NewLine);
+            //await ZAP.StartZAPDaemon();
+            await Console.Out.WriteLineAsync("SimplePointAndClickScan.Go() helps you get started on scanning a website just by providing a URL" + Environment.NewLine);
+            //await SimplePointAndClickScan.Go();
+            await Console.Out.WriteLineAsync("AuthenticatedScanWithFormsAuthentication.Go() helps you get started on scanning a website that has a Login page and uses Forms based authentication" + Environment.NewLine);
+            //await AuthenticatedScanWithFormsAuthentication.Go();
+            await Console.Out.WriteLineAsync("More samples enroute" + Environment.NewLine);
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("ZAP.StartZapUI() helps you get started on how to start ZAP UI (that is the ZAP Desktop)" + Environment.NewLine);
-            //ZAP.StartZapUI();
-            Console.WriteLine("ZAP.StartZAPDaemon() helps you get started on how to start ZAP in daemon mode (that is the headless mode - without the UI)" + Environment.NewLine);
-            //ZAP.StartZAPDaemon();
-            Console.WriteLine("SimplePointAndClickScan.Go() helps you get started on scanning a website just by providing a URL" + Environment.NewLine);
-            //SimplePointAndClickScan.Go();
-            Console.WriteLine("AuthenticatedScanWithFormsAuthentication.Go() helps you get started on scanning a website that has a Login page and uses Forms based authentication" + Environment.NewLine);
-            //AuthenticatedScanWithFormsAuthentication.Go();
-            Console.WriteLine("More samples enroute" + Environment.NewLine);
+            AsyncHelper.RunSync(() => AsyncMain(args));
         }
     }
 }

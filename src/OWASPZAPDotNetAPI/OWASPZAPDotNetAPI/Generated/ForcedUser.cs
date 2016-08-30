@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,53 +43,53 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse isForcedUserModeEnabled()
+		public async Task<IApiResponse> isForcedUserModeEnabled()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("forcedUser", "view", "isForcedUserModeEnabled", parameters);
+			return await api.CallApi("forcedUser", "view", "isForcedUserModeEnabled", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getForcedUser(string contextid)
+		public async Task<IApiResponse> getForcedUser(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("contextId", contextid);
-			return api.CallApi("forcedUser", "view", "getForcedUser", parameters);
+			return await api.CallApi("forcedUser", "view", "getForcedUser", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setForcedUser(string apikey, string contextid, string userid)
+		public async Task<IApiResponse> setForcedUser(string apikey, string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
-			return api.CallApi("forcedUser", "action", "setForcedUser", parameters);
+			return await api.CallApi("forcedUser", "action", "setForcedUser", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setForcedUserModeEnabled(string apikey, bool boolean)
+		public async Task<IApiResponse> setForcedUserModeEnabled(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("boolean", Convert.ToString(boolean));
-			return api.CallApi("forcedUser", "action", "setForcedUserModeEnabled", parameters);
+			return await api.CallApi("forcedUser", "action", "setForcedUserModeEnabled", parameters);
 		}
 
 	}

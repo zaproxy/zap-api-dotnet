@@ -1,0 +1,4 @@
+*.dll
+src/OWASPZAPDotNetAPI/OWASPZAPDotNetAPI.Samples/bin/Debug/netcoreapp1.0/OWASPZAPDotNetAPI.pdb
+*.pdb
+*.user

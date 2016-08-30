@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,61 +43,61 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse listEngines()
+		public async Task<IApiResponse> listEngines()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("script", "view", "listEngines", parameters);
+			return await api.CallApi("script", "view", "listEngines", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse listScripts()
+		public async Task<IApiResponse> listScripts()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("script", "view", "listScripts", parameters);
+			return await api.CallApi("script", "view", "listScripts", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse enable(string apikey, string scriptname)
+		public async Task<IApiResponse> enable(string apikey, string scriptname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scriptName", scriptname);
-			return api.CallApi("script", "action", "enable", parameters);
+			return await api.CallApi("script", "action", "enable", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse disable(string apikey, string scriptname)
+		public async Task<IApiResponse> disable(string apikey, string scriptname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scriptName", scriptname);
-			return api.CallApi("script", "action", "disable", parameters);
+			return await api.CallApi("script", "action", "disable", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse load(string apikey, string scriptname, string scripttype, string scriptengine, string filename, string scriptdescription)
+		public async Task<IApiResponse> load(string apikey, string scriptname, string scripttype, string scriptengine, string filename, string scriptdescription)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scriptName", scriptname);
@@ -104,37 +105,37 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("scriptEngine", scriptengine);
 			parameters.Add("fileName", filename);
 			parameters.Add("scriptDescription", scriptdescription);
-			return api.CallApi("script", "action", "load", parameters);
+			return await api.CallApi("script", "action", "load", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse remove(string apikey, string scriptname)
+		public async Task<IApiResponse> remove(string apikey, string scriptname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scriptName", scriptname);
-			return api.CallApi("script", "action", "remove", parameters);
+			return await api.CallApi("script", "action", "remove", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse runStandAloneScript(string apikey, string scriptname)
+		public async Task<IApiResponse> runStandAloneScript(string apikey, string scriptname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scriptName", scriptname);
-			return api.CallApi("script", "action", "runStandAloneScript", parameters);
+			return await api.CallApi("script", "action", "runStandAloneScript", parameters);
 		}
 
 	}
