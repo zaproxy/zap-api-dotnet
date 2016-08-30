@@ -37,60 +37,59 @@ namespace OWASPZAPDotNetAPI.Samples
         private static ClientApi _api = new ClientApi("localhost", 7070);
         private static IApiResponse _apiResponse;
 
-        public static void Go()
+        public static async Task Go()
         {
             LoadTargetUrlToSitesTree();
 
             string contextName = "SqliModernApp";
-            string contextId = CreateContext(contextName);
+            int contextId = await CreateContext(contextName);
             string urlToIncludeInContext = @"\Qhttp://localhost:8020/SqliModernApp\E.*";
-            IncludeUrlToContext(contextName, urlToIncludeInContext);
+            await IncludeUrlToContext(contextName, urlToIncludeInContext);
 
-            if (IsFormsAuthenticationSupported())
+            if (await IsFormsAuthenticationSupported())
             {
                 string formBasedAuthenticationConfiguration = PrepareLoginUrlAndRequestData();
-                SetFormsBasedAuthentication(contextId, formBasedAuthenticationConfiguration);
-                SetLoggedInIndicatorForFormsBasedAuthentication(contextId);
+                await SetFormsBasedAuthentication(contextId, formBasedAuthenticationConfiguration);
+                await SetLoggedInIndicatorForFormsBasedAuthentication(contextId);
             }
 
-            string userId = string.Empty;
             string userName = "ZAP";
             string password = "adminadmin";
 
-            userId = CreateNewUser(contextId, userName);
-            SetUserNameAndPassword(contextId, userId, userName, password);
-            EnableUser(contextId, userId);
+            int userId = await CreateNewUser(contextId, userName);
+            await SetUserNameAndPassword(contextId, userId, userName, password);
+            await EnableUser(contextId, userId);
 
-            SetASpecificForcedUser(contextId, userId);
-            EnableForcedUserMode();
+            await SetASpecificForcedUser(contextId, userId);
+            await EnableForcedUserMode();
 
-            string spiderScanId = StartSpidering();
-            PollTheSpiderTillCompletion(spiderScanId);
+            int spiderScanId = await StartSpidering();
+            await PollTheSpiderTillCompletion(spiderScanId);
 
-            StartAjaxSpidering();
-            PollTheAjaxSpiderTillCompletion();
+            await StartAjaxSpidering();
+            await PollTheAjaxSpiderTillCompletion();
 
-            string activeScanId = StartActiveScanning();
-            PollTheActiveScannerTillCompletion(activeScanId);
+            int activeScanId = await StartActiveScanning();
+            await PollTheActiveScannerTillCompletion(activeScanId);
 
             string reportFileName = string.Format("report-{0}", DateTime.Now.ToString("dd-MMM-yyyy-hh-mm-ss"));
-            WriteXmlReport(reportFileName);
-            WriteHtmlReport(reportFileName);
-            PrintAlertsToConsole();
+            await WriteXmlReport(reportFileName);
+            await WriteHtmlReport(reportFileName);
+            await PrintAlertsToConsole();
 
-            ShutdownZAP();
+            await ShutdownZAP();
         }
 
-        private static void ShutdownZAP()
+        private static async Task ShutdownZAP()
         {
-            _apiResponse = _api.core.shutdown("");
+            _apiResponse = await _api.core.shutdown("");
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("ZAP shutdown success " + _target);
         }
 
-        private static void PrintAlertsToConsole()
+        private static async Task PrintAlertsToConsole()
         {
-            List<Alert> alerts = _api.GetAlerts(_target, 0, 0);
+            List<Alert> alerts = await _api.GetAlerts(_target, 0, 0);
             foreach (var alert in alerts)
             {
                 Console.WriteLine(alert.AlertMessage
@@ -109,23 +108,26 @@ namespace OWASPZAPDotNetAPI.Samples
             }
         }
 
-        private static void WriteHtmlReport(string reportFileName)
+        private static async Task WriteHtmlReport(string reportFileName)
         {
-            File.WriteAllBytes(reportFileName + ".html" , _api.core.htmlreport(_apikey));
+            byte[] buffer = await _api.core.htmlreport(_apikey);
+            File.WriteAllBytes(reportFileName + ".html" , buffer);
         }
 
-        private static void WriteXmlReport(string reportFileName)
+        private static async Task WriteXmlReport(string reportFileName)
         {
-            File.WriteAllBytes(reportFileName + ".xml", _api.core.xmlreport(_apikey));
+            byte[] buffer = await _api.core.xmlreport(_apikey);
+            File.WriteAllBytes(reportFileName + ".xml", buffer);
         }
 
-        private static void PollTheActiveScannerTillCompletion(string activeScanId)
+        private static async Task PollTheActiveScannerTillCompletion(int activeScanId)
         {
             int activeScannerprogress;
             while (true)
             {
-                Sleep(5000);
-                activeScannerprogress = int.Parse(((ApiResponseElement)_api.ascan.status(activeScanId)).Value);
+                await Task.Delay(5000);
+                var element = await _api.ascan.status(Convert.ToString(activeScanId));
+                activeScannerprogress = int.Parse(((ApiResponseElement)element).Value);
                 Console.WriteLine("Active scanner progress: {0}%", activeScannerprogress);
                 if (activeScannerprogress >= 100)
                     break;
@@ -133,98 +135,100 @@ namespace OWASPZAPDotNetAPI.Samples
             Console.WriteLine("Active scanner complete");
         }
 
-        private static string StartActiveScanning()
+        private static async Task<int> StartActiveScanning()
         {
             Console.WriteLine("Active Scanner: " + _target);
-            _apiResponse = _api.ascan.scan(_apikey, _target, "", "", "", "", "");
+            _apiResponse = await _api.ascan.scan(_apikey, _target, "", "", "", "", "");
 
-            string activeScanId = ((ApiResponseElement)_apiResponse).Value;
+            int activeScanId = int.Parse(((ApiResponseElement)_apiResponse).Value);
             return activeScanId;
         }
 
-        private static void PollTheAjaxSpiderTillCompletion()
+        private static async Task PollTheAjaxSpiderTillCompletion()
         {
             while (true)
             {
-                Sleep(1000);
+                await Task.Delay(1000);
                 string ajaxSpiderStatusText = string.Empty;
-                ajaxSpiderStatusText = Convert.ToString(((ApiResponseElement)_api.ajaxspider.status()).Value);
-                if (ajaxSpiderStatusText.IndexOf("running", StringComparison.InvariantCultureIgnoreCase) > -1)
+                var status = await _api.ajaxspider.status();
+                ajaxSpiderStatusText = Convert.ToString(((ApiResponseElement)status).Value);
+                if (ajaxSpiderStatusText.IndexOf("running", StringComparison.OrdinalIgnoreCase) > -1)
                     Console.WriteLine("Ajax Spider running");
                 else
                     break;
             }
 
             Console.WriteLine("Ajax Spider complete");
-            Thread.Sleep(10000);
+            await Task.Delay(10000);
         }
 
-        private static void StartAjaxSpidering()
+        private static async Task StartAjaxSpidering()
         {
             Console.WriteLine("Ajax Spider: " + _target);
-            _apiResponse = _api.ajaxspider.scan(_apikey, _target, "");
+            _apiResponse = await _api.ajaxspider.scan(_apikey, _target, "");
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("Ajax Spider started for " + _target);
         }
 
-        private static void PollTheSpiderTillCompletion(string scanid)
+        private static async Task PollTheSpiderTillCompletion(int scanid)
         {
             int spiderProgress;
             while (true)
             {
-                Sleep(1000);
-                spiderProgress = int.Parse(((ApiResponseElement)_api.spider.status(scanid)).Value);
+                await Task.Delay(1000);
+                var status = await _api.spider.status(Convert.ToString(scanid));
+                spiderProgress = int.Parse(((ApiResponseElement)status).Value);
                 Console.WriteLine("Spider progress: {0}%", spiderProgress);
                 if (spiderProgress >= 100)
                     break;
             }
 
             Console.WriteLine("Spider complete");
-            Thread.Sleep(10000);
+            await Task.Delay(10000);
         }
 
-        private static string StartSpidering()
+        private static async Task<int> StartSpidering()
         {
             Console.WriteLine("Spider: " + _target);
-            _apiResponse = _api.spider.scan(_apikey, _target, "");
-            string scanid = ((ApiResponseElement)_apiResponse).Value;
+            _apiResponse = await _api.spider.scan(_apikey, _target, "");
+            int scanid = int.Parse(((ApiResponseElement)_apiResponse).Value);
             return scanid;
         }
 
-        private static void EnableForcedUserMode()
+        private static async Task EnableForcedUserMode()
         {
-            _apiResponse = _api.forcedUser.setForcedUserModeEnabled(_apikey, true);
+            _apiResponse = await _api.forcedUser.setForcedUserModeEnabled(_apikey, true);
         }
 
-        private static void SetASpecificForcedUser(string contextId, string userId)
+        private static async Task SetASpecificForcedUser(int contextId, int userId)
         {
-            _apiResponse = _api.forcedUser.setForcedUser(_apikey, contextId, userId);
+            _apiResponse = await _api.forcedUser.setForcedUser(_apikey,  Convert.ToString(contextId), Convert.ToString(userId));
         }
 
-        private static void EnableUser(string contextId, string userId)
+        private static async Task EnableUser(int contextId, int userId)
         {
-            _apiResponse = _api.users.setUserEnabled(_apikey, contextId, userId, "true");
+            _apiResponse = await _api.users.setUserEnabled(_apikey, Convert.ToString(contextId), Convert.ToString(userId), "true");
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("user enabled");
         }
 
-        private static void SetUserNameAndPassword(string contextId, string userId, string userName, string password)
+        private static async Task SetUserNameAndPassword(int contextId, int userId, string userName, string password)
         {
             string userAuthenticationConfigFormat = "username={0}&password={1}";
             string userAuthenticationConfig = string.Format(userAuthenticationConfigFormat, userName, password);
 
-            _apiResponse = _api.users.setAuthenticationCredentials(_apikey, contextId, userId, userAuthenticationConfig);
+            _apiResponse = await _api.users.setAuthenticationCredentials(_apikey, Convert.ToString(contextId), Convert.ToString(userId), userAuthenticationConfig);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("User credentials set");
         }
 
-        private static string CreateNewUser(string contextId, string userName)
+        private static async Task<int> CreateNewUser(int contextId, string userName)
         {
-            _apiResponse = _api.users.newUser(_apikey, contextId, userName);
-            string userId = ((ApiResponseElement)_apiResponse).Value;
+            _apiResponse = await _api.users.newUser(_apikey, Convert.ToString(contextId), userName);
+            int userId = int.Parse(((ApiResponseElement)_apiResponse).Value);
             return userId;
         }
 
@@ -233,18 +237,18 @@ namespace OWASPZAPDotNetAPI.Samples
 
         }
 
-        private static void SetLoggedInIndicatorForFormsBasedAuthentication(string contextId)
+        private static async Task SetLoggedInIndicatorForFormsBasedAuthentication(int contextId)
         {
             string loggedInIndicator = @"\Q<form action=""/SqliModernApp/Account/LogOff"" id=""logoutForm"" method=""post"">\E";
-            _apiResponse = _api.authentication.setLoggedInIndicator(_apikey, contextId, loggedInIndicator);
+            _apiResponse = await _api.authentication.setLoggedInIndicator(_apikey, Convert.ToString(contextId), loggedInIndicator);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("loggedInIndicator is set");
         }
 
-        private static void SetFormsBasedAuthentication(string contextId, string formBasedAuthenticationConfiguration)
+        private static async Task SetFormsBasedAuthentication(int contextId, string formBasedAuthenticationConfiguration)
         {
-            _apiResponse = _api.authentication.setAuthenticationMethod(_apikey, contextId, "formBasedAuthentication", formBasedAuthenticationConfiguration);
+            _apiResponse = await _api.authentication.setAuthenticationMethod(_apikey, Convert.ToString(contextId), "formBasedAuthentication", formBasedAuthenticationConfiguration);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("formBasedAuthentication is configured");
@@ -262,18 +266,18 @@ namespace OWASPZAPDotNetAPI.Samples
             return formBasedAuthenticationConfiguration;
         }
 
-        private static bool IsFormsAuthenticationSupported()
+        private static async Task<bool> IsFormsAuthenticationSupported()
         {
             bool isFormsAuthenticatedSupported = false;
             string formsAuthenticationString = "formBasedAuthentication";
 
-            _apiResponse = _api.authentication.getSupportedAuthenticationMethods();
+            _apiResponse = await _api.authentication.getSupportedAuthenticationMethods();
 
             Console.WriteLine("Supported authentication methods are:" + Environment.NewLine);
             foreach (var authenticationMethod in ((ApiResponseList)_apiResponse).List)
             {
                 string authenticationMethodName = ((ApiResponseElement)authenticationMethod).Value;
-                if (formsAuthenticationString.IndexOf(authenticationMethodName, StringComparison.InvariantCultureIgnoreCase) > -1)
+                if (formsAuthenticationString.IndexOf(authenticationMethodName, StringComparison.OrdinalIgnoreCase) > -1)
                 {
                     isFormsAuthenticatedSupported = true;
                 }
@@ -283,18 +287,18 @@ namespace OWASPZAPDotNetAPI.Samples
             return isFormsAuthenticatedSupported;
         }
 
-        private static void IncludeUrlToContext(string contextName, string urlToIncludeInContext)
+        private static async Task IncludeUrlToContext(string contextName, string urlToIncludeInContext)
         {
-            _apiResponse = _api.context.includeInContext(_apikey, contextName, urlToIncludeInContext);
+            _apiResponse = await _api.context.includeInContext(_apikey, contextName, urlToIncludeInContext);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("{0} included to context {1}", urlToIncludeInContext, contextName);
         }
 
-        private static string CreateContext(string contextName)
+        private static async Task<int> CreateContext(string contextName)
         {
-            _apiResponse = _api.context.newContext(_apikey, contextName);
-            string contextId = ((ApiResponseElement)_apiResponse).Value;
+            _apiResponse = await _api.context.newContext(_apikey, contextName);
+            int contextId = int.Parse(((ApiResponseElement)_apiResponse).Value);
             Console.WriteLine("{0} context created with id {1}", contextName, contextId);
             return contextId;
         }
@@ -302,16 +306,6 @@ namespace OWASPZAPDotNetAPI.Samples
         private static void LoadTargetUrlToSitesTree()
         {
             _api.AccessUrl(_target);
-        }
-
-        private static void Sleep(int milliseconds)
-        {
-            do
-            {
-                Thread.Sleep(milliseconds);
-                Console.WriteLine("...zz" + Environment.NewLine);
-                milliseconds = milliseconds - 2000;
-            } while (milliseconds > 2000);
         }
     }
 }

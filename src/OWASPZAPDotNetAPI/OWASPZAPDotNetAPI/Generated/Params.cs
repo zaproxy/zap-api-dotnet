@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -43,12 +44,12 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse parameters(string site)
+		public async Task<IApiResponse> parameters(string site)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("site", site);
-			return api.CallApi("params", "view", "params", parameters);
+			return await api.CallApi("params", "view", "params", parameters);
 		}
 
 	}

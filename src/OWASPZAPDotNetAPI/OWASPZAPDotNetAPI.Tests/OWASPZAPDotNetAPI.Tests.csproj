@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OWASPZAPDotNetAPI\OWASPZAPDotNetAPI.csproj">
+    <ProjectReference Include="..\OWASPZAPDotNetAPI\OWASPZAPDotNetAPI.xproj">
       <Project>{112707db-10a3-40c9-bff2-172c2a9e82eb}</Project>
       <Name>OWASPZAPDotNetAPI</Name>
     </ProjectReference>

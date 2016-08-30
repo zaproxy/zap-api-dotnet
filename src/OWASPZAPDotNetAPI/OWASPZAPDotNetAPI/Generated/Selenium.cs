@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,75 +43,75 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionPhantomJsBinaryPath()
+		public async Task<IApiResponse> optionPhantomJsBinaryPath()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("selenium", "view", "optionPhantomJsBinaryPath", parameters);
+			return await api.CallApi("selenium", "view", "optionPhantomJsBinaryPath", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionChromeDriverPath()
+		public async Task<IApiResponse> optionChromeDriverPath()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("selenium", "view", "optionChromeDriverPath", parameters);
+			return await api.CallApi("selenium", "view", "optionChromeDriverPath", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionIeDriverPath()
+		public async Task<IApiResponse> optionIeDriverPath()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("selenium", "view", "optionIeDriverPath", parameters);
+			return await api.CallApi("selenium", "view", "optionIeDriverPath", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionPhantomJsBinaryPath(string apikey, string str)
+		public async Task<IApiResponse> setOptionPhantomJsBinaryPath(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("selenium", "action", "setOptionPhantomJsBinaryPath", parameters);
+			return await api.CallApi("selenium", "action", "setOptionPhantomJsBinaryPath", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionChromeDriverPath(string apikey, string str)
+		public async Task<IApiResponse> setOptionChromeDriverPath(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("selenium", "action", "setOptionChromeDriverPath", parameters);
+			return await api.CallApi("selenium", "action", "setOptionChromeDriverPath", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionIeDriverPath(string apikey, string str)
+		public async Task<IApiResponse> setOptionIeDriverPath(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("selenium", "action", "setOptionIeDriverPath", parameters);
+			return await api.CallApi("selenium", "action", "setOptionIeDriverPath", parameters);
 		}
 
 	}

@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,7 +43,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse urlsByUrlRegex(string regex, string baseurl, string start, string count)
+		public async Task<IApiResponse> urlsByUrlRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -50,14 +51,14 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("search", "view", "urlsByUrlRegex", parameters);
+			return await api.CallApi("search", "view", "urlsByUrlRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse urlsByRequestRegex(string regex, string baseurl, string start, string count)
+		public async Task<IApiResponse> urlsByRequestRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -65,14 +66,14 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("search", "view", "urlsByRequestRegex", parameters);
+			return await api.CallApi("search", "view", "urlsByRequestRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse urlsByResponseRegex(string regex, string baseurl, string start, string count)
+		public async Task<IApiResponse> urlsByResponseRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -80,14 +81,14 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("search", "view", "urlsByResponseRegex", parameters);
+			return await api.CallApi("search", "view", "urlsByResponseRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse urlsByHeaderRegex(string regex, string baseurl, string start, string count)
+		public async Task<IApiResponse> urlsByHeaderRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -95,14 +96,14 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("search", "view", "urlsByHeaderRegex", parameters);
+			return await api.CallApi("search", "view", "urlsByHeaderRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse messagesByUrlRegex(string regex, string baseurl, string start, string count)
+		public async Task<IApiResponse> messagesByUrlRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -110,14 +111,14 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("search", "view", "messagesByUrlRegex", parameters);
+			return await api.CallApi("search", "view", "messagesByUrlRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse messagesByRequestRegex(string regex, string baseurl, string start, string count)
+		public async Task<IApiResponse> messagesByRequestRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -125,14 +126,14 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("search", "view", "messagesByRequestRegex", parameters);
+			return await api.CallApi("search", "view", "messagesByRequestRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse messagesByResponseRegex(string regex, string baseurl, string start, string count)
+		public async Task<IApiResponse> messagesByResponseRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -140,14 +141,14 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("search", "view", "messagesByResponseRegex", parameters);
+			return await api.CallApi("search", "view", "messagesByResponseRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse messagesByHeaderRegex(string regex, string baseurl, string start, string count)
+		public async Task<IApiResponse> messagesByHeaderRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -155,79 +156,79 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("search", "view", "messagesByHeaderRegex", parameters);
+			return await api.CallApi("search", "view", "messagesByHeaderRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] harByUrlRegex(string apikey, string regex, string baseurl, string start, string count)
+		public async Task<byte[]> harByUrlRegex(string apikey, string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApiOther("search", "other", "harByUrlRegex", parameters);
+			return await api.CallApiOther("search", "other", "harByUrlRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] harByRequestRegex(string apikey, string regex, string baseurl, string start, string count)
+		public async Task<byte[]> harByRequestRegex(string apikey, string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApiOther("search", "other", "harByRequestRegex", parameters);
+			return await api.CallApiOther("search", "other", "harByRequestRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] harByResponseRegex(string apikey, string regex, string baseurl, string start, string count)
+		public async Task<byte[]> harByResponseRegex(string apikey, string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApiOther("search", "other", "harByResponseRegex", parameters);
+			return await api.CallApiOther("search", "other", "harByResponseRegex", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] harByHeaderRegex(string apikey, string regex, string baseurl, string start, string count)
+		public async Task<byte[]> harByHeaderRegex(string apikey, string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApiOther("search", "other", "harByHeaderRegex", parameters);
+			return await api.CallApiOther("search", "other", "harByHeaderRegex", parameters);
 		}
 
 	}

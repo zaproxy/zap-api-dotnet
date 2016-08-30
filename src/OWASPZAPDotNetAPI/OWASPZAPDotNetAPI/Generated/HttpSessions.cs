@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,167 +43,167 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse sessions(string site, string session)
+		public async Task<IApiResponse> sessions(string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("site", site);
 			parameters.Add("session", session);
-			return api.CallApi("httpSessions", "view", "sessions", parameters);
+			return await api.CallApi("httpSessions", "view", "sessions", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse activeSession(string site)
+		public async Task<IApiResponse> activeSession(string site)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("site", site);
-			return api.CallApi("httpSessions", "view", "activeSession", parameters);
+			return await api.CallApi("httpSessions", "view", "activeSession", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse sessionTokens(string site)
+		public async Task<IApiResponse> sessionTokens(string site)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("site", site);
-			return api.CallApi("httpSessions", "view", "sessionTokens", parameters);
+			return await api.CallApi("httpSessions", "view", "sessionTokens", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse createEmptySession(string apikey, string site, string session)
+		public async Task<IApiResponse> createEmptySession(string apikey, string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
 			parameters.Add("session", session);
-			return api.CallApi("httpSessions", "action", "createEmptySession", parameters);
+			return await api.CallApi("httpSessions", "action", "createEmptySession", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeSession(string apikey, string site, string session)
+		public async Task<IApiResponse> removeSession(string apikey, string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
 			parameters.Add("session", session);
-			return api.CallApi("httpSessions", "action", "removeSession", parameters);
+			return await api.CallApi("httpSessions", "action", "removeSession", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setActiveSession(string apikey, string site, string session)
+		public async Task<IApiResponse> setActiveSession(string apikey, string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
 			parameters.Add("session", session);
-			return api.CallApi("httpSessions", "action", "setActiveSession", parameters);
+			return await api.CallApi("httpSessions", "action", "setActiveSession", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse unsetActiveSession(string apikey, string site)
+		public async Task<IApiResponse> unsetActiveSession(string apikey, string site)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
-			return api.CallApi("httpSessions", "action", "unsetActiveSession", parameters);
+			return await api.CallApi("httpSessions", "action", "unsetActiveSession", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addSessionToken(string apikey, string site, string sessiontoken)
+		public async Task<IApiResponse> addSessionToken(string apikey, string site, string sessiontoken)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
 			parameters.Add("sessionToken", sessiontoken);
-			return api.CallApi("httpSessions", "action", "addSessionToken", parameters);
+			return await api.CallApi("httpSessions", "action", "addSessionToken", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeSessionToken(string apikey, string site, string sessiontoken)
+		public async Task<IApiResponse> removeSessionToken(string apikey, string site, string sessiontoken)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
 			parameters.Add("sessionToken", sessiontoken);
-			return api.CallApi("httpSessions", "action", "removeSessionToken", parameters);
+			return await api.CallApi("httpSessions", "action", "removeSessionToken", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setSessionTokenValue(string apikey, string site, string session, string sessiontoken, string tokenvalue)
+		public async Task<IApiResponse> setSessionTokenValue(string apikey, string site, string session, string sessiontoken, string tokenvalue)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
 			parameters.Add("session", session);
 			parameters.Add("sessionToken", sessiontoken);
 			parameters.Add("tokenValue", tokenvalue);
-			return api.CallApi("httpSessions", "action", "setSessionTokenValue", parameters);
+			return await api.CallApi("httpSessions", "action", "setSessionTokenValue", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse renameSession(string apikey, string site, string oldsessionname, string newsessionname)
+		public async Task<IApiResponse> renameSession(string apikey, string site, string oldsessionname, string newsessionname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
 			parameters.Add("oldSessionName", oldsessionname);
 			parameters.Add("newSessionName", newsessionname);
-			return api.CallApi("httpSessions", "action", "renameSession", parameters);
+			return await api.CallApi("httpSessions", "action", "renameSession", parameters);
 		}
 
 	}

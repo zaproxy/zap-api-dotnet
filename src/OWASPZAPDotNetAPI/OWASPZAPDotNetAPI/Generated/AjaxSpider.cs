@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,63 +43,63 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse status()
+		public async Task<IApiResponse> status()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("ajaxSpider", "view", "status", parameters);
+			return await api.CallApi("ajaxSpider", "view", "status", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse results(string start, string count)
+		public async Task<IApiResponse> results(string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("ajaxSpider", "view", "results", parameters);
+			return await api.CallApi("ajaxSpider", "view", "results", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse numberOfResults()
+		public async Task<IApiResponse> numberOfResults()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("ajaxSpider", "view", "numberOfResults", parameters);
+			return await api.CallApi("ajaxSpider", "view", "numberOfResults", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse scan(string apikey, string url, string inscope)
+		public async Task<IApiResponse> scan(string apikey, string url, string inscope)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("url", url);
 			parameters.Add("inScope", inscope);
-			return api.CallApi("ajaxSpider", "action", "scan", parameters);
+			return await api.CallApi("ajaxSpider", "action", "scan", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse stop(string apikey)
+		public async Task<IApiResponse> stop(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApi("ajaxSpider", "action", "stop", parameters);
+			return await api.CallApi("ajaxSpider", "action", "stop", parameters);
 		}
 
 	}

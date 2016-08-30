@@ -18,44 +18,138 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OWASPZAPDotNetAPI
 {
-    class SystemWebClient : IWebClient, IDisposable
+    class SystemWebClient : IWebClient
     {
-        WebClient webClient;
-        WebProxy webProxy;
+        private readonly string _proxyHost;
+        private readonly int _proxyPort;
 
+        private class WebProxy : IWebProxy
+        {
+            private readonly string _proxyHost;
+            private readonly int _proxyPort;
+
+            public WebProxy(string proxyHost, int proxyPort)
+            {
+                _proxyHost = proxyHost;
+                _proxyPort = proxyPort;
+            }
+
+            public Uri GetProxy(Uri destination)
+            {
+                return new Uri("http://" + _proxyHost + ":" + _proxyPort);
+            }
+
+            public bool IsBypassed(Uri host)
+            {
+                return false;
+            }
+
+            public ICredentials Credentials { get; set; }
+        }
+        
         public SystemWebClient(string proxyHost, int proxyPort)
         {
-            webProxy = new WebProxy(proxyHost, proxyPort);
-            webClient = new WebClient();
-            webClient.Proxy = webProxy;
+            _proxyHost = proxyHost;
+            _proxyPort = proxyPort;
         }
 
-        public string DownloadString(string address)
+        private void HandleException(WebException e, string requestUrl)
         {
-            return webClient.DownloadString(address);
+            string content = string.Format("Error '{0}' calling '{1}'.", e.Status, requestUrl);
+            if (e.Response != null)
+            {
+                using (var errorStream = e.Response.GetResponseStream())
+                using (var errorReader = new StreamReader(errorStream))
+                {
+                    content += "Details: " + errorReader.ReadToEnd();
+                }
+            }
+            throw new Exception(content, e);
         }
 
-        public string DownloadString(Uri uri)
+
+        public async Task<string> DownloadString(string address)
         {
-            return webClient.DownloadString(uri);
+            if (string.IsNullOrEmpty(address))
+            {
+                throw new ArgumentNullException(nameof(address));
+            }
+
+            var request = (HttpWebRequest)WebRequest.Create(address);
+            request.Proxy = new WebProxy(_proxyHost, _proxyPort);
+            string result = null;
+            try
+            {
+                using (var response = await request.GetResponseAsync().ConfigureAwait(false))
+                using (var stream = response.GetResponseStream())
+                using (var streamReader = new StreamReader(stream))
+                {
+                    result = await streamReader.ReadToEndAsync().ConfigureAwait(false);
+                }
+            }
+            catch(WebException e)
+            {
+                HandleException(e, address);
+            }
+            return result;
         }
 
-        public byte[] DownloadData(Uri uri)
+        public async Task<string> DownloadString(Uri uri)
         {
-            return webClient.DownloadData(uri);
+            if (uri == null)
+            {
+                throw new ArgumentNullException(nameof(uri));
+            }
+            var request = (HttpWebRequest)WebRequest.Create(uri);
+            request.Proxy = new WebProxy(_proxyHost, _proxyPort);
+            string result = null;
+            try
+            {
+                using (var response = await request.GetResponseAsync().ConfigureAwait(false))
+                using (var stream = response.GetResponseStream())
+                using (var streamReader = new StreamReader(stream))
+                {
+                    result = await streamReader.ReadToEndAsync().ConfigureAwait(false);
+                }
+            }
+            catch (WebException e)
+            {
+                HandleException(e, uri.ToString());
+            }
+            return result;
         }
 
-        public void Dispose()
+        public async Task<byte[]> DownloadData(Uri uri)
         {
-            webClient.Dispose();
+            if (uri == null)
+            {
+                throw new ArgumentNullException(nameof(uri));
+            }
+
+            var request = (HttpWebRequest)WebRequest.Create(uri);
+            request.Proxy = new WebProxy(_proxyHost, _proxyPort);
+            byte[] buffer = null;
+            try
+            {
+                using (var response = await request.GetResponseAsync().ConfigureAwait(false))
+                using (var stream = response.GetResponseStream())
+                using (var memoryStream = new MemoryStream())
+                {
+                    await stream.CopyToAsync(memoryStream).ConfigureAwait(false);
+                    buffer = memoryStream.ToArray();
+                }
+            }
+            catch (WebException e)
+            {
+                HandleException(e, uri.ToString());
+            }
+            return buffer;
         }
     }
 }

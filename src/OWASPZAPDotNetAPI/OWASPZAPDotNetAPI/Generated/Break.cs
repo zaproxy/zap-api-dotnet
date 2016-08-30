@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,28 +43,28 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse brk(string apikey, string type, string scope, string state)
+		public async Task<IApiResponse> brk(string apikey, string type, string scope, string state)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("type", type);
 			parameters.Add("scope", scope);
 			parameters.Add("state", state);
-			return api.CallApi("break", "action", "break", parameters);
+			return await api.CallApi("break", "action", "break", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addHttpBreakpoint(string apikey, string str, string location, string match, string inverse, string ignorecase)
+		public async Task<IApiResponse> addHttpBreakpoint(string apikey, string str, string location, string match, string inverse, string ignorecase)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("string", str);
@@ -71,18 +72,18 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("match", match);
 			parameters.Add("inverse", inverse);
 			parameters.Add("ignorecase", ignorecase);
-			return api.CallApi("break", "action", "addHttpBreakpoint", parameters);
+			return await api.CallApi("break", "action", "addHttpBreakpoint", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeHttpBreakpoint(string apikey, string str, string location, string match, string inverse, string ignorecase)
+		public async Task<IApiResponse> removeHttpBreakpoint(string apikey, string str, string location, string match, string inverse, string ignorecase)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("string", str);
@@ -90,7 +91,7 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("match", match);
 			parameters.Add("inverse", inverse);
 			parameters.Add("ignorecase", ignorecase);
-			return api.CallApi("break", "action", "removeHttpBreakpoint", parameters);
+			return await api.CallApi("break", "action", "removeHttpBreakpoint", parameters);
 		}
 
 	}

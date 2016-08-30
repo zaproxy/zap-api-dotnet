@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -43,10 +44,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionTokensNames()
+		public async Task<IApiResponse> optionTokensNames()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("acsrf", "view", "optionTokensNames", parameters);
+			return await api.CallApi("acsrf", "view", "optionTokensNames", parameters);
 		}
 
 		/// <summary>
@@ -54,15 +55,15 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeOptionToken(string apikey, string str)
+		public async Task<IApiResponse> removeOptionToken(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("acsrf", "action", "removeOptionToken", parameters);
+			return await api.CallApi("acsrf", "action", "removeOptionToken", parameters);
 		}
 
 		/// <summary>
@@ -70,15 +71,15 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addOptionToken(string apikey, string str)
+		public async Task<IApiResponse> addOptionToken(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("acsrf", "action", "addOptionToken", parameters);
+			return await api.CallApi("acsrf", "action", "addOptionToken", parameters);
 		}
 
 		/// <summary>
@@ -86,15 +87,15 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] genForm(string apikey, string hrefid)
+		public async Task<byte[]> genForm(string apikey, string hrefid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("hrefId", hrefid);
-			return api.CallApiOther("acsrf", "other", "genForm", parameters);
+			return await api.CallApiOther("acsrf", "other", "genForm", parameters);
 		}
 
 	}

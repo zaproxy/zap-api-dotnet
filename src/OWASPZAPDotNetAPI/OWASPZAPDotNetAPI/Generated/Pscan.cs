@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -43,10 +44,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse recordsToScan()
+		public async Task<IApiResponse> recordsToScan()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("pscan", "view", "recordsToScan", parameters);
+			return await api.CallApi("pscan", "view", "recordsToScan", parameters);
 		}
 
 		/// <summary>
@@ -54,10 +55,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse scanners()
+		public async Task<IApiResponse> scanners()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("pscan", "view", "scanners", parameters);
+			return await api.CallApi("pscan", "view", "scanners", parameters);
 		}
 
 		/// <summary>
@@ -65,15 +66,15 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setEnabled(string apikey, string enabled)
+		public async Task<IApiResponse> setEnabled(string apikey, string enabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("enabled", enabled);
-			return api.CallApi("pscan", "action", "setEnabled", parameters);
+			return await api.CallApi("pscan", "action", "setEnabled", parameters);
 		}
 
 		/// <summary>
@@ -81,14 +82,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse enableAllScanners(string apikey)
+		public async Task<IApiResponse> enableAllScanners(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApi("pscan", "action", "enableAllScanners", parameters);
+			return await api.CallApi("pscan", "action", "enableAllScanners", parameters);
 		}
 
 		/// <summary>
@@ -96,14 +97,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse disableAllScanners(string apikey)
+		public async Task<IApiResponse> disableAllScanners(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApi("pscan", "action", "disableAllScanners", parameters);
+			return await api.CallApi("pscan", "action", "disableAllScanners", parameters);
 		}
 
 		/// <summary>
@@ -111,15 +112,15 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse enableScanners(string apikey, string ids)
+		public async Task<IApiResponse> enableScanners(string apikey, string ids)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("ids", ids);
-			return api.CallApi("pscan", "action", "enableScanners", parameters);
+			return await api.CallApi("pscan", "action", "enableScanners", parameters);
 		}
 
 		/// <summary>
@@ -127,15 +128,15 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse disableScanners(string apikey, string ids)
+		public async Task<IApiResponse> disableScanners(string apikey, string ids)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("ids", ids);
-			return api.CallApi("pscan", "action", "disableScanners", parameters);
+			return await api.CallApi("pscan", "action", "disableScanners", parameters);
 		}
 
 		/// <summary>
@@ -143,16 +144,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setScannerAlertThreshold(string apikey, string id, string alertthreshold)
+		public async Task<IApiResponse> setScannerAlertThreshold(string apikey, string id, string alertthreshold)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("id", id);
 			parameters.Add("alertThreshold", alertthreshold);
-			return api.CallApi("pscan", "action", "setScannerAlertThreshold", parameters);
+			return await api.CallApi("pscan", "action", "setScannerAlertThreshold", parameters);
 		}
 
 	}

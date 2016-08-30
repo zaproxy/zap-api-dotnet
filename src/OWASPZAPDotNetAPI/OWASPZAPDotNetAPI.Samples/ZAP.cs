@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace OWASPZAPDotNetAPI.Samples
     /// </summary>
     public static class ZAP
     {
-        public static void StartZapUI()
+        public static async Task StartZapUI()
         {
             Console.WriteLine("Trying to StartZapUI");
             ProcessStartInfo zapProcessStartInfo = new ProcessStartInfo();
@@ -47,10 +48,10 @@ namespace OWASPZAPDotNetAPI.Samples
             Process zap = Process.Start(zapProcessStartInfo);
 
             //Sleep(120000); //you can choose to wait for 2 minutes and bet that ZAP has started
-            CheckIfZAPHasStartedByPollingTheAPI(1); //you can try accessing an API and ensure ZAP has fully initialized
+            await CheckIfZAPHasStartedByPollingTheAPI(1); //you can try accessing an API and ensure ZAP has fully initialized
         }
 
-        public static void StartZAPDaemon()
+        public static async Task StartZAPDaemon()
         {
             Console.WriteLine("Trying to StartZAPDaemon");
             ProcessStartInfo zapProcessStartInfo = new ProcessStartInfo();
@@ -63,7 +64,7 @@ namespace OWASPZAPDotNetAPI.Samples
             Process zap = Process.Start(zapProcessStartInfo);
 
             //Sleep(120000); //you can choose to wait for 2 minutes and bet that ZAP has started
-            CheckIfZAPHasStartedByPollingTheAPI(1); //you can try accessing an API and ensure ZAP has fully initialized
+            await CheckIfZAPHasStartedByPollingTheAPI(1); //you can try accessing an API and ensure ZAP has fully initialized
         }
 
         private static void Sleep(int sleepTime)
@@ -72,31 +73,33 @@ namespace OWASPZAPDotNetAPI.Samples
             Thread.Sleep(sleepTime);
         }
 
-        public static void CheckIfZAPHasStartedByPollingTheAPI(int minutesToWait)
+        public static async Task CheckIfZAPHasStartedByPollingTheAPI(int minutesToWait)
         {
-            WebClient webClient = new WebClient();
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-            int millisecondsToWait = minutesToWait * 60 * 1000;
-            string zapUrlToDownload = "http://localhost:7070";
-
-            while (millisecondsToWait > watch.ElapsedMilliseconds)
+            using (var client = new HttpClient())
             {
-                try
+                var watch = new Stopwatch();
+                watch.Start();
+                int millisecondsToWait = minutesToWait * 60 * 1000;
+                string zapUrlToDownload = "http://localhost:7070";
+
+                while (millisecondsToWait > watch.ElapsedMilliseconds)
                 {
-                    Console.WriteLine("Trying to check if ZAP has started by accessing the ZAP API at {0}", zapUrlToDownload);
-                    string responseString = webClient.DownloadString(zapUrlToDownload);
-                    Console.WriteLine(Environment.NewLine + responseString + Environment.NewLine);
-                    Console.WriteLine("Obtained a response from the ZAP API at {0} {1}Hence assuming that ZAP started successfully", zapUrlToDownload, Environment.NewLine);
-                    return;
+                    try
+                    {
+                        Console.WriteLine("Trying to check if ZAP has started by accessing the ZAP API at {0}", zapUrlToDownload);
+                        string responseString = await client.GetStringAsync(zapUrlToDownload);
+                        Console.WriteLine(Environment.NewLine + responseString + Environment.NewLine);
+                        Console.WriteLine("Obtained a response from the ZAP API at {0} {1}Hence assuming that ZAP started successfully", zapUrlToDownload, Environment.NewLine);
+                        return;
+                    }
+                    catch (WebException webException)
+                    {
+                        Console.WriteLine("Seems like ZAP did not start yet");
+                        Console.WriteLine(webException.Message + Environment.NewLine);
+                        Console.WriteLine("Sleeping for 2 seconds");
+                        await Task.Delay(2000);
+                    }
                 }
-                catch (WebException webException)
-                {
-                    Console.WriteLine("Seems like ZAP did not start yet");
-                    Console.WriteLine(webException.Message + Environment.NewLine);
-                    Console.WriteLine("Sleeping for 2 seconds");
-                    Thread.Sleep(2000);
-                } 
             }
 
             throw new Exception(string.Format("Waited for {0} minutes, however could not access the API successfully, hence could not verify if ZAP started successfully or not", minutesToWait));

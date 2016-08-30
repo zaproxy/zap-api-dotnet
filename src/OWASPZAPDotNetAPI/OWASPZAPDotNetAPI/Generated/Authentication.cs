@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,107 +43,107 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getSupportedAuthenticationMethods()
+		public async Task<IApiResponse> getSupportedAuthenticationMethods()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("authentication", "view", "getSupportedAuthenticationMethods", parameters);
+			return await api.CallApi("authentication", "view", "getSupportedAuthenticationMethods", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getAuthenticationMethodConfigParams(string authmethodname)
+		public async Task<IApiResponse> getAuthenticationMethodConfigParams(string authmethodname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("authMethodName", authmethodname);
-			return api.CallApi("authentication", "view", "getAuthenticationMethodConfigParams", parameters);
+			return await api.CallApi("authentication", "view", "getAuthenticationMethodConfigParams", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getAuthenticationMethod(string contextid)
+		public async Task<IApiResponse> getAuthenticationMethod(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("contextId", contextid);
-			return api.CallApi("authentication", "view", "getAuthenticationMethod", parameters);
+			return await api.CallApi("authentication", "view", "getAuthenticationMethod", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getLoggedInIndicator(string contextid)
+		public async Task<IApiResponse> getLoggedInIndicator(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("contextId", contextid);
-			return api.CallApi("authentication", "view", "getLoggedInIndicator", parameters);
+			return await api.CallApi("authentication", "view", "getLoggedInIndicator", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getLoggedOutIndicator(string contextid)
+		public async Task<IApiResponse> getLoggedOutIndicator(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("contextId", contextid);
-			return api.CallApi("authentication", "view", "getLoggedOutIndicator", parameters);
+			return await api.CallApi("authentication", "view", "getLoggedOutIndicator", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setAuthenticationMethod(string apikey, string contextid, string authmethodname, string authmethodconfigparams)
+		public async Task<IApiResponse> setAuthenticationMethod(string apikey, string contextid, string authmethodname, string authmethodconfigparams)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("authMethodName", authmethodname);
 			parameters.Add("authMethodConfigParams", authmethodconfigparams);
-			return api.CallApi("authentication", "action", "setAuthenticationMethod", parameters);
+			return await api.CallApi("authentication", "action", "setAuthenticationMethod", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setLoggedInIndicator(string apikey, string contextid, string loggedinindicatorregex)
+		public async Task<IApiResponse> setLoggedInIndicator(string apikey, string contextid, string loggedinindicatorregex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("loggedInIndicatorRegex", loggedinindicatorregex);
-			return api.CallApi("authentication", "action", "setLoggedInIndicator", parameters);
+			return await api.CallApi("authentication", "action", "setLoggedInIndicator", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setLoggedOutIndicator(string apikey, string contextid, string loggedoutindicatorregex)
+		public async Task<IApiResponse> setLoggedOutIndicator(string apikey, string contextid, string loggedoutindicatorregex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("loggedOutIndicatorRegex", loggedoutindicatorregex);
-			return api.CallApi("authentication", "action", "setLoggedOutIndicator", parameters);
+			return await api.CallApi("authentication", "action", "setLoggedOutIndicator", parameters);
 		}
 
 	}

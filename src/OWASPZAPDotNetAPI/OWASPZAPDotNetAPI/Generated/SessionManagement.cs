@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,51 +43,51 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getSupportedSessionManagementMethods()
+		public async Task<IApiResponse> getSupportedSessionManagementMethods()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("sessionManagement", "view", "getSupportedSessionManagementMethods", parameters);
+			return await api.CallApi("sessionManagement", "view", "getSupportedSessionManagementMethods", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getSessionManagementMethodConfigParams(string methodname)
+		public async Task<IApiResponse> getSessionManagementMethodConfigParams(string methodname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("methodName", methodname);
-			return api.CallApi("sessionManagement", "view", "getSessionManagementMethodConfigParams", parameters);
+			return await api.CallApi("sessionManagement", "view", "getSessionManagementMethodConfigParams", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getSessionManagementMethod(string contextid)
+		public async Task<IApiResponse> getSessionManagementMethod(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("contextId", contextid);
-			return api.CallApi("sessionManagement", "view", "getSessionManagementMethod", parameters);
+			return await api.CallApi("sessionManagement", "view", "getSessionManagementMethod", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setSessionManagementMethod(string apikey, string contextid, string methodname, string methodconfigparams)
+		public async Task<IApiResponse> setSessionManagementMethod(string apikey, string contextid, string methodname, string methodconfigparams)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("methodName", methodname);
 			parameters.Add("methodConfigParams", methodconfigparams);
-			return api.CallApi("sessionManagement", "action", "setSessionManagementMethod", parameters);
+			return await api.CallApi("sessionManagement", "action", "setSessionManagementMethod", parameters);
 		}
 
 	}

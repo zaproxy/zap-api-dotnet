@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -42,25 +43,25 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse reveal()
+		public async Task<IApiResponse> reveal()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("reveal", "view", "reveal", parameters);
+			return await api.CallApi("reveal", "view", "reveal", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setReveal(string apikey, string reveal)
+		public async Task<IApiResponse> setReveal(string apikey, string reveal)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("reveal", reveal);
-			return api.CallApi("reveal", "action", "setReveal", parameters);
+			return await api.CallApi("reveal", "action", "setReveal", parameters);
 		}
 
 	}

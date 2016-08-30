@@ -36,35 +36,35 @@ namespace OWASPZAPDotNetAPI.Samples
         private static ClientApi _api = new ClientApi("localhost", 7070);
         private static IApiResponse _apiResponse;
 
-        public static void Go()
+        public static async Task Go()
         {
-            string spiderScanId = StartSpidering();
-            PollTheSpiderTillCompletion(spiderScanId);
+            int spiderScanId = await StartSpidering();
+            await PollTheSpiderTillCompletion(spiderScanId);
 
-            StartAjaxSpidering();
-            PollTheAjaxSpiderTillCompletion();
+            await StartAjaxSpidering();
+            await PollTheAjaxSpiderTillCompletion();
 
-            string activeScanId = StartActiveScanning();
-            PollTheActiveScannerTillCompletion(activeScanId);
+            int activeScanId = await StartActiveScanning();
+            await PollTheActiveScannerTillCompletion(activeScanId);
 
             string reportFileName = string.Format("report-{0}", DateTime.Now.ToString("dd-MMM-yyyy-hh-mm-ss"));
-            WriteXmlReport(reportFileName);
-            WriteHtmlReport(reportFileName);
-            PrintAlertsToConsole();
+            await WriteXmlReport(reportFileName);
+            await WriteHtmlReport(reportFileName);
+            await PrintAlertsToConsole();
 
-            ShutdownZAP();
+            await ShutdownZAP();
         }
 
-        private static void ShutdownZAP()
+        private static async Task ShutdownZAP()
         {
-            _apiResponse = _api.core.shutdown("");
+            _apiResponse = await _api.core.shutdown("");
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("ZAP shutdown success " + _target);
         }
 
-        private static void PrintAlertsToConsole()
+        private static async Task PrintAlertsToConsole()
         {
-            List<Alert> alerts = _api.GetAlerts(_target, 0, 0);
+            List<Alert> alerts = await _api.GetAlerts(_target, 0, 0);
             foreach (var alert in alerts)
             {
                 Console.WriteLine(alert.AlertMessage
@@ -83,23 +83,26 @@ namespace OWASPZAPDotNetAPI.Samples
             }
         }
 
-        private static void WriteHtmlReport(string reportFileName)
+        private static async Task WriteHtmlReport(string reportFileName)
         {
-            File.WriteAllBytes(reportFileName + ".html", _api.core.htmlreport(_apikey));
+            var buffer = await _api.core.htmlreport(_apikey);
+            File.WriteAllBytes(reportFileName + ".html", buffer);
         }
 
-        private static void WriteXmlReport(string reportFileName)
+        private static async Task WriteXmlReport(string reportFileName)
         {
-            File.WriteAllBytes(reportFileName + ".xml", _api.core.xmlreport(_apikey));
+            var buffer = await _api.core.xmlreport(_apikey);
+            File.WriteAllBytes(reportFileName + ".xml", buffer);
         }
 
-        private static void PollTheActiveScannerTillCompletion(string activeScanId)
+        private static async Task PollTheActiveScannerTillCompletion(int activeScanId)
         {
             int activeScannerprogress;
             while (true)
             {
-                Sleep(5000);
-                activeScannerprogress = int.Parse(((ApiResponseElement)_api.ascan.status(activeScanId)).Value);
+                await Task.Delay(5000);
+                var scan = await _api.ascan.status(Convert.ToString(activeScanId));
+                activeScannerprogress = int.Parse(((ApiResponseElement)scan).Value);
                 Console.WriteLine("Active scanner progress: {0}%", activeScannerprogress);
                 if (activeScannerprogress >= 100)
                     break;
@@ -107,73 +110,65 @@ namespace OWASPZAPDotNetAPI.Samples
             Console.WriteLine("Active scanner complete");
         }
 
-        private static string StartActiveScanning()
+        private static async Task<int> StartActiveScanning()
         {
             Console.WriteLine("Active Scanner: " + _target);
-            _apiResponse = _api.ascan.scan(_apikey, _target, "", "", "", "", "");
+            _apiResponse = await _api.ascan.scan(_apikey, _target, "", "", "", "", "");
 
-            string activeScanId = ((ApiResponseElement)_apiResponse).Value;
+            int activeScanId = int.Parse(((ApiResponseElement)_apiResponse).Value);
             return activeScanId;
         }
 
-        private static void PollTheAjaxSpiderTillCompletion()
+        private static async Task PollTheAjaxSpiderTillCompletion()
         {
             while (true)
             {
-                Sleep(1000);
+                await Task.Delay(1000);
                 string ajaxSpiderStatusText = string.Empty;
-                ajaxSpiderStatusText = Convert.ToString(((ApiResponseElement)_api.ajaxspider.status()).Value);
-                if (ajaxSpiderStatusText.IndexOf("running", StringComparison.InvariantCultureIgnoreCase) > -1)
+                var status = await _api.ajaxspider.status();
+                ajaxSpiderStatusText = Convert.ToString(((ApiResponseElement)status).Value);
+                if (ajaxSpiderStatusText.IndexOf("running", StringComparison.OrdinalIgnoreCase) > -1)
                     Console.WriteLine("Ajax Spider running");
                 else
                     break;
             }
 
             Console.WriteLine("Ajax Spider complete");
-            Sleep(10000);
+            await Task.Delay(10000);
         }
 
-        private static void StartAjaxSpidering()
+        private static async Task StartAjaxSpidering()
         {
             Console.WriteLine("Ajax Spider: " + _target);
-            _apiResponse = _api.ajaxspider.scan(_apikey, _target, "");
+            _apiResponse = await _api.ajaxspider.scan(_apikey, _target, "");
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("Ajax Spider started for " + _target);
         }
 
-        private static void PollTheSpiderTillCompletion(string scanid)
+        private static async Task PollTheSpiderTillCompletion(int scanid)
         {
             int spiderProgress;
             while (true)
             {
-                Sleep(1000);
-                spiderProgress = int.Parse(((ApiResponseElement)_api.spider.status(scanid)).Value);
+                await Task.Delay(1000);
+                var status = await _api.spider.status(Convert.ToString(scanid));
+                spiderProgress = int.Parse(((ApiResponseElement)status).Value);
                 Console.WriteLine("Spider progress: {0}%", spiderProgress);
                 if (spiderProgress >= 100)
                     break;
             }
 
             Console.WriteLine("Spider complete");
-            Sleep(10000);
+            await Task.Delay(10000);
         }
 
-        private static string StartSpidering()
+        private static async Task<int> StartSpidering()
         {
             Console.WriteLine("Spider: " + _target);
-            _apiResponse = _api.spider.scan(_apikey, _target, "");
-            string scanid = ((ApiResponseElement)_apiResponse).Value;
+            _apiResponse = await _api.spider.scan(_apikey, _target, "");
+            int scanid = int.Parse(((ApiResponseElement)_apiResponse).Value);
             return scanid;
-        }
-
-        private static void Sleep(int milliseconds)
-        {
-            do
-            {
-                Thread.Sleep(milliseconds);
-                Console.WriteLine("...zz" + Environment.NewLine);
-                milliseconds = milliseconds - 2000;
-            } while (milliseconds > 2000);
         }
     }
 }

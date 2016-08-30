@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 
 /*
@@ -43,12 +44,12 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse alert(string id)
+		public async Task<IApiResponse> alert(string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("id", id);
-			return api.CallApi("core", "view", "alert", parameters);
+			return await api.CallApi("core", "view", "alert", parameters);
 		}
 
 		/// <summary>
@@ -56,14 +57,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse alerts(string baseurl, string start, string count)
+		public async Task<IApiResponse> alerts(string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("core", "view", "alerts", parameters);
+			return await api.CallApi("core", "view", "alerts", parameters);
 		}
 
 		/// <summary>
@@ -71,12 +72,12 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse numberOfAlerts(string baseurl)
+		public async Task<IApiResponse> numberOfAlerts(string baseurl)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("baseurl", baseurl);
-			return api.CallApi("core", "view", "numberOfAlerts", parameters);
+			return await api.CallApi("core", "view", "numberOfAlerts", parameters);
 		}
 
 		/// <summary>
@@ -84,10 +85,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse hosts()
+		public async Task<IApiResponse> hosts()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "hosts", parameters);
+			return await api.CallApi("core", "view", "hosts", parameters);
 		}
 
 		/// <summary>
@@ -95,10 +96,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse sites()
+		public async Task<IApiResponse> sites()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "sites", parameters);
+			return await api.CallApi("core", "view", "sites", parameters);
 		}
 
 		/// <summary>
@@ -106,10 +107,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse urls()
+		public async Task<IApiResponse> urls()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "urls", parameters);
+			return await api.CallApi("core", "view", "urls", parameters);
 		}
 
 		/// <summary>
@@ -117,12 +118,12 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse message(string id)
+		public async Task<IApiResponse> message(string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("id", id);
-			return api.CallApi("core", "view", "message", parameters);
+			return await api.CallApi("core", "view", "message", parameters);
 		}
 
 		/// <summary>
@@ -130,14 +131,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse messages(string baseurl, string start, string count)
+		public async Task<IApiResponse> messages(string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApi("core", "view", "messages", parameters);
+			return await api.CallApi("core", "view", "messages", parameters);
 		}
 
 		/// <summary>
@@ -145,12 +146,12 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse numberOfMessages(string baseurl)
+		public async Task<IApiResponse> numberOfMessages(string baseurl)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("baseurl", baseurl);
-			return api.CallApi("core", "view", "numberOfMessages", parameters);
+			return await api.CallApi("core", "view", "numberOfMessages", parameters);
 		}
 
 		/// <summary>
@@ -158,10 +159,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse version()
+		public async Task<IApiResponse> version()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "version", parameters);
+			return await api.CallApi("core", "view", "version", parameters);
 		}
 
 		/// <summary>
@@ -169,182 +170,182 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse excludedFromProxy()
+		public async Task<IApiResponse> excludedFromProxy()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "excludedFromProxy", parameters);
+			return await api.CallApi("core", "view", "excludedFromProxy", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse homeDirectory()
+		public async Task<IApiResponse> homeDirectory()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "homeDirectory", parameters);
+			return await api.CallApi("core", "view", "homeDirectory", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse stats(string keyprefix)
+		public async Task<IApiResponse> stats(string keyprefix)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("keyPrefix", keyprefix);
-			return api.CallApi("core", "view", "stats", parameters);
+			return await api.CallApi("core", "view", "stats", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionHttpState()
+		public async Task<IApiResponse> optionHttpState()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionHttpState", parameters);
+			return await api.CallApi("core", "view", "optionHttpState", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionUseProxyChain()
+		public async Task<IApiResponse> optionUseProxyChain()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionUseProxyChain", parameters);
+			return await api.CallApi("core", "view", "optionUseProxyChain", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionTimeoutInSecs()
+		public async Task<IApiResponse> optionTimeoutInSecs()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionTimeoutInSecs", parameters);
+			return await api.CallApi("core", "view", "optionTimeoutInSecs", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyChainRealm()
+		public async Task<IApiResponse> optionProxyChainRealm()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainRealm", parameters);
+			return await api.CallApi("core", "view", "optionProxyChainRealm", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyChainPort()
+		public async Task<IApiResponse> optionProxyChainPort()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainPort", parameters);
+			return await api.CallApi("core", "view", "optionProxyChainPort", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyChainName()
+		public async Task<IApiResponse> optionProxyChainName()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainName", parameters);
+			return await api.CallApi("core", "view", "optionProxyChainName", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyChainSkipName()
+		public async Task<IApiResponse> optionProxyChainSkipName()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainSkipName", parameters);
+			return await api.CallApi("core", "view", "optionProxyChainSkipName", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyChainPassword()
+		public async Task<IApiResponse> optionProxyChainPassword()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainPassword", parameters);
+			return await api.CallApi("core", "view", "optionProxyChainPassword", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyChainPrompt()
+		public async Task<IApiResponse> optionProxyChainPrompt()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainPrompt", parameters);
+			return await api.CallApi("core", "view", "optionProxyChainPrompt", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyExcludedDomainsEnabled()
+		public async Task<IApiResponse> optionProxyExcludedDomainsEnabled()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyExcludedDomainsEnabled", parameters);
+			return await api.CallApi("core", "view", "optionProxyExcludedDomainsEnabled", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyExcludedDomains()
+		public async Task<IApiResponse> optionProxyExcludedDomains()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyExcludedDomains", parameters);
+			return await api.CallApi("core", "view", "optionProxyExcludedDomains", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionUseProxyChainAuth()
+		public async Task<IApiResponse> optionUseProxyChainAuth()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionUseProxyChainAuth", parameters);
+			return await api.CallApi("core", "view", "optionUseProxyChainAuth", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionHttpStateEnabled()
+		public async Task<IApiResponse> optionHttpStateEnabled()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionHttpStateEnabled", parameters);
+			return await api.CallApi("core", "view", "optionHttpStateEnabled", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyChainUserName()
+		public async Task<IApiResponse> optionProxyChainUserName()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainUserName", parameters);
+			return await api.CallApi("core", "view", "optionProxyChainUserName", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionSingleCookieRequestHeader()
+		public async Task<IApiResponse> optionSingleCookieRequestHeader()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionSingleCookieRequestHeader", parameters);
+			return await api.CallApi("core", "view", "optionSingleCookieRequestHeader", parameters);
 		}
 
 		/// <summary>
@@ -352,14 +353,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse shutdown(string apikey)
+		public async Task<IApiResponse> shutdown(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApi("core", "action", "shutdown", parameters);
+			return await api.CallApi("core", "action", "shutdown", parameters);
 		}
 
 		/// <summary>
@@ -367,16 +368,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse newSession(string apikey, string name, string overwrite)
+		public async Task<IApiResponse> newSession(string apikey, string name, string overwrite)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("name", name);
 			parameters.Add("overwrite", overwrite);
-			return api.CallApi("core", "action", "newSession", parameters);
+			return await api.CallApi("core", "action", "newSession", parameters);
 		}
 
 		/// <summary>
@@ -384,15 +385,15 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse loadSession(string apikey, string name)
+		public async Task<IApiResponse> loadSession(string apikey, string name)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("name", name);
-			return api.CallApi("core", "action", "loadSession", parameters);
+			return await api.CallApi("core", "action", "loadSession", parameters);
 		}
 
 		/// <summary>
@@ -400,88 +401,88 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse saveSession(string apikey, string name, string overwrite)
+		public async Task<IApiResponse> saveSession(string apikey, string name, string overwrite)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("name", name);
 			parameters.Add("overwrite", overwrite);
-			return api.CallApi("core", "action", "saveSession", parameters);
+			return await api.CallApi("core", "action", "saveSession", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse snapshotSession(string apikey)
+		public async Task<IApiResponse> snapshotSession(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApi("core", "action", "snapshotSession", parameters);
+			return await api.CallApi("core", "action", "snapshotSession", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse clearExcludedFromProxy(string apikey)
+		public async Task<IApiResponse> clearExcludedFromProxy(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApi("core", "action", "clearExcludedFromProxy", parameters);
+			return await api.CallApi("core", "action", "clearExcludedFromProxy", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse excludeFromProxy(string apikey, string regex)
+		public async Task<IApiResponse> excludeFromProxy(string apikey, string regex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
-			return api.CallApi("core", "action", "excludeFromProxy", parameters);
+			return await api.CallApi("core", "action", "excludeFromProxy", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setHomeDirectory(string apikey, string dir)
+		public async Task<IApiResponse> setHomeDirectory(string apikey, string dir)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("dir", dir);
-			return api.CallApi("core", "action", "setHomeDirectory", parameters);
+			return await api.CallApi("core", "action", "setHomeDirectory", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse generateRootCA(string apikey)
+		public async Task<IApiResponse> generateRootCA(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApi("core", "action", "generateRootCA", parameters);
+			return await api.CallApi("core", "action", "generateRootCA", parameters);
 		}
 
 		/// <summary>
@@ -489,282 +490,282 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse sendRequest(string apikey, string request, string followredirects)
+		public async Task<IApiResponse> sendRequest(string apikey, string request, string followredirects)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("request", request);
 			parameters.Add("followRedirects", followredirects);
-			return api.CallApi("core", "action", "sendRequest", parameters);
+			return await api.CallApi("core", "action", "sendRequest", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse deleteAllAlerts(string apikey)
+		public async Task<IApiResponse> deleteAllAlerts(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApi("core", "action", "deleteAllAlerts", parameters);
+			return await api.CallApi("core", "action", "deleteAllAlerts", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse runGarbageCollection(string apikey)
+		public async Task<IApiResponse> runGarbageCollection(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApi("core", "action", "runGarbageCollection", parameters);
+			return await api.CallApi("core", "action", "runGarbageCollection", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse clearStats(string apikey, string keyprefix)
+		public async Task<IApiResponse> clearStats(string apikey, string keyprefix)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("keyPrefix", keyprefix);
-			return api.CallApi("core", "action", "clearStats", parameters);
+			return await api.CallApi("core", "action", "clearStats", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionProxyChainName(string apikey, string str)
+		public async Task<IApiResponse> setOptionProxyChainName(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("core", "action", "setOptionProxyChainName", parameters);
+			return await api.CallApi("core", "action", "setOptionProxyChainName", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionProxyChainRealm(string apikey, string str)
+		public async Task<IApiResponse> setOptionProxyChainRealm(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("core", "action", "setOptionProxyChainRealm", parameters);
+			return await api.CallApi("core", "action", "setOptionProxyChainRealm", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionProxyChainUserName(string apikey, string str)
+		public async Task<IApiResponse> setOptionProxyChainUserName(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("core", "action", "setOptionProxyChainUserName", parameters);
+			return await api.CallApi("core", "action", "setOptionProxyChainUserName", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionProxyChainPassword(string apikey, string str)
+		public async Task<IApiResponse> setOptionProxyChainPassword(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("core", "action", "setOptionProxyChainPassword", parameters);
+			return await api.CallApi("core", "action", "setOptionProxyChainPassword", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionProxyChainSkipName(string apikey, string str)
+		public async Task<IApiResponse> setOptionProxyChainSkipName(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
-			return api.CallApi("core", "action", "setOptionProxyChainSkipName", parameters);
+			return await api.CallApi("core", "action", "setOptionProxyChainSkipName", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionTimeoutInSecs(string apikey, int i)
+		public async Task<IApiResponse> setOptionTimeoutInSecs(string apikey, int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("core", "action", "setOptionTimeoutInSecs", parameters);
+			return await api.CallApi("core", "action", "setOptionTimeoutInSecs", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionUseProxyChain(string apikey, bool boolean)
+		public async Task<IApiResponse> setOptionUseProxyChain(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("core", "action", "setOptionUseProxyChain", parameters);
+			return await api.CallApi("core", "action", "setOptionUseProxyChain", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionProxyChainPrompt(string apikey, bool boolean)
+		public async Task<IApiResponse> setOptionProxyChainPrompt(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("core", "action", "setOptionProxyChainPrompt", parameters);
+			return await api.CallApi("core", "action", "setOptionProxyChainPrompt", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionHttpStateEnabled(string apikey, bool boolean)
+		public async Task<IApiResponse> setOptionHttpStateEnabled(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("core", "action", "setOptionHttpStateEnabled", parameters);
+			return await api.CallApi("core", "action", "setOptionHttpStateEnabled", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionUseProxyChainAuth(string apikey, bool boolean)
+		public async Task<IApiResponse> setOptionUseProxyChainAuth(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("core", "action", "setOptionUseProxyChainAuth", parameters);
+			return await api.CallApi("core", "action", "setOptionUseProxyChainAuth", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionSingleCookieRequestHeader(string apikey, bool boolean)
+		public async Task<IApiResponse> setOptionSingleCookieRequestHeader(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("core", "action", "setOptionSingleCookieRequestHeader", parameters);
+			return await api.CallApi("core", "action", "setOptionSingleCookieRequestHeader", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionProxyChainPort(string apikey, int i)
+		public async Task<IApiResponse> setOptionProxyChainPort(string apikey, int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("core", "action", "setOptionProxyChainPort", parameters);
+			return await api.CallApi("core", "action", "setOptionProxyChainPort", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] proxypac(string apikey)
+		public async Task<byte[]> proxypac(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApiOther("core", "other", "proxy.pac", parameters);
+			return await api.CallApiOther("core", "other", "proxy.pac", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] rootcert(string apikey)
+		public async Task<byte[]> rootcert(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApiOther("core", "other", "rootcert", parameters);
+			return await api.CallApiOther("core", "other", "rootcert", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] setproxy(string apikey, string proxy)
+		public async Task<byte[]> setproxy(string apikey, string proxy)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("proxy", proxy);
-			return api.CallApiOther("core", "other", "setproxy", parameters);
+			return await api.CallApiOther("core", "other", "setproxy", parameters);
 		}
 
 		/// <summary>
@@ -772,14 +773,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] xmlreport(string apikey)
+		public async Task<byte[]> xmlreport(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApiOther("core", "other", "xmlreport", parameters);
+			return await api.CallApiOther("core", "other", "xmlreport", parameters);
 		}
 
 		/// <summary>
@@ -787,14 +788,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] htmlreport(string apikey)
+		public async Task<byte[]> htmlreport(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			return api.CallApiOther("core", "other", "htmlreport", parameters);
+			return await api.CallApiOther("core", "other", "htmlreport", parameters);
 		}
 
 		/// <summary>
@@ -802,15 +803,15 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] messageHar(string apikey, string id)
+		public async Task<byte[]> messageHar(string apikey, string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("id", id);
-			return api.CallApiOther("core", "other", "messageHar", parameters);
+			return await api.CallApiOther("core", "other", "messageHar", parameters);
 		}
 
 		/// <summary>
@@ -818,17 +819,17 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] messagesHar(string apikey, string baseurl, string start, string count)
+		public async Task<byte[]> messagesHar(string apikey, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
-			return api.CallApiOther("core", "other", "messagesHar", parameters);
+			return await api.CallApiOther("core", "other", "messagesHar", parameters);
 		}
 
 		/// <summary>
@@ -836,16 +837,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] sendHarRequest(string apikey, string request, string followredirects)
+		public async Task<byte[]> sendHarRequest(string apikey, string request, string followredirects)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("request", request);
 			parameters.Add("followRedirects", followredirects);
-			return api.CallApiOther("core", "other", "sendHarRequest", parameters);
+			return await api.CallApiOther("core", "other", "sendHarRequest", parameters);
 		}
 
 	}
