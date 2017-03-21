@@ -21,6 +21,7 @@
 using OWASPZAPDotNetAPI.Generated;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -31,7 +32,7 @@ namespace OWASPZAPDotNetAPI
 {
     public sealed class ClientApi : IDisposable
     {
-        private IWebClient webClient;
+        public IWebClient WebClient { get; private set; }
         private string zapAddress;
         private int zapPort;
         private string format = "xml";
@@ -62,13 +63,13 @@ namespace OWASPZAPDotNetAPI
         {
             this.zapAddress = zapAddress;
             this.zapPort = zapPort;
-            webClient = new SystemWebClient(zapAddress, zapPort);
+            WebClient = new SystemWebClient(zapAddress, zapPort);
             InitializeApiObjects();
         }
 
         public ClientApi(IWebClient webClient)
         {
-            this.webClient = webClient;
+            this.WebClient = webClient;
             InitializeApiObjects();
         }
 
@@ -98,7 +99,14 @@ namespace OWASPZAPDotNetAPI
 
         public void AccessUrl(string url)
         {
-            var output = webClient.DownloadString(url);
+           var output = WebClient.DownloadString(url);
+        }
+
+        public void PostToUrl(string url, string myParameters)
+        {
+            ((WebClient)WebClient).Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+            ((WebClient)WebClient).Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36");
+            string HtmlResult = ((WebClient)WebClient).UploadString(url, myParameters);
         }
 
         public List<Alert> GetAlerts(string baseUrl, int start, int count)
@@ -149,7 +157,7 @@ namespace OWASPZAPDotNetAPI
         private XmlDocument CallApiRaw(string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
             Uri requestUrl = BuildZapRequestUrl(this.zapAddress, this.zapPort, this.format, component, operationType, operationName, parameters);
-            string responseString = webClient.DownloadString(requestUrl);
+            string responseString = WebClient.DownloadString(requestUrl);
             XmlDocument responseXmlDocument = new XmlDocument();
             responseXmlDocument.LoadXml(responseString);
             return responseXmlDocument;
@@ -158,7 +166,7 @@ namespace OWASPZAPDotNetAPI
         public byte[] CallApiOther(string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
             Uri requestUrl = BuildZapRequestUrl(this.zapAddress, this.zapPort, this.otherFormat, component, operationType, operationName, parameters);
-            byte[] response = webClient.DownloadData(requestUrl);
+            byte[] response = WebClient.DownloadData(requestUrl);
             return response;
         }
 
@@ -195,7 +203,7 @@ namespace OWASPZAPDotNetAPI
 
         public void Dispose()
         {
-            ((IDisposable)webClient).Dispose();
+            ((IDisposable)WebClient).Dispose();
         }
     }
 }
