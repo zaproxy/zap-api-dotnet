@@ -39,7 +39,17 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Gets all of the sites that have sessions.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse sites()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("httpSessions", "view", "sites", parameters);
+		}
+
+		/// <summary>
+		///Gets the sessions for the given site. Optionally returning just the session with the given name.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse sessions(string site, string session)
@@ -52,7 +62,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Gets the name of the active session for the given site.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse activeSession(string site)
@@ -64,7 +74,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Gets the names of the session tokens for the given site.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse sessionTokens(string site)
@@ -76,14 +86,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Creates an empty session for the given site. Optionally with the given name.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse createEmptySession(string apikey, string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
@@ -92,14 +102,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Removes the session from the given site.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse removeSession(string apikey, string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
@@ -108,14 +118,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Sets the given session as active for the given site.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setActiveSession(string apikey, string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
@@ -124,14 +134,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Unsets the active session of the given site.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse unsetActiveSession(string apikey, string site)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
@@ -139,14 +149,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Adds the session token to the given site.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse addSessionToken(string apikey, string site, string sessiontoken)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
@@ -155,14 +165,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Removes the session token from the given site.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse removeSessionToken(string apikey, string site, string sessiontoken)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
@@ -171,14 +181,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Sets the value of the session token of the given session for the given site.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setSessionTokenValue(string apikey, string site, string session, string sessiontoken, string tokenvalue)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);
@@ -189,14 +199,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Renames the session of the given site.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse renameSession(string apikey, string site, string oldsessionname, string newsessionname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("site", site);

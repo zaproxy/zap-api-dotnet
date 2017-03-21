@@ -1,24 +1,4 @@
-﻿/* Zed Attack Proxy (ZAP) and its related class files.
- *
- * ZAP is an HTTP/HTTPS proxy for assessing web application security.
- *
- * Copyright the ZAP development team
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-using OWASPZAPDotNetAPI;
+﻿using OWASPZAPDotNetAPI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,13 +11,15 @@ namespace OWASPZAPDotNetAPI.Samples
 {
     class SimplePointAndClickScan
     {
-        private static string _target = "http://www.renthoughtsweb.com:8020/SqliModernApp/";
-        private static string _apikey = string.Empty;
+        private static string _target = "http://localhost:8020/SqliModernApp/";
+        private static string _apikey = "vufbko8sihdfl5502df3863erg";
         private static ClientApi _api = new ClientApi("localhost", 7070);
         private static IApiResponse _apiResponse;
 
         public static void Go()
         {
+            //LoadTargetUrlToSitesTree();
+
             string spiderScanId = StartSpidering();
             PollTheSpiderTillCompletion(spiderScanId);
 
@@ -57,7 +39,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void ShutdownZAP()
         {
-            _apiResponse = _api.core.shutdown("");
+            _apiResponse = _api.core.shutdown(_apikey);
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("ZAP shutdown success " + _target);
         }
@@ -110,7 +92,7 @@ namespace OWASPZAPDotNetAPI.Samples
         private static string StartActiveScanning()
         {
             Console.WriteLine("Active Scanner: " + _target);
-            _apiResponse = _api.ascan.scan(_apikey, _target, "", "", "", "", "");
+            _apiResponse = _api.ascan.scan(_apikey, _target, "", "", "", "", "", "");
 
             string activeScanId = ((ApiResponseElement)_apiResponse).Value;
             return activeScanId;
@@ -136,7 +118,7 @@ namespace OWASPZAPDotNetAPI.Samples
         private static void StartAjaxSpidering()
         {
             Console.WriteLine("Ajax Spider: " + _target);
-            _apiResponse = _api.ajaxspider.scan(_apikey, _target, "");
+            _apiResponse = _api.ajaxspider.scan(_apikey, _target, "", "", "");
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("Ajax Spider started for " + _target);
@@ -161,9 +143,14 @@ namespace OWASPZAPDotNetAPI.Samples
         private static string StartSpidering()
         {
             Console.WriteLine("Spider: " + _target);
-            _apiResponse = _api.spider.scan(_apikey, _target, "");
+            _apiResponse = _api.spider.scan(_apikey, _target, "", "", "", "");
             string scanid = ((ApiResponseElement)_apiResponse).Value;
             return scanid;
+        }
+
+        private static void LoadTargetUrlToSitesTree()
+        {
+            _api.AccessUrl(_target);
         }
 
         private static void Sleep(int milliseconds)

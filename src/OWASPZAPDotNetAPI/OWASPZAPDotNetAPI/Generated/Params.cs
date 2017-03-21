@@ -40,7 +40,6 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Shows the parameters for the specified site, or for all sites if the site is not specified
-		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse parameters(string site)

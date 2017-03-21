@@ -39,31 +39,129 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Returns True if ZAP will break on both requests and responses
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse brk(string apikey, string type, string scope, string state)
+		public IApiResponse isBreakAll()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("break", "view", "isBreakAll", parameters);
+		}
+
+		/// <summary>
+		///Returns True if ZAP will break on requests
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse isBreakRequest()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("break", "view", "isBreakRequest", parameters);
+		}
+
+		/// <summary>
+		///Returns True if ZAP will break on responses
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse isBreakResponse()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("break", "view", "isBreakResponse", parameters);
+		}
+
+		/// <summary>
+		///Returns the HTTP message currently intercepted (if any)
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse httpMessage()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("break", "view", "httpMessage", parameters);
+		}
+
+		/// <summary>
+		///Controls the global break functionality. The type may be one of: http-all, http-request or http-response. The state may be true (for turning break on for the specified type) or false (for turning break off). Scope is not currently used.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse brk(string apikey, string type, string state, string scope)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("type", type);
-			parameters.Add("scope", scope);
 			parameters.Add("state", state);
+			parameters.Add("scope", scope);
 			return api.CallApi("break", "action", "break", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Overwrites the currently intercepted message with the data provided
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setHttpMessage(string apikey, string httpheader, string httpbody)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("httpHeader", httpheader);
+			parameters.Add("httpBody", httpbody);
+			return api.CallApi("break", "action", "setHttpMessage", parameters);
+		}
+
+		/// <summary>
+		///Submits the currently intercepted message and unsets the global request/response break points
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse cont(string apikey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			return api.CallApi("break", "action", "continue", parameters);
+		}
+
+		/// <summary>
+		///Submits the currently intercepted message, the next request or response will automatically be intercepted
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse step(string apikey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			return api.CallApi("break", "action", "step", parameters);
+		}
+
+		/// <summary>
+		///Drops the currently intercepted message
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse drop(string apikey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			return api.CallApi("break", "action", "drop", parameters);
+		}
+
+		/// <summary>
+		///Adds a custom HTTP breakpont. The string is the string to match. Location may be one of: url, request_header, request_body, response_header or response_body. Match may be: contains or regex. Inverse (match) may be true or false. Lastly, ignorecase (when matching the string) may be true or false.  
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse addHttpBreakpoint(string apikey, string str, string location, string match, string inverse, string ignorecase)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("string", str);
@@ -75,14 +173,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Removes the specified break point
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse removeHttpBreakpoint(string apikey, string str, string location, string match, string inverse, string ignorecase)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("string", str);

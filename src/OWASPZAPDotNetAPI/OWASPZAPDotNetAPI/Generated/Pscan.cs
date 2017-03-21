@@ -39,8 +39,17 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Tells whether or not the passive scan should be performed only on messages that are in scope.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse scanOnlyInScope()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("pscan", "view", "scanOnlyInScope", parameters);
+		}
+
+		/// <summary>
 		///The number of records the passive scanner still has to scan
-		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse recordsToScan()
@@ -51,7 +60,6 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Lists all passive scanners with its ID, name, enabled state and alert threshold.
-		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse scanners()
@@ -61,15 +69,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Sets whether or not the passive scanning is enabled
-		///This component is optional and therefore the API will only work if it is installed
+		///Sets whether or not the passive scanning is enabled (Note: the enabled state is not persisted).
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setEnabled(string apikey, string enabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("enabled", enabled);
@@ -77,15 +84,29 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Sets whether or not the passive scan should be performed only on messages that are in scope.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setScanOnlyInScope(string apikey, string onlyinscope)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("onlyInScope", onlyinscope);
+			return api.CallApi("pscan", "action", "setScanOnlyInScope", parameters);
+		}
+
+		/// <summary>
 		///Enables all passive scanners
-		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse enableAllScanners(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("pscan", "action", "enableAllScanners", parameters);
@@ -93,14 +114,13 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Disables all passive scanners
-		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse disableAllScanners(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("pscan", "action", "disableAllScanners", parameters);
@@ -108,14 +128,13 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Enables all passive scanners with the given IDs (comma separated list of IDs)
-		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse enableScanners(string apikey, string ids)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("ids", ids);
@@ -124,14 +143,13 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Disables all passive scanners with the given IDs (comma separated list of IDs)
-		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse disableScanners(string apikey, string ids)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("ids", ids);
@@ -140,14 +158,13 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sets the alert threshold of the passive scanner with the given ID, accepted values for alert threshold: OFF, DEFAULT, LOW, MEDIUM and HIGH
-		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setScannerAlertThreshold(string apikey, string id, string alertthreshold)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("id", id);

@@ -38,10 +38,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse urlsByUrlRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
@@ -53,10 +49,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("search", "view", "urlsByUrlRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse urlsByRequestRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
@@ -68,10 +60,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("search", "view", "urlsByRequestRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse urlsByResponseRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
@@ -83,10 +71,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("search", "view", "urlsByResponseRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse urlsByHeaderRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
@@ -98,10 +82,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("search", "view", "urlsByHeaderRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse messagesByUrlRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
@@ -113,10 +93,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("search", "view", "messagesByUrlRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse messagesByRequestRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
@@ -128,10 +104,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("search", "view", "messagesByRequestRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse messagesByResponseRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
@@ -143,10 +115,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("search", "view", "messagesByResponseRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse messagesByHeaderRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
@@ -158,15 +126,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("search", "view", "messagesByHeaderRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public byte[] harByUrlRegex(string apikey, string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
@@ -176,15 +140,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApiOther("search", "other", "harByUrlRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public byte[] harByRequestRegex(string apikey, string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
@@ -194,15 +154,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApiOther("search", "other", "harByRequestRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public byte[] harByResponseRegex(string apikey, string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
@@ -212,15 +168,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApiOther("search", "other", "harByResponseRegex", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public byte[] harByHeaderRegex(string apikey, string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);

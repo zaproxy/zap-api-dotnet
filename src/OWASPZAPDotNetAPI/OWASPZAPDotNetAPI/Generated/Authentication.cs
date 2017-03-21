@@ -38,20 +38,12 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse getSupportedAuthenticationMethods()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("authentication", "view", "getSupportedAuthenticationMethods", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse getAuthenticationMethodConfigParams(string authmethodname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -60,10 +52,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "view", "getAuthenticationMethodConfigParams", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse getAuthenticationMethod(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -72,10 +60,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "view", "getAuthenticationMethod", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse getLoggedInIndicator(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -84,10 +68,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "view", "getLoggedInIndicator", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse getLoggedOutIndicator(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -96,15 +76,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "view", "getLoggedOutIndicator", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setAuthenticationMethod(string apikey, string contextid, string authmethodname, string authmethodconfigparams)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
@@ -113,15 +89,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "action", "setAuthenticationMethod", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setLoggedInIndicator(string apikey, string contextid, string loggedinindicatorregex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
@@ -129,15 +101,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "action", "setLoggedInIndicator", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setLoggedOutIndicator(string apikey, string contextid, string loggedoutindicatorregex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);

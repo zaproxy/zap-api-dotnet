@@ -1,24 +1,4 @@
-﻿/* Zed Attack Proxy (ZAP) and its related class files.
- *
- * ZAP is an HTTP/HTTPS proxy for assessing web application security.
- *
- * Copyright the ZAP development team
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -46,8 +26,8 @@ namespace OWASPZAPDotNetAPI.Samples
             Console.WriteLine("Issuing command to StartZapUI");
             Process zap = Process.Start(zapProcessStartInfo);
 
-            //Sleep(120000); //you can choose to wait for 2 minutes and bet that ZAP has started
-            CheckIfZAPHasStartedByPollingTheAPI(1); //you can try accessing an API and ensure ZAP has fully initialized
+            //Sleep(120000);
+            CheckIfZAPHasStartedByPollingTheAPI(1);
         }
 
         public static void StartZAPDaemon()
@@ -62,8 +42,8 @@ namespace OWASPZAPDotNetAPI.Samples
             Console.WriteLine(zapProcessStartInfo.ToString());
             Process zap = Process.Start(zapProcessStartInfo);
 
-            //Sleep(120000); //you can choose to wait for 2 minutes and bet that ZAP has started
-            CheckIfZAPHasStartedByPollingTheAPI(1); //you can try accessing an API and ensure ZAP has fully initialized
+            //Sleep(120000);
+            CheckIfZAPHasStartedByPollingTheAPI(1);
         }
 
         private static void Sleep(int sleepTime)
@@ -101,5 +81,6 @@ namespace OWASPZAPDotNetAPI.Samples
 
             throw new Exception(string.Format("Waited for {0} minutes, however could not access the API successfully, hence could not verify if ZAP started successfully or not", minutesToWait));
         }
+
     }
 }

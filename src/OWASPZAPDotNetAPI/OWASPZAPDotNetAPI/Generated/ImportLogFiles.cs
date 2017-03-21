@@ -29,112 +29,89 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Script 
+	public class ImportLogFiles 
 	{
 		private ClientApi api = null;
 
-		public Script(ClientApi api) 
+		public ImportLogFiles(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Lists the script engines available
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse listEngines()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("script", "view", "listEngines", parameters);
-		}
-
-		/// <summary>
-		///Lists the scripts available, with its engine, name, description, type and error state.
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse listScripts()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("script", "view", "listScripts", parameters);
-		}
-
-		/// <summary>
-		///Enables the script with the given name
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse enable(string apikey, string scriptname)
+		public IApiResponse ImportZAPLogFromFile(string apikey, string filepath)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("scriptName", scriptname);
-			return api.CallApi("script", "action", "enable", parameters);
+			parameters.Add("FilePath", filepath);
+			return api.CallApi("importLogFiles", "action", "ImportZAPLogFromFile", parameters);
 		}
 
 		/// <summary>
-		///Disables the script with the given name
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse disable(string apikey, string scriptname)
+		public IApiResponse ImportModSecurityLogFromFile(string apikey, string filepath)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("scriptName", scriptname);
-			return api.CallApi("script", "action", "disable", parameters);
+			parameters.Add("FilePath", filepath);
+			return api.CallApi("importLogFiles", "action", "ImportModSecurityLogFromFile", parameters);
 		}
 
 		/// <summary>
-		///Loads a script into ZAP from the given local file, with the given name, type and engine, optionally with a description
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse load(string apikey, string scriptname, string scripttype, string scriptengine, string filename, string scriptdescription)
+		public IApiResponse ImportZAPHttpRequestResponsePair(string apikey, string httprequest, string httpresponse)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("scriptName", scriptname);
-			parameters.Add("scriptType", scripttype);
-			parameters.Add("scriptEngine", scriptengine);
-			parameters.Add("fileName", filename);
-			parameters.Add("scriptDescription", scriptdescription);
-			return api.CallApi("script", "action", "load", parameters);
+			parameters.Add("HTTPRequest", httprequest);
+			parameters.Add("HTTPResponse", httpresponse);
+			return api.CallApi("importLogFiles", "action", "ImportZAPHttpRequestResponsePair", parameters);
 		}
 
 		/// <summary>
-		///Removes the script with the given name
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse remove(string apikey, string scriptname)
+		public IApiResponse PostModSecurityAuditEvent(string apikey, string auditeventstring)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("scriptName", scriptname);
-			return api.CallApi("script", "action", "remove", parameters);
+			parameters.Add("AuditEventString", auditeventstring);
+			return api.CallApi("importLogFiles", "action", "PostModSecurityAuditEvent", parameters);
 		}
 
 		/// <summary>
-		///Runs the stand alone script with the give name
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse runStandAloneScript(string apikey, string scriptname)
+		public byte[] OtherPostModSecurityAuditEvent(string apikey, string auditeventstring)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("scriptName", scriptname);
-			return api.CallApi("script", "action", "runStandAloneScript", parameters);
+			parameters.Add("AuditEventString", auditeventstring);
+			return api.CallApiOther("importLogFiles", "other", "OtherPostModSecurityAuditEvent", parameters);
 		}
 
 	}

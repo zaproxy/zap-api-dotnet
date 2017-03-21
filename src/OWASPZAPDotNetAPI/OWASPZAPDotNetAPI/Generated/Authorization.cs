@@ -29,38 +29,32 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class SessionManagement 
+	public class Authorization 
 	{
 		private ClientApi api = null;
 
-		public SessionManagement(ClientApi api) 
+		public Authorization(ClientApi api) 
 		{
 			this.api = api;
 		}
 
-		public IApiResponse getSupportedSessionManagementMethods()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("sessionManagement", "view", "getSupportedSessionManagementMethods", parameters);
-		}
-
-		public IApiResponse getSessionManagementMethodConfigParams(string methodname)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("methodName", methodname);
-			return api.CallApi("sessionManagement", "view", "getSessionManagementMethodConfigParams", parameters);
-		}
-
-		public IApiResponse getSessionManagementMethod(string contextid)
+		/// <summary>
+		///Obtains all the configuration of the authorization detection method that is currently set for a context.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse getAuthorizationDetectionMethod(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("contextId", contextid);
-			return api.CallApi("sessionManagement", "view", "getSessionManagementMethod", parameters);
+			return api.CallApi("authorization", "view", "getAuthorizationDetectionMethod", parameters);
 		}
 
-		public IApiResponse setSessionManagementMethod(string apikey, string contextid, string methodname, string methodconfigparams)
+		/// <summary>
+		///Sets the authorization detection method for a context as one that identifies un-authorized messages based on: the message's status code or a regex pattern in the response's header or body. Also, whether all conditions must match or just some can be specified via the logicalOperator parameter, which accepts two values: "AND" (default), "OR".  
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setBasicAuthorizationDetectionMethod(string apikey, string contextid, string headerregex, string bodyregex, string statuscode, string logicaloperator)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -68,9 +62,11 @@ namespace OWASPZAPDotNetAPI.Generated
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
-			parameters.Add("methodName", methodname);
-			parameters.Add("methodConfigParams", methodconfigparams);
-			return api.CallApi("sessionManagement", "action", "setSessionManagementMethod", parameters);
+			parameters.Add("headerRegex", headerregex);
+			parameters.Add("bodyRegex", bodyregex);
+			parameters.Add("statusCode", statuscode);
+			parameters.Add("logicalOperator", logicaloperator);
+			return api.CallApi("authorization", "action", "setBasicAuthorizationDetectionMethod", parameters);
 		}
 
 	}

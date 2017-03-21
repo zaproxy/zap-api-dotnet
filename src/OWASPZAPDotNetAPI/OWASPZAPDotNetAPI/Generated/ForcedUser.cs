@@ -39,7 +39,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Returns 'true' if 'forced user' mode is enabled, 'false' otherwise
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse isForcedUserModeEnabled()
@@ -49,7 +49,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Gets the user (ID) set as 'forced user' for the given context (ID)
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse getForcedUser(string contextid)
@@ -61,14 +61,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Sets the user (ID) that should be used in 'forced user' mode for the given context (ID)
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setForcedUser(string apikey, string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
@@ -77,14 +77,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Sets if 'forced user' mode should be enabled or not
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setForcedUserModeEnabled(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("boolean", Convert.ToString(boolean));
