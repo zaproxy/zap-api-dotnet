@@ -38,10 +38,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse usersList(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -50,10 +46,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "view", "usersList", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse getUserById(string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -63,10 +55,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "view", "getUserById", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse getAuthenticationCredentialsConfigParams(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -75,10 +63,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "view", "getAuthenticationCredentialsConfigParams", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse getAuthenticationCredentials(string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -88,15 +72,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "view", "getAuthenticationCredentials", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse newUser(string apikey, string contextid, string name)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
@@ -104,15 +84,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "action", "newUser", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse removeUser(string apikey, string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
@@ -120,15 +96,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "action", "removeUser", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setUserEnabled(string apikey, string contextid, string userid, string enabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
@@ -137,15 +109,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "action", "setUserEnabled", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setUserName(string apikey, string contextid, string userid, string name)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);
@@ -154,15 +122,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "action", "setUserName", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setAuthenticationCredentials(string apikey, string contextid, string userid, string authcredentialsconfigparams)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("contextId", contextid);

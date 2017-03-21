@@ -38,10 +38,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse status(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -50,10 +46,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "status", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse scanProgress(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -62,10 +54,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "scanProgress", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse messagesIds(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -74,10 +62,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "messagesIds", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse alertsIds(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -86,20 +70,12 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "alertsIds", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse scans()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "scans", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse scanPolicyNames()
 		{
 			Dictionary<string, string> parameters = null;
@@ -107,7 +83,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Gets the regexes of URLs excluded from the active scans.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse excludedFromScan()
@@ -116,10 +92,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "excludedFromScan", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse scanners(string scanpolicyname, string policyid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -129,10 +101,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "scanners", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse policies(string scanpolicyname, string policyid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -142,10 +110,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "policies", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse attackModeQueue()
 		{
 			Dictionary<string, string> parameters = null;
@@ -153,117 +117,17 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Gets all the parameters that are excluded. For each parameter the following are shown: the name, the URL, and the parameter type.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionShowAdvancedDialog()
+		public IApiResponse excludedParams()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionShowAdvancedDialog", parameters);
+			return api.CallApi("ascan", "view", "excludedParams", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionPromptToClearFinishedScans()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionPromptToClearFinishedScans", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionTargetParamsEnabledRPC()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionTargetParamsEnabledRPC", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionTargetParamsInjectable()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionTargetParamsInjectable", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionAllowAttackOnStart()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionAllowAttackOnStart", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionMaxScansInUI()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionMaxScansInUI", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionPromptInAttackMode()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionPromptInAttackMode", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionHandleAntiCSRFTokens()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionHandleAntiCSRFTokens", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionRescanInAttackMode()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionRescanInAttackMode", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionMaxResultsToList()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionMaxResultsToList", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionInjectPluginIdInHeader()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionInjectPluginIdInHeader", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Use view excludedParams instead.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionExcludedParamList()
@@ -273,64 +137,152 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Gets all the types of excluded parameters. For each type the following are shown: the ID and the name.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionHostPerScan()
+		public IApiResponse excludedParamTypes()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionHostPerScan", parameters);
+			return api.CallApi("ascan", "view", "excludedParamTypes", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionDelayInMs()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionDelayInMs", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionDefaultPolicy()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionDefaultPolicy", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionThreadPerHost()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ascan", "view", "optionThreadPerHost", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse optionAttackPolicy()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionAttackPolicy", parameters);
 		}
 
+		public IApiResponse optionDefaultPolicy()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionDefaultPolicy", parameters);
+		}
+
+		public IApiResponse optionDelayInMs()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionDelayInMs", parameters);
+		}
+
+		public IApiResponse optionHandleAntiCSRFTokens()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionHandleAntiCSRFTokens", parameters);
+		}
+
+		public IApiResponse optionHostPerScan()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionHostPerScan", parameters);
+		}
+
+		public IApiResponse optionMaxChartTimeInMins()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionMaxChartTimeInMins", parameters);
+		}
+
+		public IApiResponse optionMaxResultsToList()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionMaxResultsToList", parameters);
+		}
+
+		public IApiResponse optionMaxRuleDurationInMins()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionMaxRuleDurationInMins", parameters);
+		}
+
+		public IApiResponse optionMaxScanDurationInMins()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionMaxScanDurationInMins", parameters);
+		}
+
+		public IApiResponse optionMaxScansInUI()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionMaxScansInUI", parameters);
+		}
+
+		public IApiResponse optionTargetParamsEnabledRPC()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionTargetParamsEnabledRPC", parameters);
+		}
+
+		public IApiResponse optionTargetParamsInjectable()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionTargetParamsInjectable", parameters);
+		}
+
+		public IApiResponse optionThreadPerHost()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionThreadPerHost", parameters);
+		}
+
+		public IApiResponse optionAllowAttackOnStart()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionAllowAttackOnStart", parameters);
+		}
+
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Tells whether or not the active scanner should inject the HTTP request header X-ZAP-Scan-ID, with the ID of the scanner that's sending the requests.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse scan(string apikey, string url, string recurse, string inscopeonly, string scanpolicyname, string method, string postdata)
+		public IApiResponse optionInjectPluginIdInHeader()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionInjectPluginIdInHeader", parameters);
+		}
+
+		public IApiResponse optionPromptInAttackMode()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionPromptInAttackMode", parameters);
+		}
+
+		public IApiResponse optionPromptToClearFinishedScans()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionPromptToClearFinishedScans", parameters);
+		}
+
+		public IApiResponse optionRescanInAttackMode()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionRescanInAttackMode", parameters);
+		}
+
+		/// <summary>
+		///Tells whether or not the HTTP Headers of all requests should be scanned. Not just requests that send parameters, through the query or request body.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionScanHeadersAllRequests()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionScanHeadersAllRequests", parameters);
+		}
+
+		public IApiResponse optionShowAdvancedDialog()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionShowAdvancedDialog", parameters);
+		}
+
+		/// <summary>
+		///Runs the active scanner against the given URL and/or Context. Optionally, the 'recurse' parameter can be used to scan URLs under the given URL, the parameter 'inScopeOnly' can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified), the parameter 'scanPolicyName' allows to specify the scan policy (if none is given it uses the default scan policy), the parameters 'method' and 'postData' allow to select a given request in conjunction with the given URL.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse scan(string apikey, string url, string recurse, string inscopeonly, string scanpolicyname, string method, string postdata, string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("url", url);
@@ -339,19 +291,19 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("scanPolicyName", scanpolicyname);
 			parameters.Add("method", method);
 			parameters.Add("postData", postdata);
+			parameters.Add("contextId", contextid);
 			return api.CallApi("ascan", "action", "scan", parameters);
 		}
 
 		/// <summary>
-		///Active Scans from the perspective of an User, obtained using the given Context ID and User ID. See 'scan' action for more details.
-		///This component is optional and therefore the API will only work if it is installed
+		///Active Scans from the perspective of a User, obtained using the given Context ID and User ID. See 'scan' action for more details.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse scanAsUser(string apikey, string url, string contextid, string userid, string recurse, string scanpolicyname, string method, string postdata)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("url", url);
@@ -364,235 +316,182 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "scanAsUser", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse pause(string apikey, string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("ascan", "action", "pause", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse resume(string apikey, string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("ascan", "action", "resume", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse stop(string apikey, string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("ascan", "action", "stop", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse removeScan(string apikey, string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("ascan", "action", "removeScan", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse pauseAllScans(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("ascan", "action", "pauseAllScans", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse resumeAllScans(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("ascan", "action", "resumeAllScans", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse stopAllScans(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("ascan", "action", "stopAllScans", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse removeAllScans(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("ascan", "action", "removeAllScans", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Clears the regexes of URLs excluded from the active scans.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse clearExcludedFromScan(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("ascan", "action", "clearExcludedFromScan", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Adds a regex of URLs that should be excluded from the active scans.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse excludeFromScan(string apikey, string regex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
 			return api.CallApi("ascan", "action", "excludeFromScan", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse enableAllScanners(string apikey, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanPolicyName", scanpolicyname);
 			return api.CallApi("ascan", "action", "enableAllScanners", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse disableAllScanners(string apikey, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanPolicyName", scanpolicyname);
 			return api.CallApi("ascan", "action", "disableAllScanners", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse enableScanners(string apikey, string ids)
+		public IApiResponse enableScanners(string apikey, string ids, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("ids", ids);
+			parameters.Add("scanPolicyName", scanpolicyname);
 			return api.CallApi("ascan", "action", "enableScanners", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse disableScanners(string apikey, string ids)
+		public IApiResponse disableScanners(string apikey, string ids, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("ids", ids);
+			parameters.Add("scanPolicyName", scanpolicyname);
 			return api.CallApi("ascan", "action", "disableScanners", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setEnabledPolicies(string apikey, string ids)
+		public IApiResponse setEnabledPolicies(string apikey, string ids, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("ids", ids);
+			parameters.Add("scanPolicyName", scanpolicyname);
 			return api.CallApi("ascan", "action", "setEnabledPolicies", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setPolicyAttackStrength(string apikey, string id, string attackstrength, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("id", id);
@@ -601,15 +500,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setPolicyAttackStrength", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setPolicyAlertThreshold(string apikey, string id, string alertthreshold, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("id", id);
@@ -618,15 +513,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setPolicyAlertThreshold", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setScannerAttackStrength(string apikey, string id, string attackstrength, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("id", id);
@@ -635,15 +526,11 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setScannerAttackStrength", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setScannerAlertThreshold(string apikey, string id, string alertthreshold, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("id", id);
@@ -652,195 +539,256 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setScannerAlertThreshold", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse addScanPolicy(string apikey, string scanpolicyname)
+		public IApiResponse addScanPolicy(string apikey, string scanpolicyname, string alertthreshold, string attackstrength)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanPolicyName", scanpolicyname);
+			parameters.Add("alertThreshold", alertthreshold);
+			parameters.Add("attackStrength", attackstrength);
 			return api.CallApi("ascan", "action", "addScanPolicy", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse removeScanPolicy(string apikey, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanPolicyName", scanpolicyname);
 			return api.CallApi("ascan", "action", "removeScanPolicy", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionDefaultPolicy(string apikey, string str)
+		public IApiResponse updateScanPolicy(string apikey, string scanpolicyname, string alertthreshold, string attackstrength)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("String", str);
-			return api.CallApi("ascan", "action", "setOptionDefaultPolicy", parameters);
+			parameters.Add("scanPolicyName", scanpolicyname);
+			parameters.Add("alertThreshold", alertthreshold);
+			parameters.Add("attackStrength", attackstrength);
+			return api.CallApi("ascan", "action", "updateScanPolicy", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Adds a new parameter excluded from the scan, using the specified name. Optionally sets if the new entry applies to a specific URL (default, all URLs) and sets the ID of the type of the parameter (default, ID of any type). The type IDs can be obtained with the view excludedParamTypes. 
 		/// </summary>
 		/// <returns></returns>
+		public IApiResponse addExcludedParam(string apikey, string name, string type, string url)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("name", name);
+			parameters.Add("type", type);
+			parameters.Add("url", url);
+			return api.CallApi("ascan", "action", "addExcludedParam", parameters);
+		}
+
+		/// <summary>
+		///Modifies a parameter excluded from the scan. Allows to modify the name, the URL and the type of parameter. The parameter is selected with its index, which can be obtained with the view excludedParams.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse modifyExcludedParam(string apikey, string idx, string name, string type, string url)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("idx", idx);
+			parameters.Add("name", name);
+			parameters.Add("type", type);
+			parameters.Add("url", url);
+			return api.CallApi("ascan", "action", "modifyExcludedParam", parameters);
+		}
+
+		/// <summary>
+		///Removes a parameter excluded from the scan, with the given index. The index can be obtained with the view excludedParams.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse removeExcludedParam(string apikey, string idx)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("idx", idx);
+			return api.CallApi("ascan", "action", "removeExcludedParam", parameters);
+		}
+
 		public IApiResponse setOptionAttackPolicy(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
 			return api.CallApi("ascan", "action", "setOptionAttackPolicy", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionShowAdvancedDialog(string apikey, bool boolean)
+		public IApiResponse setOptionDefaultPolicy(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("ascan", "action", "setOptionShowAdvancedDialog", parameters);
+			parameters.Add("String", str);
+			return api.CallApi("ascan", "action", "setOptionDefaultPolicy", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setOptionAllowAttackOnStart(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("ascan", "action", "setOptionAllowAttackOnStart", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionTargetParamsInjectable(string apikey, int i)
+		public IApiResponse setOptionDelayInMs(string apikey, int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("ascan", "action", "setOptionTargetParamsInjectable", parameters);
+			return api.CallApi("ascan", "action", "setOptionDelayInMs", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionPromptInAttackMode(string apikey, bool boolean)
+		public IApiResponse setOptionHandleAntiCSRFTokens(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("ascan", "action", "setOptionPromptInAttackMode", parameters);
+			return api.CallApi("ascan", "action", "setOptionHandleAntiCSRFTokens", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionTargetParamsEnabledRPC(string apikey, int i)
+		public IApiResponse setOptionHostPerScan(string apikey, int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("ascan", "action", "setOptionTargetParamsEnabledRPC", parameters);
+			return api.CallApi("ascan", "action", "setOptionHostPerScan", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionPromptToClearFinishedScans(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("ascan", "action", "setOptionPromptToClearFinishedScans", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionMaxScansInUI(string apikey, int i)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("ascan", "action", "setOptionMaxScansInUI", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Sets whether or not the active scanner should inject the HTTP request header X-ZAP-Scan-ID, with the ID of the scanner that's sending the requests.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionInjectPluginIdInHeader(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("ascan", "action", "setOptionInjectPluginIdInHeader", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
+		public IApiResponse setOptionMaxChartTimeInMins(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("ascan", "action", "setOptionMaxChartTimeInMins", parameters);
+		}
+
+		public IApiResponse setOptionMaxResultsToList(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("ascan", "action", "setOptionMaxResultsToList", parameters);
+		}
+
+		public IApiResponse setOptionMaxRuleDurationInMins(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("ascan", "action", "setOptionMaxRuleDurationInMins", parameters);
+		}
+
+		public IApiResponse setOptionMaxScanDurationInMins(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("ascan", "action", "setOptionMaxScanDurationInMins", parameters);
+		}
+
+		public IApiResponse setOptionMaxScansInUI(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("ascan", "action", "setOptionMaxScansInUI", parameters);
+		}
+
+		public IApiResponse setOptionPromptInAttackMode(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("ascan", "action", "setOptionPromptInAttackMode", parameters);
+		}
+
+		public IApiResponse setOptionPromptToClearFinishedScans(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("ascan", "action", "setOptionPromptToClearFinishedScans", parameters);
+		}
+
 		public IApiResponse setOptionRescanInAttackMode(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
@@ -848,78 +796,62 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Sets whether or not the HTTP Headers of all requests should be scanned. Not just requests that send parameters, through the query or request body.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionHandleAntiCSRFTokens(string apikey, bool boolean)
+		public IApiResponse setOptionScanHeadersAllRequests(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("ascan", "action", "setOptionHandleAntiCSRFTokens", parameters);
+			return api.CallApi("ascan", "action", "setOptionScanHeadersAllRequests", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionMaxResultsToList(string apikey, int i)
+		public IApiResponse setOptionShowAdvancedDialog(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("ascan", "action", "setOptionMaxResultsToList", parameters);
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("ascan", "action", "setOptionShowAdvancedDialog", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionDelayInMs(string apikey, int i)
+		public IApiResponse setOptionTargetParamsEnabledRPC(string apikey, int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("ascan", "action", "setOptionDelayInMs", parameters);
+			return api.CallApi("ascan", "action", "setOptionTargetParamsEnabledRPC", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
+		public IApiResponse setOptionTargetParamsInjectable(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("ascan", "action", "setOptionTargetParamsInjectable", parameters);
+		}
+
 		public IApiResponse setOptionThreadPerHost(string apikey, int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("ascan", "action", "setOptionThreadPerHost", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionHostPerScan(string apikey, int i)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("ascan", "action", "setOptionHostPerScan", parameters);
 		}
 
 	}

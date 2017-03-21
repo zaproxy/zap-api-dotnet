@@ -29,11 +29,11 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Selenium 
+	public class Pnh 
 	{
 		private ClientApi api = null;
 
-		public Selenium(ClientApi api) 
+		public Pnh(ClientApi api) 
 		{
 			this.api = api;
 		}
@@ -42,125 +42,117 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionChromeDriverPath()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("selenium", "view", "optionChromeDriverPath", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionFirefoxBinaryPath()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("selenium", "view", "optionFirefoxBinaryPath", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionFirefoxDriverPath()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("selenium", "view", "optionFirefoxDriverPath", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionIeDriverPath()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("selenium", "view", "optionIeDriverPath", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionPhantomJsBinaryPath()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("selenium", "view", "optionPhantomJsBinaryPath", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionChromeDriverPath(string apikey, string str)
+		public IApiResponse monitor(string apikey, string id, string message)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("String", str);
-			return api.CallApi("selenium", "action", "setOptionChromeDriverPath", parameters);
+			parameters.Add("id", id);
+			parameters.Add("message", message);
+			return api.CallApi("pnh", "action", "monitor", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionFirefoxBinaryPath(string apikey, string str)
+		public IApiResponse oracle(string apikey, string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("String", str);
-			return api.CallApi("selenium", "action", "setOptionFirefoxBinaryPath", parameters);
+			parameters.Add("id", id);
+			return api.CallApi("pnh", "action", "oracle", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionFirefoxDriverPath(string apikey, string str)
+		public IApiResponse startMonitoring(string apikey, string url)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("String", str);
-			return api.CallApi("selenium", "action", "setOptionFirefoxDriverPath", parameters);
+			parameters.Add("url", url);
+			return api.CallApi("pnh", "action", "startMonitoring", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionIeDriverPath(string apikey, string str)
+		public IApiResponse stopMonitoring(string apikey, string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("String", str);
-			return api.CallApi("selenium", "action", "setOptionIeDriverPath", parameters);
+			parameters.Add("id", id);
+			return api.CallApi("pnh", "action", "stopMonitoring", parameters);
 		}
 
 		/// <summary>
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionPhantomJsBinaryPath(string apikey, string str)
+		public byte[] pnh(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("String", str);
-			return api.CallApi("selenium", "action", "setOptionPhantomJsBinaryPath", parameters);
+			return api.CallApiOther("pnh", "other", "pnh", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public byte[] manifest(string apikey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			return api.CallApiOther("pnh", "other", "manifest", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public byte[] service(string apikey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			return api.CallApiOther("pnh", "other", "service", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public byte[] fx_pnhxpi(string apikey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			return api.CallApiOther("pnh", "other", "fx_pnh.xpi", parameters);
 		}
 
 	}

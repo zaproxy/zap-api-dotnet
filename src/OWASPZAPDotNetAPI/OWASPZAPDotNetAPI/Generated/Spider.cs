@@ -38,10 +38,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse status(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -50,10 +46,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "status", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse results(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -62,10 +54,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "results", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse fullResults(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -74,10 +62,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "fullResults", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse scans()
 		{
 			Dictionary<string, string> parameters = null;
@@ -85,7 +69,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Gets the regexes of URLs excluded from the spider scans.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse excludedFromScan()
@@ -95,7 +79,27 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Returns a list of unique URLs from the history table based on HTTP messages added by the Spider.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse allUrls()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "allUrls", parameters);
+		}
+
+		/// <summary>
+		///Gets all the domains that are always in scope. For each domain the following are shown: the index, the value (domain), if enabled, and if specified as a regex.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse domainsAlwaysInScope()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "domainsAlwaysInScope", parameters);
+		}
+
+		/// <summary>
+		///Use view domainsAlwaysInScope instead.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionDomainsAlwaysInScope()
@@ -105,17 +109,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionShowAdvancedDialog()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionShowAdvancedDialog", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Use view domainsAlwaysInScope instead.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionDomainsAlwaysInScopeEnabled()
@@ -124,10 +118,6 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "optionDomainsAlwaysInScopeEnabled", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse optionHandleParameters()
 		{
 			Dictionary<string, string> parameters = null;
@@ -135,8 +125,119 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Sets whether or not the 'Referer' header should be sent while spidering
-		///This component is optional and therefore the API will only work if it is installed
+		///Gets the maximum number of child nodes (per node) that can be crawled, 0 means no limit.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionMaxChildren()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionMaxChildren", parameters);
+		}
+
+		public IApiResponse optionMaxDepth()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionMaxDepth", parameters);
+		}
+
+		public IApiResponse optionMaxDuration()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionMaxDuration", parameters);
+		}
+
+		public IApiResponse optionMaxScansInUI()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionMaxScansInUI", parameters);
+		}
+
+		public IApiResponse optionRequestWaitTime()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionRequestWaitTime", parameters);
+		}
+
+		public IApiResponse optionScope()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionScope", parameters);
+		}
+
+		public IApiResponse optionScopeText()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionScopeText", parameters);
+		}
+
+		public IApiResponse optionSkipURLString()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionSkipURLString", parameters);
+		}
+
+		public IApiResponse optionThreadCount()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionThreadCount", parameters);
+		}
+
+		public IApiResponse optionUserAgent()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionUserAgent", parameters);
+		}
+
+		public IApiResponse optionHandleODataParametersVisited()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionHandleODataParametersVisited", parameters);
+		}
+
+		public IApiResponse optionParseComments()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionParseComments", parameters);
+		}
+
+		public IApiResponse optionParseGit()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionParseGit", parameters);
+		}
+
+		public IApiResponse optionParseRobotsTxt()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionParseRobotsTxt", parameters);
+		}
+
+		public IApiResponse optionParseSVNEntries()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionParseSVNEntries", parameters);
+		}
+
+		public IApiResponse optionParseSitemapXml()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionParseSitemapXml", parameters);
+		}
+
+		public IApiResponse optionPostForm()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionPostForm", parameters);
+		}
+
+		public IApiResponse optionProcessForm()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionProcessForm", parameters);
+		}
+
+		/// <summary>
+		///Gets whether or not the 'Referer' header should be sent while spidering.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionSendRefererHeader()
@@ -145,339 +246,158 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "optionSendRefererHeader", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionHandleODataParametersVisited()
+		public IApiResponse optionShowAdvancedDialog()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionHandleODataParametersVisited", parameters);
+			return api.CallApi("spider", "view", "optionShowAdvancedDialog", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Runs the spider against the given URL (or context). Optionally, the 'maxChildren' parameter can be set to limit the number of children scanned, the 'recurse' parameter can be used to prevent the spider from seeding recursively, the parameter 'contextName' can be used to constrain the scan to a Context and the parameter 'subtreeOnly' allows to restrict the spider under a site's subtree (using the specified 'url').
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionRequestWaitTime()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionRequestWaitTime", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionParseSitemapXml()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionParseSitemapXml", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionParseSVNEntries()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionParseSVNEntries", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionParseRobotsTxt()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionParseRobotsTxt", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionParseGit()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionParseGit", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionScopeText()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionScopeText", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionUserAgent()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionUserAgent", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionParseComments()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionParseComments", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionMaxDepth()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionMaxDepth", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionPostForm()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionPostForm", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionThreadCount()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionThreadCount", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionProcessForm()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionProcessForm", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionSkipURLString()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionSkipURLString", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionScope()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionScope", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionMaxScansInUI()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionMaxScansInUI", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse scan(string apikey, string url, string maxchildren)
+		public IApiResponse scan(string apikey, string url, string maxchildren, string recurse, string contextname, string subtreeonly)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("url", url);
 			parameters.Add("maxChildren", maxchildren);
+			parameters.Add("recurse", recurse);
+			parameters.Add("contextName", contextname);
+			parameters.Add("subtreeOnly", subtreeonly);
 			return api.CallApi("spider", "action", "scan", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Runs the spider from the perspective of a User, obtained using the given Context ID and User ID. See 'scan' action for more details.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse scanAsUser(string apikey, string url, string contextid, string userid, string maxchildren)
+		public IApiResponse scanAsUser(string apikey, string contextid, string userid, string url, string maxchildren, string recurse, string subtreeonly)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("url", url);
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
+			parameters.Add("url", url);
 			parameters.Add("maxChildren", maxchildren);
+			parameters.Add("recurse", recurse);
+			parameters.Add("subtreeOnly", subtreeonly);
 			return api.CallApi("spider", "action", "scanAsUser", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse pause(string apikey, string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("spider", "action", "pause", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse resume(string apikey, string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("spider", "action", "resume", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse stop(string apikey, string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("spider", "action", "stop", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse removeScan(string apikey, string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("spider", "action", "removeScan", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse pauseAllScans(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("spider", "action", "pauseAllScans", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse resumeAllScans(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("spider", "action", "resumeAllScans", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse stopAllScans(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("spider", "action", "stopAllScans", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse removeAllScans(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("spider", "action", "removeAllScans", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Clears the regexes of URLs excluded from the spider scans.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse clearExcludedFromScan(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("spider", "action", "clearExcludedFromScan", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Adds a regex of URLs that should be excluded from the spider scans.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse excludeFromScan(string apikey, string regex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("regex", regex);
@@ -485,14 +405,88 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Adds a new domain that's always in scope, using the specified value. Optionally sets if the new entry is enabled (default, true) and whether or not the new value is specified as a regex (default, false).
 		/// </summary>
 		/// <returns></returns>
+		public IApiResponse addDomainAlwaysInScope(string apikey, string value, string isregex, string isenabled)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("value", value);
+			parameters.Add("isRegex", isregex);
+			parameters.Add("isEnabled", isenabled);
+			return api.CallApi("spider", "action", "addDomainAlwaysInScope", parameters);
+		}
+
+		/// <summary>
+		///Modifies a domain that's always in scope. Allows to modify the value, if enabled or if a regex. The domain is selected with its index, which can be obtained with the view domainsAlwaysInScope.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse modifyDomainAlwaysInScope(string apikey, string idx, string value, string isregex, string isenabled)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("idx", idx);
+			parameters.Add("value", value);
+			parameters.Add("isRegex", isregex);
+			parameters.Add("isEnabled", isenabled);
+			return api.CallApi("spider", "action", "modifyDomainAlwaysInScope", parameters);
+		}
+
+		/// <summary>
+		///Removes a domain that's always in scope, with the given index. The index can be obtained with the view domainsAlwaysInScope.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse removeDomainAlwaysInScope(string apikey, string idx)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("idx", idx);
+			return api.CallApi("spider", "action", "removeDomainAlwaysInScope", parameters);
+		}
+
+		/// <summary>
+		///Enables all domains that are always in scope.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse enableAllDomainsAlwaysInScope(string apikey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			return api.CallApi("spider", "action", "enableAllDomainsAlwaysInScope", parameters);
+		}
+
+		/// <summary>
+		///Disables all domains that are always in scope.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse disableAllDomainsAlwaysInScope(string apikey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			return api.CallApi("spider", "action", "disableAllDomainsAlwaysInScope", parameters);
+		}
+
 		public IApiResponse setOptionHandleParameters(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
@@ -500,134 +494,47 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Use actions [add|modify|remove]DomainAlwaysInScope instead.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionScopeString(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
 			return api.CallApi("spider", "action", "setOptionScopeString", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setOptionSkipURLString(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
 			return api.CallApi("spider", "action", "setOptionSkipURLString", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setOptionUserAgent(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
 			return api.CallApi("spider", "action", "setOptionUserAgent", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionParseSVNEntries(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("spider", "action", "setOptionParseSVNEntries", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionShowAdvancedDialog(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("spider", "action", "setOptionShowAdvancedDialog", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionParseRobotsTxt(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("spider", "action", "setOptionParseRobotsTxt", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionParseSitemapXml(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("spider", "action", "setOptionParseSitemapXml", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionSendRefererHeader(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("spider", "action", "setOptionSendRefererHeader", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setOptionHandleODataParametersVisited(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
@@ -635,14 +542,135 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Sets the maximum number of child nodes (per node) that can be crawled, 0 means no limit.
 		/// </summary>
 		/// <returns></returns>
+		public IApiResponse setOptionMaxChildren(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("spider", "action", "setOptionMaxChildren", parameters);
+		}
+
+		public IApiResponse setOptionMaxDepth(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("spider", "action", "setOptionMaxDepth", parameters);
+		}
+
+		public IApiResponse setOptionMaxDuration(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("spider", "action", "setOptionMaxDuration", parameters);
+		}
+
+		public IApiResponse setOptionMaxScansInUI(string apikey, int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("spider", "action", "setOptionMaxScansInUI", parameters);
+		}
+
+		public IApiResponse setOptionParseComments(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("spider", "action", "setOptionParseComments", parameters);
+		}
+
+		public IApiResponse setOptionParseGit(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("spider", "action", "setOptionParseGit", parameters);
+		}
+
+		public IApiResponse setOptionParseRobotsTxt(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("spider", "action", "setOptionParseRobotsTxt", parameters);
+		}
+
+		public IApiResponse setOptionParseSVNEntries(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("spider", "action", "setOptionParseSVNEntries", parameters);
+		}
+
+		public IApiResponse setOptionParseSitemapXml(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("spider", "action", "setOptionParseSitemapXml", parameters);
+		}
+
+		public IApiResponse setOptionPostForm(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("spider", "action", "setOptionPostForm", parameters);
+		}
+
+		public IApiResponse setOptionProcessForm(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("spider", "action", "setOptionProcessForm", parameters);
+		}
+
 		public IApiResponse setOptionRequestWaitTime(string apikey, int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Integer", Convert.ToString(i));
@@ -650,108 +678,40 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Sets whether or not the 'Referer' header should be sent while spidering.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionParseGit(string apikey, bool boolean)
+		public IApiResponse setOptionSendRefererHeader(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("spider", "action", "setOptionParseGit", parameters);
+			return api.CallApi("spider", "action", "setOptionSendRefererHeader", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionPostForm(string apikey, bool boolean)
+		public IApiResponse setOptionShowAdvancedDialog(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("spider", "action", "setOptionPostForm", parameters);
+			return api.CallApi("spider", "action", "setOptionShowAdvancedDialog", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionParseComments(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("spider", "action", "setOptionParseComments", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionMaxDepth(string apikey, int i)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("spider", "action", "setOptionMaxDepth", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setOptionThreadCount(string apikey, int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("spider", "action", "setOptionThreadCount", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionProcessForm(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("spider", "action", "setOptionProcessForm", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionMaxScansInUI(string apikey, int i)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("spider", "action", "setOptionMaxScansInUI", parameters);
 		}
 
 	}

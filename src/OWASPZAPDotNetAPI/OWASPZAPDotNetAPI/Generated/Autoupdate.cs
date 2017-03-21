@@ -39,7 +39,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Returns the latest version number
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse latestVersionNumber()
@@ -49,7 +49,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Returns 'true' if ZAP is on the latest version
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse isLatestVersion()
@@ -59,79 +59,117 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Return a list of all of the installed add-ons
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionCheckOnStart()
+		public IApiResponse installedAddons()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("autoupdate", "view", "optionCheckOnStart", parameters);
+			return api.CallApi("autoupdate", "view", "installedAddons", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Return a list of any add-ons that have been added to the Marketplace since the last check for updates
 		/// </summary>
 		/// <returns></returns>
+		public IApiResponse newAddons()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "newAddons", parameters);
+		}
+
+		/// <summary>
+		///Return a list of any add-ons that have been changed in the Marketplace since the last check for updates
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse updatedAddons()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "updatedAddons", parameters);
+		}
+
+		/// <summary>
+		///Return a list of all of the add-ons on the ZAP Marketplace (this information is read once and then cached)
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse marketplaceAddons()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "marketplaceAddons", parameters);
+		}
+
+		public IApiResponse optionAddonDirectories()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "optionAddonDirectories", parameters);
+		}
+
+		public IApiResponse optionDayLastChecked()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "optionDayLastChecked", parameters);
+		}
+
+		public IApiResponse optionDayLastInstallWarned()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "optionDayLastInstallWarned", parameters);
+		}
+
+		public IApiResponse optionDayLastUpdateWarned()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "optionDayLastUpdateWarned", parameters);
+		}
+
+		public IApiResponse optionDownloadDirectory()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "optionDownloadDirectory", parameters);
+		}
+
 		public IApiResponse optionCheckAddonUpdates()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionCheckAddonUpdates", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
+		public IApiResponse optionCheckOnStart()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "optionCheckOnStart", parameters);
+		}
+
 		public IApiResponse optionDownloadNewRelease()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionDownloadNewRelease", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionReportBetaAddons()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("autoupdate", "view", "optionReportBetaAddons", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionReportAlphaAddons()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("autoupdate", "view", "optionReportAlphaAddons", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionInstallScannerRules()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("autoupdate", "view", "optionInstallScannerRules", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse optionInstallAddonUpdates()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionInstallAddonUpdates", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
+		public IApiResponse optionInstallScannerRules()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "optionInstallScannerRules", parameters);
+		}
+
+		public IApiResponse optionReportAlphaAddons()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "optionReportAlphaAddons", parameters);
+		}
+
+		public IApiResponse optionReportBetaAddons()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "optionReportBetaAddons", parameters);
+		}
+
 		public IApiResponse optionReportReleaseAddons()
 		{
 			Dictionary<string, string> parameters = null;
@@ -139,137 +177,135 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Downloads the latest release, if any 
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse downloadLatestRelease(string apikey)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			return api.CallApi("autoupdate", "action", "downloadLatestRelease", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Installs or updates the specified add-on, returning when complete (ie not asynchronously)
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionCheckOnStart(string apikey, bool boolean)
+		public IApiResponse installAddon(string apikey, string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("autoupdate", "action", "setOptionCheckOnStart", parameters);
+			parameters.Add("id", id);
+			return api.CallApi("autoupdate", "action", "installAddon", parameters);
 		}
 
 		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
+		///Uninstalls the specified add-on 
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionReportReleaseAddons(string apikey, bool boolean)
+		public IApiResponse uninstallAddon(string apikey, string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("autoupdate", "action", "setOptionReportReleaseAddons", parameters);
+			parameters.Add("id", id);
+			return api.CallApi("autoupdate", "action", "uninstallAddon", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionInstallScannerRules(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("autoupdate", "action", "setOptionInstallScannerRules", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionReportAlphaAddons(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("autoupdate", "action", "setOptionReportAlphaAddons", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionReportBetaAddons(string apikey, bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("autoupdate", "action", "setOptionReportBetaAddons", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
 		public IApiResponse setOptionCheckAddonUpdates(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionCheckAddonUpdates", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
+		public IApiResponse setOptionCheckOnStart(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("autoupdate", "action", "setOptionCheckOnStart", parameters);
+		}
+
+		public IApiResponse setOptionDownloadNewRelease(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("autoupdate", "action", "setOptionDownloadNewRelease", parameters);
+		}
+
 		public IApiResponse setOptionInstallAddonUpdates(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionInstallAddonUpdates", parameters);
 		}
 
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionDownloadNewRelease(string apikey, bool boolean)
+		public IApiResponse setOptionInstallScannerRules(string apikey, bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("autoupdate", "action", "setOptionDownloadNewRelease", parameters);
+			return api.CallApi("autoupdate", "action", "setOptionInstallScannerRules", parameters);
+		}
+
+		public IApiResponse setOptionReportAlphaAddons(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("autoupdate", "action", "setOptionReportAlphaAddons", parameters);
+		}
+
+		public IApiResponse setOptionReportBetaAddons(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("autoupdate", "action", "setOptionReportBetaAddons", parameters);
+		}
+
+		public IApiResponse setOptionReportReleaseAddons(string apikey, bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("autoupdate", "action", "setOptionReportReleaseAddons", parameters);
 		}
 
 	}

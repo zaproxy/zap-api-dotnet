@@ -39,8 +39,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Lists the names of all anti CSRF tokens
-		///This component is optional and therefore the API will only work if it is installed
+		///Lists the names of all anti-CSRF tokens
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionTokensNames()
@@ -50,31 +49,14 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Removes the anti CSRF token with the given name
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse removeOptionToken(string apikey, string str)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
-			parameters.Add("String", str);
-			return api.CallApi("acsrf", "action", "removeOptionToken", parameters);
-		}
-
-		/// <summary>
-		///Adds an anti CSRF token with the given name, enabled by default
-		///This component is optional and therefore the API will only work if it is installed
+		///Adds an anti-CSRF token with the given name, enabled by default
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse addOptionToken(string apikey, string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("String", str);
@@ -82,15 +64,29 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Generate a form for testing lack of anti CSRF tokens - typically invoked via ZAP
-		///This component is optional and therefore the API will only work if it is installed
+		///Removes the anti-CSRF token with the given name
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse removeOptionToken(string apikey, string str)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			if (!string.IsNullOrWhiteSpace(apikey)){
+				parameters.Add("apikey", apikey);
+			}
+			parameters.Add("String", str);
+			return api.CallApi("acsrf", "action", "removeOptionToken", parameters);
+		}
+
+		/// <summary>
+		///Generate a form for testing lack of anti-CSRF tokens - typically invoked via ZAP
 		/// </summary>
 		/// <returns></returns>
 		public byte[] genForm(string apikey, string hrefid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (string.IsNullOrWhiteSpace(apikey)){
+			if (!string.IsNullOrWhiteSpace(apikey)){
 				parameters.Add("apikey", apikey);
 			}
 			parameters.Add("hrefId", hrefid);

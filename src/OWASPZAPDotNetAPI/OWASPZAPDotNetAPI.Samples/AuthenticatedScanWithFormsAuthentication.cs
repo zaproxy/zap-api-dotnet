@@ -1,24 +1,4 @@
-﻿/* Zed Attack Proxy (ZAP) and its related class files.
- *
- * ZAP is an HTTP/HTTPS proxy for assessing web application security.
- *
- * Copyright the ZAP development team
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-using OWASPZAPDotNetAPI;
+﻿using OWASPZAPDotNetAPI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -33,7 +13,7 @@ namespace OWASPZAPDotNetAPI.Samples
     class AuthenticatedScanWithFormsAuthentication
     {
         private static string _target = "http://localhost:8020/SqliModernApp";
-        private static string _apikey = string.Empty;
+        private static string _apikey = "vufbko8sihdfl5502df3863erg";
         private static ClientApi _api = new ClientApi("localhost", 7070);
         private static IApiResponse _apiResponse;
 
@@ -64,13 +44,13 @@ namespace OWASPZAPDotNetAPI.Samples
             SetASpecificForcedUser(contextId, userId);
             EnableForcedUserMode();
 
-            string spiderScanId = StartSpidering();
+            string spiderScanId = StartSpidering(contextName);
             PollTheSpiderTillCompletion(spiderScanId);
 
-            StartAjaxSpidering();
+            StartAjaxSpidering(contextName);
             PollTheAjaxSpiderTillCompletion();
 
-            string activeScanId = StartActiveScanning();
+            string activeScanId = StartActiveScanning(contextId);
             PollTheActiveScannerTillCompletion(activeScanId);
 
             string reportFileName = string.Format("report-{0}", DateTime.Now.ToString("dd-MMM-yyyy-hh-mm-ss"));
@@ -83,7 +63,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void ShutdownZAP()
         {
-            _apiResponse = _api.core.shutdown("");
+            _apiResponse = _api.core.shutdown(_apikey);
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("ZAP shutdown success " + _target);
         }
@@ -133,10 +113,10 @@ namespace OWASPZAPDotNetAPI.Samples
             Console.WriteLine("Active scanner complete");
         }
 
-        private static string StartActiveScanning()
+        private static string StartActiveScanning(string contextId)
         {
             Console.WriteLine("Active Scanner: " + _target);
-            _apiResponse = _api.ascan.scan(_apikey, _target, "", "", "", "", "");
+            _apiResponse = _api.ascan.scan(_apikey, _target, "", "", "", "", "", contextId);
 
             string activeScanId = ((ApiResponseElement)_apiResponse).Value;
             return activeScanId;
@@ -159,10 +139,10 @@ namespace OWASPZAPDotNetAPI.Samples
             Thread.Sleep(10000);
         }
 
-        private static void StartAjaxSpidering()
+        private static void StartAjaxSpidering(string contextName)
         {
             Console.WriteLine("Ajax Spider: " + _target);
-            _apiResponse = _api.ajaxspider.scan(_apikey, _target, "");
+            _apiResponse = _api.ajaxspider.scan(_apikey, _target, "", contextName, "");
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("Ajax Spider started for " + _target);
@@ -184,10 +164,10 @@ namespace OWASPZAPDotNetAPI.Samples
             Thread.Sleep(10000);
         }
 
-        private static string StartSpidering()
+        private static string StartSpidering(string contextName)
         {
             Console.WriteLine("Spider: " + _target);
-            _apiResponse = _api.spider.scan(_apikey, _target, "");
+            _apiResponse = _api.spider.scan(_apikey, _target, "", "", contextName, "");
             string scanid = ((ApiResponseElement)_apiResponse).Value;
             return scanid;
         }

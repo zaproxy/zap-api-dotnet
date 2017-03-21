@@ -52,13 +52,16 @@
     <Compile Include="Generated\AjaxSpider.cs" />
     <Compile Include="Generated\Ascan.cs" />
     <Compile Include="Generated\Authentication.cs" />
+    <Compile Include="Generated\Authorization.cs" />
     <Compile Include="Generated\Autoupdate.cs" />
     <Compile Include="Generated\Break.cs" />
     <Compile Include="Generated\Context.cs" />
     <Compile Include="Generated\Core.cs" />
     <Compile Include="Generated\ForcedUser.cs" />
     <Compile Include="Generated\HttpSessions.cs" />
+    <Compile Include="Generated\ImportLogFiles.cs" />
     <Compile Include="Generated\Params.cs" />
+    <Compile Include="Generated\Pnh.cs" />
     <Compile Include="Generated\Pscan.cs" />
     <Compile Include="Generated\Reveal.cs" />
     <Compile Include="Generated\Script.cs" />
@@ -66,6 +69,7 @@
     <Compile Include="Generated\Selenium.cs" />
     <Compile Include="Generated\SessionManagement.cs" />
     <Compile Include="Generated\Spider.cs" />
+    <Compile Include="Generated\Stats.cs" />
     <Compile Include="Generated\Users.cs" />
     <Compile Include="Interfaces\IApiResponse.cs" />
     <Compile Include="Interfaces\IWebClient.cs" />
