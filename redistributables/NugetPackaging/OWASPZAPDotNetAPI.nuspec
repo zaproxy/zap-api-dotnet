@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>OWASPZAPDotNetAPI</id>
-    <version>2.6.0</version>
+    <version>2.6.1</version>
     <authors>https://renouncedthoughts.wordpress.com/</authors>
     <owners>https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -10,7 +10,7 @@
     <iconUrl>https://www.owasp.org/images/1/11/Zap128x128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The Dot Net API for OWASP ZAP allows you to access the OWASP Zed Attack Proxy's functionality programmatically to enable automated vulnerability analysis for web applications</description>
-    <releaseNotes>2.6.0 compatible with OWASP ZAP 2.6.0 stable release</releaseNotes>
+    <releaseNotes>2.6.1 compatible with OWASP ZAP 2.6.0 stable release</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>OWASP ZAP DOT NET API</tags>
     <references>

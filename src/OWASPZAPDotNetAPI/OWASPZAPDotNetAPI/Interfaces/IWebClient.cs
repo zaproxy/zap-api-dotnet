@@ -31,5 +31,8 @@ namespace OWASPZAPDotNetAPI
         string DownloadString(string address);
         string DownloadString(Uri uri);
         byte[] DownloadData(Uri uri);
+        void AddRequestHeader(string headerName, string headerValue);
+        string GetRequestHeaderValue(string headerName);
+        void SetRequestHeader(string headerName, string headerValue);
     }
 }
