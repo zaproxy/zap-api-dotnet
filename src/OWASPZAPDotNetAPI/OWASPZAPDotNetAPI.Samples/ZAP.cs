@@ -19,8 +19,8 @@ namespace OWASPZAPDotNetAPI.Samples
         {
             Console.WriteLine("Trying to StartZapUI");
             ProcessStartInfo zapProcessStartInfo = new ProcessStartInfo();
-            zapProcessStartInfo.FileName = @"C:\Program Files (x86)\OWASP\Zed Attack Proxy\ZAP.exe";
-            zapProcessStartInfo.WorkingDirectory = @"C:\Program Files (x86)\OWASP\Zed Attack Proxy";
+            zapProcessStartInfo.FileName = @"C:\Program Files\OWASP\Zed Attack Proxy\ZAP.exe";
+            zapProcessStartInfo.WorkingDirectory = @"C:\Program Files\OWASP\Zed Attack Proxy";
 
             Console.WriteLine(zapProcessStartInfo.ToString());
             Console.WriteLine("Issuing command to StartZapUI");
@@ -79,7 +79,7 @@ namespace OWASPZAPDotNetAPI.Samples
                 } 
             }
 
-            throw new Exception(string.Format("Waited for {0} minutes, however could not access the API successfully, hence could not verify if ZAP started successfully or not", minutesToWait));
+            throw new Exception(string.Format("Waited for {0} minute(s), however could not access the API successfully, hence could not verify if ZAP started successfully or not", minutesToWait));
         }
 
     }

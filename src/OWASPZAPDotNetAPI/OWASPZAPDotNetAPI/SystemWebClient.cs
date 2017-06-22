@@ -57,5 +57,20 @@ namespace OWASPZAPDotNetAPI
         {
             webClient.Dispose();
         }
+
+        public void AddRequestHeader(string headerName, string headerValue)
+        {
+            webClient.Headers.Add(headerName, headerValue);
+        }
+
+        public string GetRequestHeaderValue(string headerName)
+        {
+            return webClient.Headers.Get(headerName);
+        }
+
+        public void SetRequestHeader(string headerName, string headerValue)
+        {
+            webClient.Headers.Set(headerName, headerValue);
+        }
     }
 }

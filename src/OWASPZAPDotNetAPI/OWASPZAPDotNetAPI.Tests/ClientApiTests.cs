@@ -11,7 +11,7 @@ namespace OWASPZAPDotNetAPI.Tests
         [TestInitialize]
         public void InstantiateClientApi()
         {
-            zap = new ClientApi("localhost", 7070);
+            zap = new ClientApi("localhost", 7070, string.Empty);
         }
 
         [TestCleanup]

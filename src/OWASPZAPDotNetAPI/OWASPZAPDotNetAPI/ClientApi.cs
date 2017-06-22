@@ -34,21 +34,27 @@ namespace OWASPZAPDotNetAPI
         private IWebClient webClient;
         private string zapAddress;
         private int zapPort;
+        private string apiKey;
         private string format = "xml";
         private string otherFormat = "other";
+        private string zapApiKeyHeaderName = "X-ZAP-API-Key";
+        private static string _zapApiKeyParameterName = "apikey";
 
         //New API needs to be added here
         public Acsrf acsrf;
         public AjaxSpider ajaxspider;
         public Ascan ascan;
         public Authentication authentication;
+        public OWASPZAPDotNetAPI.Generated.Authorization authorization;
         public Autoupdate autoupdate;
         public Break brk;
         public Context context;
         public Core core;
         public ForcedUser forcedUser;
         public HttpSessions httpSessions;
+        public ImportLogFiles importLogFiles;
         public Params parameters;
+        public Pnh pnh;
         public Pscan pscan;
         public Reveal reveal;
         public Script script;
@@ -56,12 +62,14 @@ namespace OWASPZAPDotNetAPI
         public Selenium selenium;
         public SessionManagement sessionManagement;
         public Spider spider;
+        public Stats stats;
         public Users users;
 
-        public ClientApi(string zapAddress, int zapPort)
+        public ClientApi(string zapAddress, int zapPort, string apiKey)
         {
             this.zapAddress = zapAddress;
             this.zapPort = zapPort;
+            this.apiKey = apiKey;
             webClient = new SystemWebClient(zapAddress, zapPort);
             InitializeApiObjects();
         }
@@ -76,16 +84,19 @@ namespace OWASPZAPDotNetAPI
         {
             //New API needs to be instantiated here
             acsrf = new Acsrf(this);
-            ascan = new Ascan(this);
             ajaxspider = new AjaxSpider(this);
+            ascan = new Ascan(this);
             authentication = new Authentication(this);
+            authorization = new OWASPZAPDotNetAPI.Generated.Authorization(this);
             autoupdate = new Autoupdate(this);
             brk = new Break(this);
             context = new Context(this);
             core = new Core(this);
             forcedUser = new ForcedUser(this);
             httpSessions = new HttpSessions(this);
+            importLogFiles = new ImportLogFiles(this);
             parameters = new Params(this);
+            pnh = new Pnh(this); 
             pscan = new Pscan(this);
             reveal = new Reveal(this);
             script = new Script(this);
@@ -93,6 +104,7 @@ namespace OWASPZAPDotNetAPI
             selenium = new Selenium(this);
             sessionManagement = new SessionManagement(this);
             spider = new Spider(this);
+            stats = new Stats(this);
             users = new Users(this);
         }
 
@@ -148,7 +160,7 @@ namespace OWASPZAPDotNetAPI
 
         private XmlDocument CallApiRaw(string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
-            Uri requestUrl = BuildZapRequestUrl(this.zapAddress, this.zapPort, this.format, component, operationType, operationName, parameters);
+            Uri requestUrl = PrepareZapRequest(this.format, component, operationType, operationName, parameters);            
             string responseString = webClient.DownloadString(requestUrl);
             XmlDocument responseXmlDocument = new XmlDocument();
             responseXmlDocument.LoadXml(responseString);
@@ -157,12 +169,23 @@ namespace OWASPZAPDotNetAPI
 
         public byte[] CallApiOther(string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
-            Uri requestUrl = BuildZapRequestUrl(this.zapAddress, this.zapPort, this.otherFormat, component, operationType, operationName, parameters);
+            Uri requestUrl = PrepareZapRequest(this.otherFormat, component, operationType, operationName, parameters);  
             byte[] response = webClient.DownloadData(requestUrl);
             return response;
         }
 
-        private static Uri BuildZapRequestUrl(string zapAddress, int zapPort, string format, string component, string operationType, string operationName, Dictionary<string, string> parameters)
+        private Uri PrepareZapRequest(string format, string component, string operationType, string operationName, Dictionary<string, string> parameters)
+        {
+            Uri requestUrl = BuildZapRequestUrl(this.zapAddress, this.zapPort, this.apiKey, format, component, operationType, operationName, parameters);
+            string apiKeyValueFromRequestHeader = webClient.GetRequestHeaderValue(this.zapApiKeyHeaderName);
+            if (String.IsNullOrWhiteSpace(apiKeyValueFromRequestHeader))
+            {
+                webClient.AddRequestHeader(this.zapApiKeyHeaderName, this.apiKey);
+            }
+            return requestUrl;
+        }
+
+        private static Uri BuildZapRequestUrl(string zapAddress, int zapPort, string apikey, string format, string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
             UriBuilder uriBuilder = new UriBuilder();
             uriBuilder.Scheme = "http";
@@ -188,6 +211,14 @@ namespace OWASPZAPDotNetAPI
                     query.Append("&");
                 }
             }
+            else if (!string.IsNullOrWhiteSpace(apikey))
+            {
+                query.Append(Uri.EscapeDataString(_zapApiKeyParameterName));
+                query.Append("=");
+                query.Append(Uri.EscapeDataString(apikey));
+                query.Append("&");
+            }
+            
 
             uriBuilder.Query = query.ToString();
             return uriBuilder.Uri;
