@@ -51,22 +51,23 @@ namespace OWASPZAPDotNetAPI
                     case "set":
                         return new ApiResponseSet(node);
                     case "exception":
-                        XmlAttributeCollection attributes = node.Attributes;
-                        string code = attributes.GetNamedItem("code") != null
-                            ?
-                            attributes.GetNamedItem("code").Value : "0";
-                        string detail = attributes.GetNamedItem("detail") != null
-                            ?
-                            attributes.GetNamedItem("detail").Value : string.Empty;
-                        throw new Exception(node.Value
-                            + Environment.NewLine + code
-                            + Environment.NewLine + detail);
+                        string exceptionString = GetExceptionString(node);
+                        throw new Exception(exceptionString);
                     default:
                         break;
                 }
             }
 
             return new ApiResponseElement(node);
+        }
+
+        private static string GetExceptionString(XmlNode node)
+        {
+            XmlAttributeCollection attributes = node.Attributes;
+            string code = attributes.GetNamedItem("code") != null ? attributes.GetNamedItem("code").Value : "0";
+            string detail = attributes.GetNamedItem("detail") != null ? attributes.GetNamedItem("detail").Value : string.Empty;
+            string text = node.Value != null ? node.Value : node.InnerText;
+            return code + Environment.NewLine + detail + Environment.NewLine + text;
         }
     }
 }

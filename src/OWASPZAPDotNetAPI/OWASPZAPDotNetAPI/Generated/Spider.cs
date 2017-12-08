@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,6 +89,18 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Returns a list of the names of the nodes added to the Sites tree by the specified scan.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse addedNodes(string scanid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("scanId", scanid);
+			return api.CallApi("spider", "view", "addedNodes", parameters);
+		}
+
+		/// <summary>
 		///Gets all the domains that are always in scope. For each domain the following are shown: the index, the value (domain), if enabled, and if specified as a regex.
 		/// </summary>
 		/// <returns></returns>
@@ -100,8 +112,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Use view domainsAlwaysInScope instead.
+		/// [Obsolete]
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete]
 		public IApiResponse optionDomainsAlwaysInScope()
 		{
 			Dictionary<string, string> parameters = null;
@@ -110,8 +124,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Use view domainsAlwaysInScope instead.
+		/// [Obsolete]
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete]
 		public IApiResponse optionDomainsAlwaysInScopeEnabled()
 		{
 			Dictionary<string, string> parameters = null;
@@ -146,6 +162,16 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "optionMaxDuration", parameters);
 		}
 
+		/// <summary>
+		///Gets the maximum size, in bytes, that a response might have to be parsed.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionMaxParseSizeBytes()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionMaxParseSizeBytes", parameters);
+		}
+
 		public IApiResponse optionMaxScansInUI()
 		{
 			Dictionary<string, string> parameters = null;
@@ -158,12 +184,14 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "optionRequestWaitTime", parameters);
 		}
 
+		[Obsolete]
 		public IApiResponse optionScope()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionScope", parameters);
 		}
 
+		[Obsolete]
 		public IApiResponse optionScopeText()
 		{
 			Dictionary<string, string> parameters = null;
@@ -186,6 +214,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionUserAgent", parameters);
+		}
+
+		/// <summary>
+		///Gets whether or not a spider process should accept cookies while spidering.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionAcceptCookies()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionAcceptCookies", parameters);
 		}
 
 		public IApiResponse optionHandleODataParametersVisited()
@@ -256,13 +294,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Runs the spider against the given URL (or context). Optionally, the 'maxChildren' parameter can be set to limit the number of children scanned, the 'recurse' parameter can be used to prevent the spider from seeding recursively, the parameter 'contextName' can be used to constrain the scan to a Context and the parameter 'subtreeOnly' allows to restrict the spider under a site's subtree (using the specified 'url').
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse scan(string apikey, string url, string maxchildren, string recurse, string contextname, string subtreeonly)
+		public IApiResponse scan(string url, string maxchildren, string recurse, string contextname, string subtreeonly)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("url", url);
 			parameters.Add("maxChildren", maxchildren);
 			parameters.Add("recurse", recurse);
@@ -275,13 +310,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Runs the spider from the perspective of a User, obtained using the given Context ID and User ID. See 'scan' action for more details.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse scanAsUser(string apikey, string contextid, string userid, string url, string maxchildren, string recurse, string subtreeonly)
+		public IApiResponse scanAsUser(string contextid, string userid, string url, string maxchildren, string recurse, string subtreeonly)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
 			parameters.Add("url", url);
@@ -291,87 +323,59 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "scanAsUser", parameters);
 		}
 
-		public IApiResponse pause(string apikey, string scanid)
+		public IApiResponse pause(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("spider", "action", "pause", parameters);
 		}
 
-		public IApiResponse resume(string apikey, string scanid)
+		public IApiResponse resume(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("spider", "action", "resume", parameters);
 		}
 
-		public IApiResponse stop(string apikey, string scanid)
+		public IApiResponse stop(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("spider", "action", "stop", parameters);
 		}
 
-		public IApiResponse removeScan(string apikey, string scanid)
+		public IApiResponse removeScan(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("scanId", scanid);
 			return api.CallApi("spider", "action", "removeScan", parameters);
 		}
 
-		public IApiResponse pauseAllScans(string apikey)
+		public IApiResponse pauseAllScans()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("spider", "action", "pauseAllScans", parameters);
 		}
 
-		public IApiResponse resumeAllScans(string apikey)
+		public IApiResponse resumeAllScans()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("spider", "action", "resumeAllScans", parameters);
 		}
 
-		public IApiResponse stopAllScans(string apikey)
+		public IApiResponse stopAllScans()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("spider", "action", "stopAllScans", parameters);
 		}
 
-		public IApiResponse removeAllScans(string apikey)
+		public IApiResponse removeAllScans()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("spider", "action", "removeAllScans", parameters);
 		}
 
@@ -379,13 +383,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Clears the regexes of URLs excluded from the spider scans.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse clearExcludedFromScan(string apikey)
+		public IApiResponse clearExcludedFromScan()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("spider", "action", "clearExcludedFromScan", parameters);
 		}
 
@@ -393,13 +393,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Adds a regex of URLs that should be excluded from the spider scans.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse excludeFromScan(string apikey, string regex)
+		public IApiResponse excludeFromScan(string regex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("regex", regex);
 			return api.CallApi("spider", "action", "excludeFromScan", parameters);
 		}
@@ -408,13 +405,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Adds a new domain that's always in scope, using the specified value. Optionally sets if the new entry is enabled (default, true) and whether or not the new value is specified as a regex (default, false).
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addDomainAlwaysInScope(string apikey, string value, string isregex, string isenabled)
+		public IApiResponse addDomainAlwaysInScope(string value, string isregex, string isenabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("value", value);
 			parameters.Add("isRegex", isregex);
 			parameters.Add("isEnabled", isenabled);
@@ -425,13 +419,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Modifies a domain that's always in scope. Allows to modify the value, if enabled or if a regex. The domain is selected with its index, which can be obtained with the view domainsAlwaysInScope.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse modifyDomainAlwaysInScope(string apikey, string idx, string value, string isregex, string isenabled)
+		public IApiResponse modifyDomainAlwaysInScope(string idx, string value, string isregex, string isenabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("idx", idx);
 			parameters.Add("value", value);
 			parameters.Add("isRegex", isregex);
@@ -443,13 +434,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Removes a domain that's always in scope, with the given index. The index can be obtained with the view domainsAlwaysInScope.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeDomainAlwaysInScope(string apikey, string idx)
+		public IApiResponse removeDomainAlwaysInScope(string idx)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("idx", idx);
 			return api.CallApi("spider", "action", "removeDomainAlwaysInScope", parameters);
 		}
@@ -458,13 +446,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Enables all domains that are always in scope.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse enableAllDomainsAlwaysInScope(string apikey)
+		public IApiResponse enableAllDomainsAlwaysInScope()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("spider", "action", "enableAllDomainsAlwaysInScope", parameters);
 		}
 
@@ -472,71 +456,66 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Disables all domains that are always in scope.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse disableAllDomainsAlwaysInScope(string apikey)
+		public IApiResponse disableAllDomainsAlwaysInScope()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("spider", "action", "disableAllDomainsAlwaysInScope", parameters);
 		}
 
-		public IApiResponse setOptionHandleParameters(string apikey, string str)
+		public IApiResponse setOptionHandleParameters(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("spider", "action", "setOptionHandleParameters", parameters);
 		}
 
 		/// <summary>
 		///Use actions [add|modify|remove]DomainAlwaysInScope instead.
+		/// [Obsolete]
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionScopeString(string apikey, string str)
+		[Obsolete]
+		public IApiResponse setOptionScopeString(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("spider", "action", "setOptionScopeString", parameters);
 		}
 
-		public IApiResponse setOptionSkipURLString(string apikey, string str)
+		public IApiResponse setOptionSkipURLString(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("spider", "action", "setOptionSkipURLString", parameters);
 		}
 
-		public IApiResponse setOptionUserAgent(string apikey, string str)
+		public IApiResponse setOptionUserAgent(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("spider", "action", "setOptionUserAgent", parameters);
 		}
 
-		public IApiResponse setOptionHandleODataParametersVisited(string apikey, bool boolean)
+		/// <summary>
+		///Sets whether or not a spider process should accept cookies while spidering.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionAcceptCookies(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("spider", "action", "setOptionAcceptCookies", parameters);
+		}
+
+		public IApiResponse setOptionHandleODataParametersVisited(bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionHandleODataParametersVisited", parameters);
 		}
@@ -545,134 +524,110 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets the maximum number of child nodes (per node) that can be crawled, 0 means no limit.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionMaxChildren(string apikey, int i)
+		public IApiResponse setOptionMaxChildren(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("spider", "action", "setOptionMaxChildren", parameters);
 		}
 
-		public IApiResponse setOptionMaxDepth(string apikey, int i)
+		public IApiResponse setOptionMaxDepth(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("spider", "action", "setOptionMaxDepth", parameters);
 		}
 
-		public IApiResponse setOptionMaxDuration(string apikey, int i)
+		public IApiResponse setOptionMaxDuration(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("spider", "action", "setOptionMaxDuration", parameters);
 		}
 
-		public IApiResponse setOptionMaxScansInUI(string apikey, int i)
+		/// <summary>
+		///Sets the maximum size, in bytes, that a response might have to be parsed. This allows the spider to skip big responses/files.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionMaxParseSizeBytes(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("spider", "action", "setOptionMaxParseSizeBytes", parameters);
+		}
+
+		public IApiResponse setOptionMaxScansInUI(int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("spider", "action", "setOptionMaxScansInUI", parameters);
 		}
 
-		public IApiResponse setOptionParseComments(string apikey, bool boolean)
+		public IApiResponse setOptionParseComments(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionParseComments", parameters);
 		}
 
-		public IApiResponse setOptionParseGit(string apikey, bool boolean)
+		public IApiResponse setOptionParseGit(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionParseGit", parameters);
 		}
 
-		public IApiResponse setOptionParseRobotsTxt(string apikey, bool boolean)
+		public IApiResponse setOptionParseRobotsTxt(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionParseRobotsTxt", parameters);
 		}
 
-		public IApiResponse setOptionParseSVNEntries(string apikey, bool boolean)
+		public IApiResponse setOptionParseSVNEntries(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionParseSVNEntries", parameters);
 		}
 
-		public IApiResponse setOptionParseSitemapXml(string apikey, bool boolean)
+		public IApiResponse setOptionParseSitemapXml(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionParseSitemapXml", parameters);
 		}
 
-		public IApiResponse setOptionPostForm(string apikey, bool boolean)
+		public IApiResponse setOptionPostForm(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionPostForm", parameters);
 		}
 
-		public IApiResponse setOptionProcessForm(string apikey, bool boolean)
+		public IApiResponse setOptionProcessForm(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionProcessForm", parameters);
 		}
 
-		public IApiResponse setOptionRequestWaitTime(string apikey, int i)
+		public IApiResponse setOptionRequestWaitTime(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("spider", "action", "setOptionRequestWaitTime", parameters);
 		}
@@ -681,35 +636,26 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets whether or not the 'Referer' header should be sent while spidering.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionSendRefererHeader(string apikey, bool boolean)
+		public IApiResponse setOptionSendRefererHeader(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionSendRefererHeader", parameters);
 		}
 
-		public IApiResponse setOptionShowAdvancedDialog(string apikey, bool boolean)
+		public IApiResponse setOptionShowAdvancedDialog(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("spider", "action", "setOptionShowAdvancedDialog", parameters);
 		}
 
-		public IApiResponse setOptionThreadCount(string apikey, int i)
+		public IApiResponse setOptionThreadCount(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("spider", "action", "setOptionThreadCount", parameters);
 		}

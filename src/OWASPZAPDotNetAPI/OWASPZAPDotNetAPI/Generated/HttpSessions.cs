@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,13 +89,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Creates an empty session for the given site. Optionally with the given name.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse createEmptySession(string apikey, string site, string session)
+		public IApiResponse createEmptySession(string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("site", site);
 			parameters.Add("session", session);
 			return api.CallApi("httpSessions", "action", "createEmptySession", parameters);
@@ -105,13 +102,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Removes the session from the given site.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeSession(string apikey, string site, string session)
+		public IApiResponse removeSession(string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("site", site);
 			parameters.Add("session", session);
 			return api.CallApi("httpSessions", "action", "removeSession", parameters);
@@ -121,13 +115,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets the given session as active for the given site.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setActiveSession(string apikey, string site, string session)
+		public IApiResponse setActiveSession(string site, string session)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("site", site);
 			parameters.Add("session", session);
 			return api.CallApi("httpSessions", "action", "setActiveSession", parameters);
@@ -137,13 +128,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Unsets the active session of the given site.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse unsetActiveSession(string apikey, string site)
+		public IApiResponse unsetActiveSession(string site)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("site", site);
 			return api.CallApi("httpSessions", "action", "unsetActiveSession", parameters);
 		}
@@ -152,13 +140,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Adds the session token to the given site.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addSessionToken(string apikey, string site, string sessiontoken)
+		public IApiResponse addSessionToken(string site, string sessiontoken)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("site", site);
 			parameters.Add("sessionToken", sessiontoken);
 			return api.CallApi("httpSessions", "action", "addSessionToken", parameters);
@@ -168,13 +153,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Removes the session token from the given site.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeSessionToken(string apikey, string site, string sessiontoken)
+		public IApiResponse removeSessionToken(string site, string sessiontoken)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("site", site);
 			parameters.Add("sessionToken", sessiontoken);
 			return api.CallApi("httpSessions", "action", "removeSessionToken", parameters);
@@ -184,13 +166,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets the value of the session token of the given session for the given site.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setSessionTokenValue(string apikey, string site, string session, string sessiontoken, string tokenvalue)
+		public IApiResponse setSessionTokenValue(string site, string session, string sessiontoken, string tokenvalue)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("site", site);
 			parameters.Add("session", session);
 			parameters.Add("sessionToken", sessiontoken);
@@ -202,13 +181,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Renames the session of the given site.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse renameSession(string apikey, string site, string oldsessionname, string newsessionname)
+		public IApiResponse renameSession(string site, string oldsessionname, string newsessionname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("site", site);
 			parameters.Add("oldSessionName", oldsessionname);
 			parameters.Add("newSessionName", newsessionname);

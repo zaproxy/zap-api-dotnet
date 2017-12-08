@@ -63,14 +63,14 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void ShutdownZAP()
         {
-            _apiResponse = _api.core.shutdown(_apikey);
+            _apiResponse = _api.core.shutdown();
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("ZAP shutdown success " + _target);
         }
 
         private static void PrintAlertsToConsole()
         {
-            List<Alert> alerts = _api.GetAlerts(_target, 0, 0);
+            List<Alert> alerts = _api.GetAlerts(_target, 0, 0, string.Empty);
             foreach (var alert in alerts)
             {
                 Console.WriteLine(alert.AlertMessage
@@ -91,12 +91,12 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void WriteHtmlReport(string reportFileName)
         {
-            File.WriteAllBytes(reportFileName + ".html" , _api.core.htmlreport(_apikey));
+            File.WriteAllBytes(reportFileName + ".html" , _api.core.htmlreport());
         }
 
         private static void WriteXmlReport(string reportFileName)
         {
-            File.WriteAllBytes(reportFileName + ".xml", _api.core.xmlreport(_apikey));
+            File.WriteAllBytes(reportFileName + ".xml", _api.core.xmlreport());
         }
 
         private static void PollTheActiveScannerTillCompletion(string activeScanId)
@@ -116,7 +116,7 @@ namespace OWASPZAPDotNetAPI.Samples
         private static string StartActiveScanning(string contextId)
         {
             Console.WriteLine("Active Scanner: " + _target);
-            _apiResponse = _api.ascan.scan(_apikey, _target, "", "", "", "", "", contextId);
+            _apiResponse = _api.ascan.scan(_target, "", "", "", "", "", contextId);
 
             string activeScanId = ((ApiResponseElement)_apiResponse).Value;
             return activeScanId;
@@ -142,7 +142,7 @@ namespace OWASPZAPDotNetAPI.Samples
         private static void StartAjaxSpidering(string contextName)
         {
             Console.WriteLine("Ajax Spider: " + _target);
-            _apiResponse = _api.ajaxspider.scan(_apikey, _target, "", contextName, "");
+            _apiResponse = _api.ajaxspider.scan(_target, "", contextName, "");
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("Ajax Spider started for " + _target);
@@ -167,24 +167,24 @@ namespace OWASPZAPDotNetAPI.Samples
         private static string StartSpidering(string contextName)
         {
             Console.WriteLine("Spider: " + _target);
-            _apiResponse = _api.spider.scan(_apikey, _target, "", "", contextName, "");
+            _apiResponse = _api.spider.scan(_target, "", "", contextName, "");
             string scanid = ((ApiResponseElement)_apiResponse).Value;
             return scanid;
         }
 
         private static void EnableForcedUserMode()
         {
-            _apiResponse = _api.forcedUser.setForcedUserModeEnabled(_apikey, true);
+            _apiResponse = _api.forcedUser.setForcedUserModeEnabled(true);
         }
 
         private static void SetASpecificForcedUser(string contextId, string userId)
         {
-            _apiResponse = _api.forcedUser.setForcedUser(_apikey, contextId, userId);
+            _apiResponse = _api.forcedUser.setForcedUser(contextId, userId);
         }
 
         private static void EnableUser(string contextId, string userId)
         {
-            _apiResponse = _api.users.setUserEnabled(_apikey, contextId, userId, "true");
+            _apiResponse = _api.users.setUserEnabled(contextId, userId, "true");
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("user enabled");
@@ -195,7 +195,7 @@ namespace OWASPZAPDotNetAPI.Samples
             string userAuthenticationConfigFormat = "username={0}&password={1}";
             string userAuthenticationConfig = string.Format(userAuthenticationConfigFormat, userName, password);
 
-            _apiResponse = _api.users.setAuthenticationCredentials(_apikey, contextId, userId, userAuthenticationConfig);
+            _apiResponse = _api.users.setAuthenticationCredentials(contextId, userId, userAuthenticationConfig);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("User credentials set");
@@ -203,7 +203,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static string CreateNewUser(string contextId, string userName)
         {
-            _apiResponse = _api.users.newUser(_apikey, contextId, userName);
+            _apiResponse = _api.users.newUser(contextId, userName);
             string userId = ((ApiResponseElement)_apiResponse).Value;
             return userId;
         }
@@ -216,7 +216,7 @@ namespace OWASPZAPDotNetAPI.Samples
         private static void SetLoggedInIndicatorForFormsBasedAuthentication(string contextId)
         {
             string loggedInIndicator = @"\Q<form action=""/SqliModernApp/Account/LogOff"" id=""logoutForm"" method=""post"">\E";
-            _apiResponse = _api.authentication.setLoggedInIndicator(_apikey, contextId, loggedInIndicator);
+            _apiResponse = _api.authentication.setLoggedInIndicator(contextId, loggedInIndicator);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("loggedInIndicator is set");
@@ -224,7 +224,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void SetFormsBasedAuthentication(string contextId, string formBasedAuthenticationConfiguration)
         {
-            _apiResponse = _api.authentication.setAuthenticationMethod(_apikey, contextId, "formBasedAuthentication", formBasedAuthenticationConfiguration);
+            _apiResponse = _api.authentication.setAuthenticationMethod(contextId, "formBasedAuthentication", formBasedAuthenticationConfiguration);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("formBasedAuthentication is configured");
@@ -265,7 +265,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void IncludeUrlToContext(string contextName, string urlToIncludeInContext)
         {
-            _apiResponse = _api.context.includeInContext(_apikey, contextName, urlToIncludeInContext);
+            _apiResponse = _api.context.includeInContext(contextName, urlToIncludeInContext);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("{0} included to context {1}", urlToIncludeInContext, contextName);
@@ -273,7 +273,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static string CreateContext(string contextName)
         {
-            _apiResponse = _api.context.newContext(_apikey, contextName);
+            _apiResponse = _api.context.newContext(contextName);
             string contextId = ((ApiResponseElement)_apiResponse).Value;
             Console.WriteLine("{0} context created with id {1}", contextName, contextId);
             return contextId;

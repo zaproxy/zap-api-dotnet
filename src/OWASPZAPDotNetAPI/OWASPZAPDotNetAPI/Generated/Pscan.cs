@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,13 +72,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets whether or not the passive scanning is enabled (Note: the enabled state is not persisted).
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setEnabled(string apikey, string enabled)
+		public IApiResponse setEnabled(string enabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("enabled", enabled);
 			return api.CallApi("pscan", "action", "setEnabled", parameters);
 		}
@@ -87,13 +84,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets whether or not the passive scan should be performed only on messages that are in scope.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setScanOnlyInScope(string apikey, string onlyinscope)
+		public IApiResponse setScanOnlyInScope(string onlyinscope)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("onlyInScope", onlyinscope);
 			return api.CallApi("pscan", "action", "setScanOnlyInScope", parameters);
 		}
@@ -102,13 +96,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Enables all passive scanners
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse enableAllScanners(string apikey)
+		public IApiResponse enableAllScanners()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("pscan", "action", "enableAllScanners", parameters);
 		}
 
@@ -116,13 +106,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Disables all passive scanners
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse disableAllScanners(string apikey)
+		public IApiResponse disableAllScanners()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("pscan", "action", "disableAllScanners", parameters);
 		}
 
@@ -130,13 +116,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Enables all passive scanners with the given IDs (comma separated list of IDs)
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse enableScanners(string apikey, string ids)
+		public IApiResponse enableScanners(string ids)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("ids", ids);
 			return api.CallApi("pscan", "action", "enableScanners", parameters);
 		}
@@ -145,13 +128,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Disables all passive scanners with the given IDs (comma separated list of IDs)
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse disableScanners(string apikey, string ids)
+		public IApiResponse disableScanners(string ids)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("ids", ids);
 			return api.CallApi("pscan", "action", "disableScanners", parameters);
 		}
@@ -160,13 +140,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets the alert threshold of the passive scanner with the given ID, accepted values for alert threshold: OFF, DEFAULT, LOW, MEDIUM and HIGH
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setScannerAlertThreshold(string apikey, string id, string alertthreshold)
+		public IApiResponse setScannerAlertThreshold(string id, string alertthreshold)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("id", id);
 			parameters.Add("alertThreshold", alertthreshold);
 			return api.CallApi("pscan", "action", "setScannerAlertThreshold", parameters);

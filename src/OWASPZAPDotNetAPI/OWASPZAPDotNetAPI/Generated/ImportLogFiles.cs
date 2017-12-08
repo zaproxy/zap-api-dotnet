@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,13 +42,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse ImportZAPLogFromFile(string apikey, string filepath)
+		public IApiResponse ImportZAPLogFromFile(string filepath)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("FilePath", filepath);
 			return api.CallApi("importLogFiles", "action", "ImportZAPLogFromFile", parameters);
 		}
@@ -57,13 +54,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse ImportModSecurityLogFromFile(string apikey, string filepath)
+		public IApiResponse ImportModSecurityLogFromFile(string filepath)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("FilePath", filepath);
 			return api.CallApi("importLogFiles", "action", "ImportModSecurityLogFromFile", parameters);
 		}
@@ -72,13 +66,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse ImportZAPHttpRequestResponsePair(string apikey, string httprequest, string httpresponse)
+		public IApiResponse ImportZAPHttpRequestResponsePair(string httprequest, string httpresponse)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("HTTPRequest", httprequest);
 			parameters.Add("HTTPResponse", httpresponse);
 			return api.CallApi("importLogFiles", "action", "ImportZAPHttpRequestResponsePair", parameters);
@@ -88,13 +79,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse PostModSecurityAuditEvent(string apikey, string auditeventstring)
+		public IApiResponse PostModSecurityAuditEvent(string auditeventstring)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("AuditEventString", auditeventstring);
 			return api.CallApi("importLogFiles", "action", "PostModSecurityAuditEvent", parameters);
 		}
@@ -103,13 +91,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] OtherPostModSecurityAuditEvent(string apikey, string auditeventstring)
+		public byte[] OtherPostModSecurityAuditEvent(string auditeventstring)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("AuditEventString", auditeventstring);
 			return api.CallApiOther("importLogFiles", "other", "OtherPostModSecurityAuditEvent", parameters);
 		}

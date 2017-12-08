@@ -29,25 +29,38 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Params 
+	public class Openapi 
 	{
 		private ClientApi api = null;
 
-		public Params(ClientApi api) 
+		public Openapi(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Shows the parameters for the specified site, or for all sites if the site is not specified
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse parameters(string site)
+		public IApiResponse importFile(string file)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("site", site);
-			return api.CallApi("params", "view", "params", parameters);
+			parameters.Add("file", file);
+			return api.CallApi("openapi", "action", "importFile", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse importUrl(string url, string hostoverride)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("url", url);
+			parameters.Add("hostOverride", hostoverride);
+			return api.CallApi("openapi", "action", "importUrl", parameters);
 		}
 
 	}

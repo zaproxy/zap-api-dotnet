@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,28 +51,42 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Gets the alerts raised by ZAP, optionally filtering by URL and paginating with 'start' position and 'count' of alerts
+		///Gets the alerts raised by ZAP, optionally filtering by URL or riskId, and paginating with 'start' position and 'count' of alerts
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse alerts(string baseurl, string start, string count)
+		public IApiResponse alerts(string baseurl, string start, string count, string riskid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
+			parameters.Add("riskId", riskid);
 			return api.CallApi("core", "view", "alerts", parameters);
 		}
 
 		/// <summary>
-		///Gets the number of alerts, optionally filtering by URL
+		///Gets number of alerts grouped by each risk level, optionally filtering by URL
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse numberOfAlerts(string baseurl)
+		public IApiResponse alertsSummary(string baseurl)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("baseurl", baseurl);
+			return api.CallApi("core", "view", "alertsSummary", parameters);
+		}
+
+		/// <summary>
+		///Gets the number of alerts, optionally filtering by URL or riskId
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse numberOfAlerts(string baseurl, string riskid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("baseurl", baseurl);
+			parameters.Add("riskId", riskid);
 			return api.CallApi("core", "view", "numberOfAlerts", parameters);
 		}
 
@@ -97,17 +111,19 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Gets the URLs accessed through/by ZAP
+		///Gets the URLs accessed through/by ZAP, optionally filtering by (base) URL.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse urls()
+		public IApiResponse urls(string baseurl)
 		{
 			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("baseurl", baseurl);
 			return api.CallApi("core", "view", "urls", parameters);
 		}
 
 		/// <summary>
-		///Gets the HTTP message with the given ID. Returns the ID, request/response headers and bodies, cookies and note.
+		///Gets the HTTP message with the given ID. Returns the ID, request/response headers and bodies, cookies, note, type, RTT, and timestamp.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse message(string id)
@@ -130,6 +146,18 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("start", start);
 			parameters.Add("count", count);
 			return api.CallApi("core", "view", "messages", parameters);
+		}
+
+		/// <summary>
+		///Gets the HTTP messages with the given IDs.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse messagesById(string ids)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("ids", ids);
+			return api.CallApi("core", "view", "messagesById", parameters);
 		}
 
 		/// <summary>
@@ -165,7 +193,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Gets the regular expressions, applied to URLs, to exclude from the Proxy
+		///Gets the regular expressions, applied to URLs, to exclude from the local proxies.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse excludedFromProxy()
@@ -202,8 +230,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Use view proxyChainExcludedDomains instead.
+		/// [Obsolete]
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete]
 		public IApiResponse optionProxyChainSkipName()
 		{
 			Dictionary<string, string> parameters = null;
@@ -212,8 +242,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Use view proxyChainExcludedDomains instead.
+		/// [Obsolete]
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete]
 		public IApiResponse optionProxyExcludedDomains()
 		{
 			Dictionary<string, string> parameters = null;
@@ -222,14 +254,60 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Use view proxyChainExcludedDomains instead.
+		/// [Obsolete]
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete]
 		public IApiResponse optionProxyExcludedDomainsEnabled()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("core", "view", "optionProxyExcludedDomainsEnabled", parameters);
 		}
 
+		/// <summary>
+		///Gets the path to ZAP's home directory.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse zapHomePath()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "zapHomePath", parameters);
+		}
+
+		/// <summary>
+		///Gets the maximum number of alert instances to include in a report.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionMaximumAlertInstances()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionMaximumAlertInstances", parameters);
+		}
+
+		/// <summary>
+		///Gets whether or not related alerts will be merged in any reports generated.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionMergeRelatedAlerts()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionMergeRelatedAlerts", parameters);
+		}
+
+		/// <summary>
+		///Gets the path to the file with alert overrides.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionAlertOverridesFilePath()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionAlertOverridesFilePath", parameters);
+		}
+
+		/// <summary>
+		///Gets the user agent that ZAP should use when creating HTTP messages (for example, spider messages or CONNECT requests to outgoing proxy).
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionDefaultUserAgent()
 		{
 			Dictionary<string, string> parameters = null;
@@ -322,13 +400,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Convenient and simple action to access a URL, optionally following redirections. Returns the request sent and response received and followed redirections, if any. Other actions are available which offer more control on what is sent, like, 'sendRequest' or 'sendHarRequest'.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse accessUrl(string apikey, string url, string followredirects)
+		public IApiResponse accessUrl(string url, string followredirects)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("url", url);
 			parameters.Add("followRedirects", followredirects);
 			return api.CallApi("core", "action", "accessUrl", parameters);
@@ -338,13 +413,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Shuts down ZAP
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse shutdown(string apikey)
+		public IApiResponse shutdown()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("core", "action", "shutdown", parameters);
 		}
 
@@ -352,13 +423,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Creates a new session, optionally overwriting existing files. If a relative path is specified it will be resolved against the "session" directory in ZAP "home" dir.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse newSession(string apikey, string name, string overwrite)
+		public IApiResponse newSession(string name, string overwrite)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("name", name);
 			parameters.Add("overwrite", overwrite);
 			return api.CallApi("core", "action", "newSession", parameters);
@@ -368,13 +436,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Loads the session with the given name. If a relative path is specified it will be resolved against the "session" directory in ZAP "home" dir.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse loadSession(string apikey, string name)
+		public IApiResponse loadSession(string name)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("name", name);
 			return api.CallApi("core", "action", "loadSession", parameters);
 		}
@@ -383,64 +448,47 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Saves the session with the name supplied, optionally overwriting existing files. If a relative path is specified it will be resolved against the "session" directory in ZAP "home" dir.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse saveSession(string apikey, string name, string overwrite)
+		public IApiResponse saveSession(string name, string overwrite)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("name", name);
 			parameters.Add("overwrite", overwrite);
 			return api.CallApi("core", "action", "saveSession", parameters);
 		}
 
-		public IApiResponse snapshotSession(string apikey)
+		public IApiResponse snapshotSession()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("core", "action", "snapshotSession", parameters);
 		}
 
 		/// <summary>
-		///Clears the regexes of URLs excluded from the proxy.
+		///Clears the regexes of URLs excluded from the local proxies.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse clearExcludedFromProxy(string apikey)
+		public IApiResponse clearExcludedFromProxy()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("core", "action", "clearExcludedFromProxy", parameters);
 		}
 
 		/// <summary>
-		///Adds a regex of URLs that should be excluded from the proxy.
+		///Adds a regex of URLs that should be excluded from the local proxies.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse excludeFromProxy(string apikey, string regex)
+		public IApiResponse excludeFromProxy(string regex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("regex", regex);
 			return api.CallApi("core", "action", "excludeFromProxy", parameters);
 		}
 
-		public IApiResponse setHomeDirectory(string apikey, string dir)
+		public IApiResponse setHomeDirectory(string dir)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("dir", dir);
 			return api.CallApi("core", "action", "setHomeDirectory", parameters);
 		}
@@ -449,28 +497,21 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets the mode, which may be one of [safe, protect, standard, attack]
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setMode(string apikey, string mode)
+		public IApiResponse setMode(string mode)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("mode", mode);
 			return api.CallApi("core", "action", "setMode", parameters);
 		}
 
 		/// <summary>
-		///Generates a new Root CA certificate for the Local Proxy.
+		///Generates a new Root CA certificate for the local proxies.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse generateRootCA(string apikey)
+		public IApiResponse generateRootCA()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("core", "action", "generateRootCA", parameters);
 		}
 
@@ -478,13 +519,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sends the HTTP request, optionally following redirections. Returns the request sent and response received and followed redirections, if any. The Mode is enforced when sending the request (and following redirections), custom manual requests are not allowed in 'Safe' mode nor in 'Protected' mode if out of scope.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse sendRequest(string apikey, string request, string followredirects)
+		public IApiResponse sendRequest(string request, string followredirects)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("request", request);
 			parameters.Add("followRedirects", followredirects);
 			return api.CallApi("core", "action", "sendRequest", parameters);
@@ -494,23 +532,27 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Deletes all alerts of the current session.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse deleteAllAlerts(string apikey)
+		public IApiResponse deleteAllAlerts()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("core", "action", "deleteAllAlerts", parameters);
 		}
 
-		public IApiResponse runGarbageCollection(string apikey)
+		/// <summary>
+		///Deletes the alert with the given ID. 
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse deleteAlert(string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
+			parameters.Add("id", id);
+			return api.CallApi("core", "action", "deleteAlert", parameters);
+		}
+
+		public IApiResponse runGarbageCollection()
+		{
+			Dictionary<string, string> parameters = null;
 			return api.CallApi("core", "action", "runGarbageCollection", parameters);
 		}
 
@@ -518,13 +560,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Deletes the site node found in the Sites Tree on the basis of the URL, HTTP method, and post data (if applicable and specified). 
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse deleteSiteNode(string apikey, string url, string method, string postdata)
+		public IApiResponse deleteSiteNode(string url, string method, string postdata)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("url", url);
 			parameters.Add("method", method);
 			parameters.Add("postData", postdata);
@@ -535,13 +574,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Adds a domain to be excluded from the outgoing proxy, using the specified value. Optionally sets if the new entry is enabled (default, true) and whether or not the new value is specified as a regex (default, false).
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addProxyChainExcludedDomain(string apikey, string value, string isregex, string isenabled)
+		public IApiResponse addProxyChainExcludedDomain(string value, string isregex, string isenabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("value", value);
 			parameters.Add("isRegex", isregex);
 			parameters.Add("isEnabled", isenabled);
@@ -552,13 +588,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Modifies a domain excluded from the outgoing proxy. Allows to modify the value, if enabled or if a regex. The domain is selected with its index, which can be obtained with the view proxyChainExcludedDomains.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse modifyProxyChainExcludedDomain(string apikey, string idx, string value, string isregex, string isenabled)
+		public IApiResponse modifyProxyChainExcludedDomain(string idx, string value, string isregex, string isenabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("idx", idx);
 			parameters.Add("value", value);
 			parameters.Add("isRegex", isregex);
@@ -570,13 +603,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Removes a domain excluded from the outgoing proxy, with the given index. The index can be obtained with the view proxyChainExcludedDomains.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeProxyChainExcludedDomain(string apikey, string idx)
+		public IApiResponse removeProxyChainExcludedDomain(string idx)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("idx", idx);
 			return api.CallApi("core", "action", "removeProxyChainExcludedDomain", parameters);
 		}
@@ -585,13 +615,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Enables all domains excluded from the outgoing proxy.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse enableAllProxyChainExcludedDomains(string apikey)
+		public IApiResponse enableAllProxyChainExcludedDomains()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("core", "action", "enableAllProxyChainExcludedDomains", parameters);
 		}
 
@@ -599,82 +625,102 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Disables all domains excluded from the outgoing proxy.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse disableAllProxyChainExcludedDomains(string apikey)
+		public IApiResponse disableAllProxyChainExcludedDomains()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("core", "action", "disableAllProxyChainExcludedDomains", parameters);
 		}
 
-		public IApiResponse setOptionDefaultUserAgent(string apikey, string str)
+		/// <summary>
+		///Sets the maximum number of alert instances to include in a report. A value of zero is treated as unlimited.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionMaximumAlertInstances(string numberofinstances)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
+			parameters.Add("numberOfInstances", numberofinstances);
+			return api.CallApi("core", "action", "setOptionMaximumAlertInstances", parameters);
+		}
+
+		/// <summary>
+		///Sets whether or not related alerts will be merged in any reports generated.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionMergeRelatedAlerts(string enabled)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("enabled", enabled);
+			return api.CallApi("core", "action", "setOptionMergeRelatedAlerts", parameters);
+		}
+
+		/// <summary>
+		///Sets (or clears, if empty) the path to the file with alert overrides.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionAlertOverridesFilePath(string filepath)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("filePath", filepath);
+			return api.CallApi("core", "action", "setOptionAlertOverridesFilePath", parameters);
+		}
+
+		/// <summary>
+		///Sets the user agent that ZAP should use when creating HTTP messages (for example, spider messages or CONNECT requests to outgoing proxy).
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionDefaultUserAgent(string str)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
 			parameters.Add("String", str);
 			return api.CallApi("core", "action", "setOptionDefaultUserAgent", parameters);
 		}
 
-		public IApiResponse setOptionProxyChainName(string apikey, string str)
+		public IApiResponse setOptionProxyChainName(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("core", "action", "setOptionProxyChainName", parameters);
 		}
 
-		public IApiResponse setOptionProxyChainPassword(string apikey, string str)
+		public IApiResponse setOptionProxyChainPassword(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("core", "action", "setOptionProxyChainPassword", parameters);
 		}
 
-		public IApiResponse setOptionProxyChainRealm(string apikey, string str)
+		public IApiResponse setOptionProxyChainRealm(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("core", "action", "setOptionProxyChainRealm", parameters);
 		}
 
 		/// <summary>
 		///Use actions [add|modify|remove]ProxyChainExcludedDomain instead.
+		/// [Obsolete]
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionProxyChainSkipName(string apikey, string str)
+		[Obsolete]
+		public IApiResponse setOptionProxyChainSkipName(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("core", "action", "setOptionProxyChainSkipName", parameters);
 		}
 
-		public IApiResponse setOptionProxyChainUserName(string apikey, string str)
+		public IApiResponse setOptionProxyChainUserName(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("core", "action", "setOptionProxyChainUserName", parameters);
 		}
@@ -683,125 +729,94 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets the TTL (in seconds) of successful DNS queries (applies after ZAP restart).
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionDnsTtlSuccessfulQueries(string apikey, int i)
+		public IApiResponse setOptionDnsTtlSuccessfulQueries(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("core", "action", "setOptionDnsTtlSuccessfulQueries", parameters);
 		}
 
-		public IApiResponse setOptionHttpStateEnabled(string apikey, bool boolean)
+		public IApiResponse setOptionHttpStateEnabled(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("core", "action", "setOptionHttpStateEnabled", parameters);
 		}
 
-		public IApiResponse setOptionProxyChainPort(string apikey, int i)
+		public IApiResponse setOptionProxyChainPort(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("core", "action", "setOptionProxyChainPort", parameters);
 		}
 
-		public IApiResponse setOptionProxyChainPrompt(string apikey, bool boolean)
+		public IApiResponse setOptionProxyChainPrompt(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("core", "action", "setOptionProxyChainPrompt", parameters);
 		}
 
-		public IApiResponse setOptionSingleCookieRequestHeader(string apikey, bool boolean)
+		public IApiResponse setOptionSingleCookieRequestHeader(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("core", "action", "setOptionSingleCookieRequestHeader", parameters);
 		}
 
-		public IApiResponse setOptionTimeoutInSecs(string apikey, int i)
+		public IApiResponse setOptionTimeoutInSecs(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("core", "action", "setOptionTimeoutInSecs", parameters);
 		}
 
-		public IApiResponse setOptionUseProxyChain(string apikey, bool boolean)
+		/// <summary>
+		///Sets whether or not the outgoing proxy should be used. The address/hostname of the outgoing proxy must be set to enable this option.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionUseProxyChain(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("core", "action", "setOptionUseProxyChain", parameters);
 		}
 
-		public IApiResponse setOptionUseProxyChainAuth(string apikey, bool boolean)
+		public IApiResponse setOptionUseProxyChainAuth(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("core", "action", "setOptionUseProxyChainAuth", parameters);
 		}
 
-		public byte[] proxypac(string apikey)
+		public byte[] proxypac()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApiOther("core", "other", "proxy.pac", parameters);
 		}
 
 		/// <summary>
-		///Gets the Root CA certificate of the Local Proxy.
+		///Gets the Root CA certificate used by the local proxies.
 		/// </summary>
 		/// <returns></returns>
-		public byte[] rootcert(string apikey)
+		public byte[] rootcert()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApiOther("core", "other", "rootcert", parameters);
 		}
 
-		public byte[] setproxy(string apikey, string proxy)
+		public byte[] setproxy(string proxy)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("proxy", proxy);
 			return api.CallApiOther("core", "other", "setproxy", parameters);
 		}
@@ -810,13 +825,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Generates a report in XML format
 		/// </summary>
 		/// <returns></returns>
-		public byte[] xmlreport(string apikey)
+		public byte[] xmlreport()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApiOther("core", "other", "xmlreport", parameters);
 		}
 
@@ -824,27 +835,29 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Generates a report in HTML format
 		/// </summary>
 		/// <returns></returns>
-		public byte[] htmlreport(string apikey)
+		public byte[] htmlreport()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApiOther("core", "other", "htmlreport", parameters);
+		}
+
+		/// <summary>
+		///Generates a report in JSON format
+		/// </summary>
+		/// <returns></returns>
+		public byte[] jsonreport()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApiOther("core", "other", "jsonreport", parameters);
 		}
 
 		/// <summary>
 		///Generates a report in Markdown format
 		/// </summary>
 		/// <returns></returns>
-		public byte[] mdreport(string apikey)
+		public byte[] mdreport()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApiOther("core", "other", "mdreport", parameters);
 		}
 
@@ -852,13 +865,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Gets the message with the given ID in HAR format
 		/// </summary>
 		/// <returns></returns>
-		public byte[] messageHar(string apikey, string id)
+		public byte[] messageHar(string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("id", id);
 			return api.CallApiOther("core", "other", "messageHar", parameters);
 		}
@@ -867,13 +877,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Gets the HTTP messages sent through/by ZAP, in HAR format, optionally filtered by URL and paginated with 'start' position and 'count' of messages
 		/// </summary>
 		/// <returns></returns>
-		public byte[] messagesHar(string apikey, string baseurl, string start, string count)
+		public byte[] messagesHar(string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
 			parameters.Add("count", count);
@@ -881,16 +888,25 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Sends the first HAR request entry, optionally following redirections. Returns, in HAR format, the request sent and response received and followed redirections, if any. The Mode is enforced when sending the request (and following redirections), custom manual requests are not allowed in 'Safe' mode nor in 'Protected' mode if out of scope.
+		///Gets the HTTP messages with the given IDs, in HAR format.
 		/// </summary>
 		/// <returns></returns>
-		public byte[] sendHarRequest(string apikey, string request, string followredirects)
+		public byte[] messagesHarById(string ids)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
+			parameters.Add("ids", ids);
+			return api.CallApiOther("core", "other", "messagesHarById", parameters);
+		}
+
+		/// <summary>
+		///Sends the first HAR request entry, optionally following redirections. Returns, in HAR format, the request sent and response received and followed redirections, if any. The Mode is enforced when sending the request (and following redirections), custom manual requests are not allowed in 'Safe' mode nor in 'Protected' mode if out of scope.
+		/// </summary>
+		/// <returns></returns>
+		public byte[] sendHarRequest(string request, string followredirects)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
 			parameters.Add("request", request);
 			parameters.Add("followRedirects", followredirects);
 			return api.CallApiOther("core", "other", "sendHarRequest", parameters);

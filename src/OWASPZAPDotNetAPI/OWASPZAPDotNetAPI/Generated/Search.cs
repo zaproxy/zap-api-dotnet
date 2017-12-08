@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -126,13 +126,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("search", "view", "messagesByHeaderRegex", parameters);
 		}
 
-		public byte[] harByUrlRegex(string apikey, string regex, string baseurl, string start, string count)
+		public byte[] harByUrlRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("regex", regex);
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
@@ -140,13 +137,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApiOther("search", "other", "harByUrlRegex", parameters);
 		}
 
-		public byte[] harByRequestRegex(string apikey, string regex, string baseurl, string start, string count)
+		public byte[] harByRequestRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("regex", regex);
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
@@ -154,13 +148,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApiOther("search", "other", "harByRequestRegex", parameters);
 		}
 
-		public byte[] harByResponseRegex(string apikey, string regex, string baseurl, string start, string count)
+		public byte[] harByResponseRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("regex", regex);
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);
@@ -168,13 +159,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApiOther("search", "other", "harByResponseRegex", parameters);
 		}
 
-		public byte[] harByHeaderRegex(string apikey, string regex, string baseurl, string start, string count)
+		public byte[] harByHeaderRegex(string regex, string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("regex", regex);
 			parameters.Add("baseurl", baseurl);
 			parameters.Add("start", start);

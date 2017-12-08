@@ -19,6 +19,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -45,12 +46,38 @@ namespace OWASPZAPDotNetAPI
 
         public string DownloadString(Uri uri)
         {
-            return webClient.DownloadString(uri);
+            string retVal = string.Empty; 
+            try
+            {
+                retVal = webClient.DownloadString(uri);
+            }
+            catch (WebException webException)
+            {
+                var responseStream = webException.Response?.GetResponseStream();
+                if (responseStream != null)
+                {
+                    using (var reader = new StreamReader(responseStream))
+                    {
+                        retVal = reader.ReadToEnd();
+                    }
+                }
+            }
+
+            return retVal;
         }
 
         public byte[] DownloadData(Uri uri)
         {
-            return webClient.DownloadData(uri);
+            byte[] retVal = default(byte[]);
+            try
+            {
+                retVal = webClient.DownloadData(uri);
+            }
+            catch (WebException)
+            {
+                throw;
+            }
+            return retVal;
         }
 
         public void Dispose()

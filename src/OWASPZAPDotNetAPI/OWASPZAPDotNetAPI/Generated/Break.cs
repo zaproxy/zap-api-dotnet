@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,13 +82,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Controls the global break functionality. The type may be one of: http-all, http-request or http-response. The state may be true (for turning break on for the specified type) or false (for turning break off). Scope is not currently used.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse brk(string apikey, string type, string state, string scope)
+		public IApiResponse brk(string type, string state, string scope)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("type", type);
 			parameters.Add("state", state);
 			parameters.Add("scope", scope);
@@ -99,13 +96,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Overwrites the currently intercepted message with the data provided
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setHttpMessage(string apikey, string httpheader, string httpbody)
+		public IApiResponse setHttpMessage(string httpheader, string httpbody)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("httpHeader", httpheader);
 			parameters.Add("httpBody", httpbody);
 			return api.CallApi("break", "action", "setHttpMessage", parameters);
@@ -115,13 +109,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Submits the currently intercepted message and unsets the global request/response break points
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse cont(string apikey)
+		public IApiResponse cont()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("break", "action", "continue", parameters);
 		}
 
@@ -129,13 +119,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Submits the currently intercepted message, the next request or response will automatically be intercepted
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse step(string apikey)
+		public IApiResponse step()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("break", "action", "step", parameters);
 		}
 
@@ -143,13 +129,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Drops the currently intercepted message
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse drop(string apikey)
+		public IApiResponse drop()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("break", "action", "drop", parameters);
 		}
 
@@ -157,13 +139,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Adds a custom HTTP breakpont. The string is the string to match. Location may be one of: url, request_header, request_body, response_header or response_body. Match may be: contains or regex. Inverse (match) may be true or false. Lastly, ignorecase (when matching the string) may be true or false.  
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addHttpBreakpoint(string apikey, string str, string location, string match, string inverse, string ignorecase)
+		public IApiResponse addHttpBreakpoint(string str, string location, string match, string inverse, string ignorecase)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("string", str);
 			parameters.Add("location", location);
 			parameters.Add("match", match);
@@ -176,13 +155,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Removes the specified break point
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeHttpBreakpoint(string apikey, string str, string location, string match, string inverse, string ignorecase)
+		public IApiResponse removeHttpBreakpoint(string str, string location, string match, string inverse, string ignorecase)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("string", str);
 			parameters.Add("location", location);
 			parameters.Add("match", match);

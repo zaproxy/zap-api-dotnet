@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -129,13 +129,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Clears all of the statistics
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse clearStats(string apikey, string keyprefix)
+		public IApiResponse clearStats(string keyprefix)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("keyPrefix", keyprefix);
 			return api.CallApi("stats", "action", "clearStats", parameters);
 		}
@@ -144,13 +141,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets the Statsd service hostname, supply an empty string to stop using a Statsd service
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionStatsdHost(string apikey, string str)
+		public IApiResponse setOptionStatsdHost(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("stats", "action", "setOptionStatsdHost", parameters);
 		}
@@ -159,13 +153,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets the prefix to be applied to all stats sent to the configured Statsd service
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionStatsdPrefix(string apikey, string str)
+		public IApiResponse setOptionStatsdPrefix(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("stats", "action", "setOptionStatsdPrefix", parameters);
 		}
@@ -174,13 +165,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets whether in memory statistics are enabled
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionInMemoryEnabled(string apikey, bool boolean)
+		public IApiResponse setOptionInMemoryEnabled(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("stats", "action", "setOptionInMemoryEnabled", parameters);
 		}
@@ -189,13 +177,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets the Statsd service port
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionStatsdPort(string apikey, int i)
+		public IApiResponse setOptionStatsdPort(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("stats", "action", "setOptionStatsdPort", parameters);
 		}

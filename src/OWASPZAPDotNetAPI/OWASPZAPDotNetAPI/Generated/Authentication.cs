@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,38 +76,29 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "view", "getLoggedOutIndicator", parameters);
 		}
 
-		public IApiResponse setAuthenticationMethod(string apikey, string contextid, string authmethodname, string authmethodconfigparams)
+		public IApiResponse setAuthenticationMethod(string contextid, string authmethodname, string authmethodconfigparams)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("authMethodName", authmethodname);
 			parameters.Add("authMethodConfigParams", authmethodconfigparams);
 			return api.CallApi("authentication", "action", "setAuthenticationMethod", parameters);
 		}
 
-		public IApiResponse setLoggedInIndicator(string apikey, string contextid, string loggedinindicatorregex)
+		public IApiResponse setLoggedInIndicator(string contextid, string loggedinindicatorregex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("loggedInIndicatorRegex", loggedinindicatorregex);
 			return api.CallApi("authentication", "action", "setLoggedInIndicator", parameters);
 		}
 
-		public IApiResponse setLoggedOutIndicator(string apikey, string contextid, string loggedoutindicatorregex)
+		public IApiResponse setLoggedOutIndicator(string contextid, string loggedoutindicatorregex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("loggedOutIndicatorRegex", loggedoutindicatorregex);
 			return api.CallApi("authentication", "action", "setLoggedOutIndicator", parameters);

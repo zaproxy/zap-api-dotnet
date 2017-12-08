@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,63 +72,48 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "view", "getAuthenticationCredentials", parameters);
 		}
 
-		public IApiResponse newUser(string apikey, string contextid, string name)
+		public IApiResponse newUser(string contextid, string name)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("name", name);
 			return api.CallApi("users", "action", "newUser", parameters);
 		}
 
-		public IApiResponse removeUser(string apikey, string contextid, string userid)
+		public IApiResponse removeUser(string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
 			return api.CallApi("users", "action", "removeUser", parameters);
 		}
 
-		public IApiResponse setUserEnabled(string apikey, string contextid, string userid, string enabled)
+		public IApiResponse setUserEnabled(string contextid, string userid, string enabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
 			parameters.Add("enabled", enabled);
 			return api.CallApi("users", "action", "setUserEnabled", parameters);
 		}
 
-		public IApiResponse setUserName(string apikey, string contextid, string userid, string name)
+		public IApiResponse setUserName(string contextid, string userid, string name)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
 			parameters.Add("name", name);
 			return api.CallApi("users", "action", "setUserName", parameters);
 		}
 
-		public IApiResponse setAuthenticationCredentials(string apikey, string contextid, string userid, string authcredentialsconfigparams)
+		public IApiResponse setAuthenticationCredentials(string contextid, string userid, string authcredentialsconfigparams)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("userId", userid);
 			parameters.Add("authCredentialsConfigParams", authcredentialsconfigparams);
