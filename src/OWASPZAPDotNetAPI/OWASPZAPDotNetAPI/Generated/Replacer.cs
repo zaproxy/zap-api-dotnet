@@ -29,60 +29,66 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class ForcedUser 
+	public class Replacer 
 	{
 		private ClientApi api = null;
 
-		public ForcedUser(ClientApi api) 
+		public Replacer(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Returns 'true' if 'forced user' mode is enabled, 'false' otherwise
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse isForcedUserModeEnabled()
+		public IApiResponse rules()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("forcedUser", "view", "isForcedUserModeEnabled", parameters);
+			return api.CallApi("replacer", "view", "rules", parameters);
 		}
 
 		/// <summary>
-		///Gets the user (ID) set as 'forced user' for the given context (ID)
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse getForcedUser(string contextid)
+		public IApiResponse addRule(string description, string enabled, string matchtype, string matchregex, string matchstring, string replacement, string initiators)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("contextId", contextid);
-			return api.CallApi("forcedUser", "view", "getForcedUser", parameters);
+			parameters.Add("description", description);
+			parameters.Add("enabled", enabled);
+			parameters.Add("matchType", matchtype);
+			parameters.Add("matchRegex", matchregex);
+			parameters.Add("matchString", matchstring);
+			parameters.Add("replacement", replacement);
+			parameters.Add("initiators", initiators);
+			return api.CallApi("replacer", "action", "addRule", parameters);
 		}
 
 		/// <summary>
-		///Sets the user (ID) that should be used in 'forced user' mode for the given context (ID)
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setForcedUser(string contextid, string userid)
+		public IApiResponse removeRule(string description)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("contextId", contextid);
-			parameters.Add("userId", userid);
-			return api.CallApi("forcedUser", "action", "setForcedUser", parameters);
+			parameters.Add("description", description);
+			return api.CallApi("replacer", "action", "removeRule", parameters);
 		}
 
 		/// <summary>
-		///Sets if 'forced user' mode should be enabled or not
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setForcedUserModeEnabled(bool boolean)
+		public IApiResponse setEnabled(string description, string boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("boolean", Convert.ToString(boolean));
-			return api.CallApi("forcedUser", "action", "setForcedUserModeEnabled", parameters);
+			parameters.Add("description", description);
+			parameters.Add("bool", boolean);
+			return api.CallApi("replacer", "action", "setEnabled", parameters);
 		}
 
 	}

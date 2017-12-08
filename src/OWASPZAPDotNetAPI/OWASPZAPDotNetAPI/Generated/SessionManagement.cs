@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,13 +60,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("sessionManagement", "view", "getSessionManagementMethod", parameters);
 		}
 
-		public IApiResponse setSessionManagementMethod(string apikey, string contextid, string methodname, string methodconfigparams)
+		public IApiResponse setSessionManagementMethod(string contextid, string methodname, string methodconfigparams)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextId", contextid);
 			parameters.Add("methodName", methodname);
 			parameters.Add("methodConfigParams", methodconfigparams);

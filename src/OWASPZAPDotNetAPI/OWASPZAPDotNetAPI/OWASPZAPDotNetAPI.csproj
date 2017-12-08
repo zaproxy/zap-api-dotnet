@@ -60,9 +60,12 @@
     <Compile Include="Generated\ForcedUser.cs" />
     <Compile Include="Generated\HttpSessions.cs" />
     <Compile Include="Generated\ImportLogFiles.cs" />
+    <Compile Include="Generated\Importurls.cs" />
+    <Compile Include="Generated\Openapi.cs" />
     <Compile Include="Generated\Params.cs" />
     <Compile Include="Generated\Pnh.cs" />
     <Compile Include="Generated\Pscan.cs" />
+    <Compile Include="Generated\Replacer.cs" />
     <Compile Include="Generated\Reveal.cs" />
     <Compile Include="Generated\Script.cs" />
     <Compile Include="Generated\Search.cs" />

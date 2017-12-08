@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,13 +42,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse monitor(string apikey, string id, string message)
+		public IApiResponse monitor(string id, string message)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("id", id);
 			parameters.Add("message", message);
 			return api.CallApi("pnh", "action", "monitor", parameters);
@@ -58,13 +55,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse oracle(string apikey, string id)
+		public IApiResponse oracle(string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("id", id);
 			return api.CallApi("pnh", "action", "oracle", parameters);
 		}
@@ -73,13 +67,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse startMonitoring(string apikey, string url)
+		public IApiResponse startMonitoring(string url)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("url", url);
 			return api.CallApi("pnh", "action", "startMonitoring", parameters);
 		}
@@ -88,13 +79,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse stopMonitoring(string apikey, string id)
+		public IApiResponse stopMonitoring(string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("id", id);
 			return api.CallApi("pnh", "action", "stopMonitoring", parameters);
 		}
@@ -103,13 +91,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] pnh(string apikey)
+		public byte[] pnh()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApiOther("pnh", "other", "pnh", parameters);
 		}
 
@@ -117,13 +101,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] manifest(string apikey)
+		public byte[] manifest()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApiOther("pnh", "other", "manifest", parameters);
 		}
 
@@ -131,13 +111,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] service(string apikey)
+		public byte[] service()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApiOther("pnh", "other", "service", parameters);
 		}
 
@@ -145,13 +121,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] fx_pnhxpi(string apikey)
+		public byte[] fx_pnhxpi()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApiOther("pnh", "other", "fx_pnh.xpi", parameters);
 		}
 

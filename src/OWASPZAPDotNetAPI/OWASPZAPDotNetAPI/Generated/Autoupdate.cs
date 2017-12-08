@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -180,13 +180,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Downloads the latest release, if any 
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse downloadLatestRelease(string apikey)
+		public IApiResponse downloadLatestRelease()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("autoupdate", "action", "downloadLatestRelease", parameters);
 		}
 
@@ -194,13 +190,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Installs or updates the specified add-on, returning when complete (ie not asynchronously)
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse installAddon(string apikey, string id)
+		public IApiResponse installAddon(string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("id", id);
 			return api.CallApi("autoupdate", "action", "installAddon", parameters);
 		}
@@ -209,101 +202,74 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Uninstalls the specified add-on 
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse uninstallAddon(string apikey, string id)
+		public IApiResponse uninstallAddon(string id)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("id", id);
 			return api.CallApi("autoupdate", "action", "uninstallAddon", parameters);
 		}
 
-		public IApiResponse setOptionCheckAddonUpdates(string apikey, bool boolean)
+		public IApiResponse setOptionCheckAddonUpdates(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionCheckAddonUpdates", parameters);
 		}
 
-		public IApiResponse setOptionCheckOnStart(string apikey, bool boolean)
+		public IApiResponse setOptionCheckOnStart(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionCheckOnStart", parameters);
 		}
 
-		public IApiResponse setOptionDownloadNewRelease(string apikey, bool boolean)
+		public IApiResponse setOptionDownloadNewRelease(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionDownloadNewRelease", parameters);
 		}
 
-		public IApiResponse setOptionInstallAddonUpdates(string apikey, bool boolean)
+		public IApiResponse setOptionInstallAddonUpdates(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionInstallAddonUpdates", parameters);
 		}
 
-		public IApiResponse setOptionInstallScannerRules(string apikey, bool boolean)
+		public IApiResponse setOptionInstallScannerRules(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionInstallScannerRules", parameters);
 		}
 
-		public IApiResponse setOptionReportAlphaAddons(string apikey, bool boolean)
+		public IApiResponse setOptionReportAlphaAddons(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionReportAlphaAddons", parameters);
 		}
 
-		public IApiResponse setOptionReportBetaAddons(string apikey, bool boolean)
+		public IApiResponse setOptionReportBetaAddons(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionReportBetaAddons", parameters);
 		}
 
-		public IApiResponse setOptionReportReleaseAddons(string apikey, bool boolean)
+		public IApiResponse setOptionReportReleaseAddons(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("autoupdate", "action", "setOptionReportReleaseAddons", parameters);
 		}

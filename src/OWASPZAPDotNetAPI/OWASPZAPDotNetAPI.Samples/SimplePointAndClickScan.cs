@@ -18,8 +18,6 @@ namespace OWASPZAPDotNetAPI.Samples
 
         public static void Go()
         {
-            //LoadTargetUrlToSitesTree();
-
             string spiderScanId = StartSpidering();
             PollTheSpiderTillCompletion(spiderScanId);
 
@@ -39,14 +37,14 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void ShutdownZAP()
         {
-            _apiResponse = _api.core.shutdown(_apikey);
+            _apiResponse = _api.core.shutdown();
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("ZAP shutdown success " + _target);
         }
 
         private static void PrintAlertsToConsole()
         {
-            List<Alert> alerts = _api.GetAlerts(_target, 0, 0);
+            List<Alert> alerts = _api.GetAlerts(_target, 0, 0, string.Empty);
             foreach (var alert in alerts)
             {
                 Console.WriteLine(alert.AlertMessage
@@ -67,12 +65,12 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void WriteHtmlReport(string reportFileName)
         {
-            File.WriteAllBytes(reportFileName + ".html", _api.core.htmlreport(_apikey));
+            File.WriteAllBytes(reportFileName + ".html", _api.core.htmlreport());
         }
 
         private static void WriteXmlReport(string reportFileName)
         {
-            File.WriteAllBytes(reportFileName + ".xml", _api.core.xmlreport(_apikey));
+            File.WriteAllBytes(reportFileName + ".xml", _api.core.xmlreport());
         }
 
         private static void PollTheActiveScannerTillCompletion(string activeScanId)
@@ -92,7 +90,7 @@ namespace OWASPZAPDotNetAPI.Samples
         private static string StartActiveScanning()
         {
             Console.WriteLine("Active Scanner: " + _target);
-            _apiResponse = _api.ascan.scan(_apikey, _target, "", "", "", "", "", "");
+            _apiResponse = _api.ascan.scan(_target, "", "", "", "", "", "");
 
             string activeScanId = ((ApiResponseElement)_apiResponse).Value;
             return activeScanId;
@@ -118,7 +116,7 @@ namespace OWASPZAPDotNetAPI.Samples
         private static void StartAjaxSpidering()
         {
             Console.WriteLine("Ajax Spider: " + _target);
-            _apiResponse = _api.ajaxspider.scan(_apikey, _target, "", "", "");
+            _apiResponse = _api.ajaxspider.scan(_target, "", "", "");
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("Ajax Spider started for " + _target);
@@ -143,7 +141,7 @@ namespace OWASPZAPDotNetAPI.Samples
         private static string StartSpidering()
         {
             Console.WriteLine("Spider: " + _target);
-            _apiResponse = _api.spider.scan(_apikey, _target, "", "", "", "");
+            _apiResponse = _api.spider.scan(_target, "", "", "", "");
             string scanid = ((ApiResponseElement)_apiResponse).Value;
             return scanid;
         }

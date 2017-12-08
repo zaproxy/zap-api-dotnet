@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,13 +52,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Adds an anti-CSRF token with the given name, enabled by default
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addOptionToken(string apikey, string str)
+		public IApiResponse addOptionToken(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("acsrf", "action", "addOptionToken", parameters);
 		}
@@ -67,13 +64,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Removes the anti-CSRF token with the given name
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeOptionToken(string apikey, string str)
+		public IApiResponse removeOptionToken(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("acsrf", "action", "removeOptionToken", parameters);
 		}
@@ -82,13 +76,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Generate a form for testing lack of anti-CSRF tokens - typically invoked via ZAP
 		/// </summary>
 		/// <returns></returns>
-		public byte[] genForm(string apikey, string hrefid)
+		public byte[] genForm(string hrefid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("hrefId", hrefid);
 			return api.CallApiOther("acsrf", "other", "genForm", parameters);
 		}

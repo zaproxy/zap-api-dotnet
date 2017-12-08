@@ -113,10 +113,10 @@ namespace OWASPZAPDotNetAPI
             var output = webClient.DownloadString(url);
         }
 
-        public List<Alert> GetAlerts(string baseUrl, int start, int count)
+        public List<Alert> GetAlerts(string baseUrl, int start, int count, string riskId)
         {
             List<Alert> alerts = new List<Alert>();
-            IApiResponse response = core.alerts(baseUrl, Convert.ToString(start), Convert.ToString(count));
+            IApiResponse response = core.alerts(baseUrl, Convert.ToString(start), Convert.ToString(count), riskId);
             if (response != null && response is ApiResponseList)
             {
                 ApiResponseList apiResponseList = (ApiResponseList)response;
@@ -211,7 +211,8 @@ namespace OWASPZAPDotNetAPI
                     query.Append("&");
                 }
             }
-            else if (!string.IsNullOrWhiteSpace(apikey))
+
+            if (!string.IsNullOrWhiteSpace(apikey))
             {
                 query.Append(Uri.EscapeDataString(_zapApiKeyParameterName));
                 query.Append("=");

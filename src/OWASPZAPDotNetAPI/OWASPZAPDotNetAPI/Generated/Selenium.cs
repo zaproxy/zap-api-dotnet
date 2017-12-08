@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,13 +92,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionChromeDriverPath(string apikey, string str)
+		public IApiResponse setOptionChromeDriverPath(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("selenium", "action", "setOptionChromeDriverPath", parameters);
 		}
@@ -107,13 +104,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionFirefoxBinaryPath(string apikey, string str)
+		public IApiResponse setOptionFirefoxBinaryPath(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("selenium", "action", "setOptionFirefoxBinaryPath", parameters);
 		}
@@ -122,13 +116,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionFirefoxDriverPath(string apikey, string str)
+		public IApiResponse setOptionFirefoxDriverPath(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("selenium", "action", "setOptionFirefoxDriverPath", parameters);
 		}
@@ -137,13 +128,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionIeDriverPath(string apikey, string str)
+		public IApiResponse setOptionIeDriverPath(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("selenium", "action", "setOptionIeDriverPath", parameters);
 		}
@@ -152,13 +140,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionPhantomJsBinaryPath(string apikey, string str)
+		public IApiResponse setOptionPhantomJsBinaryPath(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("selenium", "action", "setOptionPhantomJsBinaryPath", parameters);
 		}

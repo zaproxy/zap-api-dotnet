@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -185,13 +185,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse scan(string apikey, string url, string inscope, string contextname, string subtreeonly)
+		public IApiResponse scan(string url, string inscope, string contextname, string subtreeonly)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("url", url);
 			parameters.Add("inScope", inscope);
 			parameters.Add("contextName", contextname);
@@ -203,13 +200,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse scanAsUser(string apikey, string contextname, string username, string url, string subtreeonly)
+		public IApiResponse scanAsUser(string contextname, string username, string url, string subtreeonly)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			parameters.Add("userName", username);
 			parameters.Add("url", url);
@@ -221,13 +215,9 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse stop(string apikey)
+		public IApiResponse stop()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			return api.CallApi("ajaxSpider", "action", "stop", parameters);
 		}
 
@@ -235,13 +225,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionBrowserId(string apikey, string str)
+		public IApiResponse setOptionBrowserId(string str)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("String", str);
 			return api.CallApi("ajaxSpider", "action", "setOptionBrowserId", parameters);
 		}
@@ -250,13 +237,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionClickDefaultElems(string apikey, bool boolean)
+		public IApiResponse setOptionClickDefaultElems(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("ajaxSpider", "action", "setOptionClickDefaultElems", parameters);
 		}
@@ -265,13 +249,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionClickElemsOnce(string apikey, bool boolean)
+		public IApiResponse setOptionClickElemsOnce(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("ajaxSpider", "action", "setOptionClickElemsOnce", parameters);
 		}
@@ -280,13 +261,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionEventWait(string apikey, int i)
+		public IApiResponse setOptionEventWait(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("ajaxSpider", "action", "setOptionEventWait", parameters);
 		}
@@ -295,13 +273,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionMaxCrawlDepth(string apikey, int i)
+		public IApiResponse setOptionMaxCrawlDepth(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("ajaxSpider", "action", "setOptionMaxCrawlDepth", parameters);
 		}
@@ -310,13 +285,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionMaxCrawlStates(string apikey, int i)
+		public IApiResponse setOptionMaxCrawlStates(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("ajaxSpider", "action", "setOptionMaxCrawlStates", parameters);
 		}
@@ -325,13 +297,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionMaxDuration(string apikey, int i)
+		public IApiResponse setOptionMaxDuration(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("ajaxSpider", "action", "setOptionMaxDuration", parameters);
 		}
@@ -340,13 +309,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionNumberOfBrowsers(string apikey, int i)
+		public IApiResponse setOptionNumberOfBrowsers(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("ajaxSpider", "action", "setOptionNumberOfBrowsers", parameters);
 		}
@@ -355,13 +321,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionRandomInputs(string apikey, bool boolean)
+		public IApiResponse setOptionRandomInputs(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("ajaxSpider", "action", "setOptionRandomInputs", parameters);
 		}
@@ -370,13 +333,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionReloadWait(string apikey, int i)
+		public IApiResponse setOptionReloadWait(int i)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("Integer", Convert.ToString(i));
 			return api.CallApi("ajaxSpider", "action", "setOptionReloadWait", parameters);
 		}

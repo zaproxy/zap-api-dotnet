@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -122,13 +122,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Add exclude regex to context
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse excludeFromContext(string apikey, string contextname, string regex)
+		public IApiResponse excludeFromContext(string contextname, string regex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			parameters.Add("regex", regex);
 			return api.CallApi("context", "action", "excludeFromContext", parameters);
@@ -138,13 +135,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Add include regex to context
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse includeInContext(string apikey, string contextname, string regex)
+		public IApiResponse includeInContext(string contextname, string regex)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			parameters.Add("regex", regex);
 			return api.CallApi("context", "action", "includeInContext", parameters);
@@ -154,13 +148,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Creates a new context with the given name in the current session
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse newContext(string apikey, string contextname)
+		public IApiResponse newContext(string contextname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			return api.CallApi("context", "action", "newContext", parameters);
 		}
@@ -169,13 +160,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Removes a context in the current session
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeContext(string apikey, string contextname)
+		public IApiResponse removeContext(string contextname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			return api.CallApi("context", "action", "removeContext", parameters);
 		}
@@ -184,13 +172,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Exports the context with the given name to a file. If a relative file path is specified it will be resolved against the "contexts" directory in ZAP "home" dir.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse exportContext(string apikey, string contextname, string contextfile)
+		public IApiResponse exportContext(string contextname, string contextfile)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			parameters.Add("contextFile", contextfile);
 			return api.CallApi("context", "action", "exportContext", parameters);
@@ -200,13 +185,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Imports a context from a file. If a relative file path is specified it will be resolved against the "contexts" directory in ZAP "home" dir.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse importContext(string apikey, string contextfile)
+		public IApiResponse importContext(string contextfile)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextFile", contextfile);
 			return api.CallApi("context", "action", "importContext", parameters);
 		}
@@ -215,13 +197,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Includes technologies with the given names, separated by a comma, to a context
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse includeContextTechnologies(string apikey, string contextname, string technologynames)
+		public IApiResponse includeContextTechnologies(string contextname, string technologynames)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			parameters.Add("technologyNames", technologynames);
 			return api.CallApi("context", "action", "includeContextTechnologies", parameters);
@@ -231,13 +210,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Includes all built in technologies in to a context
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse includeAllContextTechnologies(string apikey, string contextname)
+		public IApiResponse includeAllContextTechnologies(string contextname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			return api.CallApi("context", "action", "includeAllContextTechnologies", parameters);
 		}
@@ -246,13 +222,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Excludes technologies with the given names, separated by a comma, from a context
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse excludeContextTechnologies(string apikey, string contextname, string technologynames)
+		public IApiResponse excludeContextTechnologies(string contextname, string technologynames)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			parameters.Add("technologyNames", technologynames);
 			return api.CallApi("context", "action", "excludeContextTechnologies", parameters);
@@ -262,13 +235,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Excludes all built in technologies from a context
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse excludeAllContextTechnologies(string apikey, string contextname)
+		public IApiResponse excludeAllContextTechnologies(string contextname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			return api.CallApi("context", "action", "excludeAllContextTechnologies", parameters);
 		}
@@ -277,13 +247,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Sets a context to in scope (contexts are in scope by default)
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setContextInScope(string apikey, string contextname, string booleaninscope)
+		public IApiResponse setContextInScope(string contextname, string booleaninscope)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("contextName", contextname);
 			parameters.Add("booleanInScope", booleaninscope);
 			return api.CallApi("context", "action", "setContextInScope", parameters);

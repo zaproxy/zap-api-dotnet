@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright the ZAP development team
+ * Copyright 2017 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,13 +62,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Enables the script with the given name
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse enable(string apikey, string scriptname)
+		public IApiResponse enable(string scriptname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("scriptName", scriptname);
 			return api.CallApi("script", "action", "enable", parameters);
 		}
@@ -77,33 +74,28 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Disables the script with the given name
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse disable(string apikey, string scriptname)
+		public IApiResponse disable(string scriptname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("scriptName", scriptname);
 			return api.CallApi("script", "action", "disable", parameters);
 		}
 
 		/// <summary>
-		///Loads a script into ZAP from the given local file, with the given name, type and engine, optionally with a description
+		///Loads a script into ZAP from the given local file, with the given name, type and engine, optionally with a description, and a charset name to read the script (the charset name is required if the script is not in UTF-8, for example, in ISO-8859-1).
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse load(string apikey, string scriptname, string scripttype, string scriptengine, string filename, string scriptdescription)
+		public IApiResponse load(string scriptname, string scripttype, string scriptengine, string filename, string scriptdescription, string charset)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("scriptName", scriptname);
 			parameters.Add("scriptType", scripttype);
 			parameters.Add("scriptEngine", scriptengine);
 			parameters.Add("fileName", filename);
 			parameters.Add("scriptDescription", scriptdescription);
+			parameters.Add("charset", charset);
 			return api.CallApi("script", "action", "load", parameters);
 		}
 
@@ -111,13 +103,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Removes the script with the given name
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse remove(string apikey, string scriptname)
+		public IApiResponse remove(string scriptname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("scriptName", scriptname);
 			return api.CallApi("script", "action", "remove", parameters);
 		}
@@ -126,13 +115,10 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Runs the stand alone script with the give name
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse runStandAloneScript(string apikey, string scriptname)
+		public IApiResponse runStandAloneScript(string scriptname)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			if (!string.IsNullOrWhiteSpace(apikey)){
-				parameters.Add("apikey", apikey);
-			}
 			parameters.Add("scriptName", scriptname);
 			return api.CallApi("script", "action", "runStandAloneScript", parameters);
 		}
