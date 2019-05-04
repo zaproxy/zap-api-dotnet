@@ -143,7 +143,7 @@ namespace OWASPZAPDotNetAPI
                 Other = apiResponseSet.Dictionary.TryGetDictionaryString("other"),
                 Parameter = apiResponseSet.Dictionary.TryGetDictionaryString("param"),
                 Reference = apiResponseSet.Dictionary.TryGetDictionaryString("reference"),
-                Risk = string.IsNullOrWhiteSpace("") ?
+                Risk = string.IsNullOrWhiteSpace(apiResponseSet.Dictionary.TryGetDictionaryString("risk")) ?
                     Alert.RiskLevel.Low :
                     (Alert.RiskLevel)Enum.Parse(typeof(Alert.RiskLevel), apiResponseSet.Dictionary.TryGetDictionaryString("risk")),
                 Solution = apiResponseSet.Dictionary.TryGetDictionaryString("solution"),
