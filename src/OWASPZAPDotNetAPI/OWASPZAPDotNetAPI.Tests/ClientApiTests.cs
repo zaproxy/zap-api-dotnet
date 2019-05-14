@@ -7,6 +7,7 @@ namespace OWASPZAPDotNetAPI.Tests
     [TestClass]
     public class ClientApiTests
     {
+        public TestContext TestContext { get; set; }
         private ClientApi zap;
 
         [TestInitialize]
