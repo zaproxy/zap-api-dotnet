@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Autoupdate 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Autoupdate(ClientApi api) 
+		public Autoupdate(IClientApi api) 
 		{
 			this.api = api;
 		}

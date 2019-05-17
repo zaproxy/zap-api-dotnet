@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class ImportLogFiles 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public ImportLogFiles(ClientApi api) 
+		public ImportLogFiles(IClientApi api) 
 		{
 			this.api = api;
 		}

@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Break 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Break(ClientApi api) 
+		public Break(IClientApi api) 
 		{
 			this.api = api;
 		}

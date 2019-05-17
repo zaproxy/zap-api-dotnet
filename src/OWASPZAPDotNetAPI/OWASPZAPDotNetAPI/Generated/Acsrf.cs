@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Acsrf 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Acsrf(ClientApi api) 
+		public Acsrf(IClientApi api) 
 		{
 			this.api = api;
 		}

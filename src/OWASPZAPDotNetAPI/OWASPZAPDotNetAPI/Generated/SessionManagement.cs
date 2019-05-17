@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class SessionManagement 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public SessionManagement(ClientApi api) 
+		public SessionManagement(IClientApi api) 
 		{
 			this.api = api;
 		}

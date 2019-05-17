@@ -29,7 +29,7 @@ using System.Xml;
 
 namespace OWASPZAPDotNetAPI
 {
-    public sealed class ClientApi : IDisposable
+    public sealed class ClientApi : IDisposable, IClientApi
     {
         private IWebClient webClient;
         private string zapAddress;
@@ -41,29 +41,29 @@ namespace OWASPZAPDotNetAPI
         private static string _zapApiKeyParameterName = "apikey";
 
         //New API needs to be added here
-        public Acsrf acsrf;
-        public AjaxSpider ajaxspider;
-        public Ascan ascan;
-        public Authentication authentication;
-        public OWASPZAPDotNetAPI.Generated.Authorization authorization;
-        public Autoupdate autoupdate;
-        public Break brk;
-        public Context context;
-        public Core core;
-        public ForcedUser forcedUser;
-        public HttpSessions httpSessions;
-        public ImportLogFiles importLogFiles;
-        public Params parameters;
-        public Pnh pnh;
-        public Pscan pscan;
-        public Reveal reveal;
-        public Script script;
-        public Search search;
-        public Selenium selenium;
-        public SessionManagement sessionManagement;
-        public Spider spider;
-        public Stats stats;
-        public Users users;
+        public Acsrf acsrf { get; set; }
+        public AjaxSpider ajaxspider { get; set; }
+        public Ascan ascan { get; set; }
+        public Authentication authentication { get; set; }
+        public OWASPZAPDotNetAPI.Generated.Authorization authorization { get; set; }
+        public Autoupdate autoupdate { get; set; }
+        public Break brk { get; set; }
+        public Context context { get; set; }
+        public Core core { get; set; }
+        public ForcedUser forcedUser { get; set; }
+        public HttpSessions httpSessions { get; set; }
+        public ImportLogFiles importLogFiles { get; set; }
+        public Params parameters { get; set; }
+        public Pnh pnh { get; set; }
+        public Pscan pscan { get; set; }
+        public Reveal reveal { get; set; }
+        public Script script { get; set; }
+        public Search search { get; set; }
+        public Selenium selenium { get; set; }
+        public SessionManagement sessionManagement { get; set; }
+        public Spider spider { get; set; }
+        public Stats stats { get; set; }
+        public Users users { get; set; }
 
         public ClientApi(string zapAddress, int zapPort, string apiKey)
         {

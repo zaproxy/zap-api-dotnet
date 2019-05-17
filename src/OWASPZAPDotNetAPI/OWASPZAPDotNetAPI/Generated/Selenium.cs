@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Selenium 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Selenium(ClientApi api) 
+		public Selenium(IClientApi api) 
 		{
 			this.api = api;
 		}
