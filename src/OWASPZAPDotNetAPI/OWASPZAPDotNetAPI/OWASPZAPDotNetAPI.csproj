@@ -12,7 +12,7 @@
     <PackageReleaseNotes>2.7.0 compatible with OWASP ZAP 2.7.0 stable release. ApiKey does not need to be passed explicitly while invoking apis, initialization of apikey during ClientApi construction is sufficient</PackageReleaseNotes>
     <Copyright>Copyright 2017</Copyright>
     <PackageTags>OWASP ZAP DOT NET API</PackageTags>
-    <PackageLicenseExpression>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseExpression>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
