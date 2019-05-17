@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Replacer 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Replacer(ClientApi api) 
+		public Replacer(IClientApi api) 
 		{
 			this.api = api;
 		}

@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Pscan 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Pscan(ClientApi api) 
+		public Pscan(IClientApi api) 
 		{
 			this.api = api;
 		}

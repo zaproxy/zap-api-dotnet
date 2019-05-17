@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Importurls 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Importurls(ClientApi api) 
+		public Importurls(IClientApi api) 
 		{
 			this.api = api;
 		}

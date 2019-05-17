@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Pnh 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Pnh(ClientApi api) 
+		public Pnh(IClientApi api) 
 		{
 			this.api = api;
 		}

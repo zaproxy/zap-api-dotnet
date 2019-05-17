@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Authentication 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Authentication(ClientApi api) 
+		public Authentication(IClientApi api) 
 		{
 			this.api = api;
 		}

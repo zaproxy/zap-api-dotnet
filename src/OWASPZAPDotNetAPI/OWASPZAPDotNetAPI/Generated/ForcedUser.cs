@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class ForcedUser 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public ForcedUser(ClientApi api) 
+		public ForcedUser(IClientApi api) 
 		{
 			this.api = api;
 		}

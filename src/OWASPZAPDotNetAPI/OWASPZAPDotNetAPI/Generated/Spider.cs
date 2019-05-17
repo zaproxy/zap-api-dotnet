@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Spider 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Spider(ClientApi api) 
+		public Spider(IClientApi api) 
 		{
 			this.api = api;
 		}

@@ -31,9 +31,9 @@ namespace OWASPZAPDotNetAPI.Generated
 {
 	public class Core 
 	{
-		private ClientApi api = null;
+		private IClientApi api = null;
 
-		public Core(ClientApi api) 
+		public Core(IClientApi api) 
 		{
 			this.api = api;
 		}
