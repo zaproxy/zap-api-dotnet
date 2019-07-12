@@ -32,6 +32,11 @@ namespace OWASPZAPDotNetAPI
         WebClient webClient;
         WebProxy webProxy;
 
+        public SystemWebClient()
+        {
+            webClient = new WebClient();
+        }
+
         public SystemWebClient(string proxyHost, int proxyPort)
         {
             webProxy = new WebProxy(proxyHost, proxyPort);

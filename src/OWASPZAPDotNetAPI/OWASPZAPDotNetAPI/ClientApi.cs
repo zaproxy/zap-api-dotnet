@@ -70,13 +70,20 @@ namespace OWASPZAPDotNetAPI
             this.zapAddress = zapAddress;
             this.zapPort = zapPort;
             this.apiKey = apiKey;
-            webClient = new SystemWebClient(zapAddress, zapPort);
+
+            webClient = new SystemWebClient();
+
             InitializeApiObjects();
         }
 
-        public ClientApi(IWebClient webClient)
+        public ClientApi(string proxyHostName, int proxyPort, string zapAddress, int zapPort, string apiKey)
         {
-            this.webClient = webClient;
+            this.zapAddress = zapAddress;
+            this.zapPort = zapPort;
+            this.apiKey = apiKey;
+
+            this.webClient = new SystemWebClient(proxyHostName, proxyPort);
+
             InitializeApiObjects();
         }
 
