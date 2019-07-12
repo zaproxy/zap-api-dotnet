@@ -18,12 +18,8 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OWASPZAPDotNetAPI
 {
@@ -31,11 +27,6 @@ namespace OWASPZAPDotNetAPI
     {
         WebClient webClient;
         WebProxy webProxy;
-
-        public SystemWebClient()
-        {
-            webClient = new WebClient();
-        }
 
         public SystemWebClient(string proxyHost, int proxyPort)
         {
