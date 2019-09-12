@@ -21,10 +21,7 @@
 using OWASPZAPDotNetAPI.Generated;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OWASPZAPDotNetAPI
@@ -32,8 +29,10 @@ namespace OWASPZAPDotNetAPI
     public sealed class ClientApi : IDisposable
     {
         private IWebClient webClient;
-        private string zapAddress;
-        private int zapPort;
+
+        private const string apiDomain = "zap";
+        private const int apiPort = 80;
+
         private string apiKey;
         private string format = "xml";
         private string otherFormat = "other";
@@ -67,16 +66,10 @@ namespace OWASPZAPDotNetAPI
 
         public ClientApi(string zapAddress, int zapPort, string apiKey)
         {
-            this.zapAddress = zapAddress;
-            this.zapPort = zapPort;
             this.apiKey = apiKey;
-            webClient = new SystemWebClient(zapAddress, zapPort);
-            InitializeApiObjects();
-        }
 
-        public ClientApi(IWebClient webClient)
-        {
-            this.webClient = webClient;
+            webClient = new SystemWebClient(zapAddress, zapPort);
+
             InitializeApiObjects();
         }
 
@@ -143,7 +136,7 @@ namespace OWASPZAPDotNetAPI
                 Other = apiResponseSet.Dictionary.TryGetDictionaryString("other"),
                 Parameter = apiResponseSet.Dictionary.TryGetDictionaryString("param"),
                 Reference = apiResponseSet.Dictionary.TryGetDictionaryString("reference"),
-                Risk = string.IsNullOrWhiteSpace("") ?
+                Risk = string.IsNullOrWhiteSpace(apiResponseSet.Dictionary.TryGetDictionaryString("risk")) ?
                     Alert.RiskLevel.Low :
                     (Alert.RiskLevel)Enum.Parse(typeof(Alert.RiskLevel), apiResponseSet.Dictionary.TryGetDictionaryString("risk")),
                 Solution = apiResponseSet.Dictionary.TryGetDictionaryString("solution"),
@@ -176,7 +169,7 @@ namespace OWASPZAPDotNetAPI
 
         private Uri PrepareZapRequest(string format, string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
-            Uri requestUrl = BuildZapRequestUrl(this.zapAddress, this.zapPort, this.apiKey, format, component, operationType, operationName, parameters);
+            Uri requestUrl = BuildZapRequestUrl(this.apiKey, format, component, operationType, operationName, parameters);
             string apiKeyValueFromRequestHeader = webClient.GetRequestHeaderValue(this.zapApiKeyHeaderName);
             if (String.IsNullOrWhiteSpace(apiKeyValueFromRequestHeader))
             {
@@ -185,12 +178,14 @@ namespace OWASPZAPDotNetAPI
             return requestUrl;
         }
 
-        private static Uri BuildZapRequestUrl(string zapAddress, int zapPort, string apikey, string format, string component, string operationType, string operationName, Dictionary<string, string> parameters)
+        private static Uri BuildZapRequestUrl(string apikey, string format, string component, string operationType, string operationName, Dictionary<string, string> parameters)
         {
             UriBuilder uriBuilder = new UriBuilder();
+
             uriBuilder.Scheme = "http";
-            uriBuilder.Host = zapAddress;
-            uriBuilder.Port = zapPort;
+            uriBuilder.Host = apiDomain;
+            uriBuilder.Port = apiPort;
+
             uriBuilder.Path = new StringBuilder()
                                     .Append(format)
                                     .Append("/")
@@ -200,6 +195,7 @@ namespace OWASPZAPDotNetAPI
                                     .Append("/")
                                     .Append(operationName)
                                     .ToString();
+
             StringBuilder query = new StringBuilder();
             if (parameters != null)
             {
