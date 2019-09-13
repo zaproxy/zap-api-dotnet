@@ -29,59 +29,52 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Acsrf 
+	public class LocalProxies 
 	{
 		private ClientApi api = null;
 
-		public Acsrf(ClientApi api) 
+		public LocalProxies(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Lists the names of all anti-CSRF tokens
+		///Gets all of the additional proxies that have been configured.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionTokensNames()
+		public IApiResponse additionalProxies()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("acsrf", "view", "optionTokensNames", parameters);
+			return api.CallApi("localProxies", "view", "additionalProxies", parameters);
 		}
 
 		/// <summary>
-		///Adds an anti-CSRF token with the given name, enabled by default
+		///Adds an new proxy using the details supplied.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addOptionToken(string str)
+		public IApiResponse addAdditionalProxy(string address, string port, string behindnat, string alwaysdecodezip, string removeunsupportedencodings)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("String", str);
-			return api.CallApi("acsrf", "action", "addOptionToken", parameters);
+			parameters.Add("address", address);
+			parameters.Add("port", port);
+			parameters.Add("behindNat", behindnat);
+			parameters.Add("alwaysDecodeZip", alwaysdecodezip);
+			parameters.Add("removeUnsupportedEncodings", removeunsupportedencodings);
+			return api.CallApi("localProxies", "action", "addAdditionalProxy", parameters);
 		}
 
 		/// <summary>
-		///Removes the anti-CSRF token with the given name
+		///Removes the additional proxy with the specified address and port.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeOptionToken(string str)
+		public IApiResponse removeAdditionalProxy(string address, string port)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("String", str);
-			return api.CallApi("acsrf", "action", "removeOptionToken", parameters);
-		}
-
-		/// <summary>
-		///Generate a form for testing lack of anti-CSRF tokens - typically invoked via ZAP
-		/// </summary>
-		/// <returns></returns>
-		public byte[] genForm(string hrefid)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("hrefId", hrefid);
-			return api.CallApiOther("acsrf", "other", "genForm", parameters);
+			parameters.Add("address", address);
+			parameters.Add("port", port);
+			return api.CallApi("localProxies", "action", "removeAdditionalProxy", parameters);
 		}
 
 	}

@@ -29,74 +29,64 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class ImportLogFiles 
+	public class AlertFilter 
 	{
 		private ClientApi api = null;
 
-		public ImportLogFiles(ClientApi api) 
+		public AlertFilter(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
+		///Lists the alert filters of the context with the given ID.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse ImportZAPLogFromFile(string filepath)
+		public IApiResponse alertFilterList(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("FilePath", filepath);
-			return api.CallApi("importLogFiles", "action", "ImportZAPLogFromFile", parameters);
+			parameters.Add("contextId", contextid);
+			return api.CallApi("alertFilter", "view", "alertFilterList", parameters);
 		}
 
 		/// <summary>
+		///Adds a new alert filter for the context with the given ID. 
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse ImportModSecurityLogFromFile(string filepath)
+		public IApiResponse addAlertFilter(string contextid, string ruleid, string newlevel, string url, string urlisregex, string parameter, string enabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("FilePath", filepath);
-			return api.CallApi("importLogFiles", "action", "ImportModSecurityLogFromFile", parameters);
+			parameters.Add("contextId", contextid);
+			parameters.Add("ruleId", ruleid);
+			parameters.Add("newLevel", newlevel);
+			parameters.Add("url", url);
+			parameters.Add("urlIsRegex", urlisregex);
+			parameters.Add("parameter", parameter);
+			parameters.Add("enabled", enabled);
+			return api.CallApi("alertFilter", "action", "addAlertFilter", parameters);
 		}
 
 		/// <summary>
+		///Removes an alert filter from the context with the given ID.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse ImportZAPHttpRequestResponsePair(string httprequest, string httpresponse)
+		public IApiResponse removeAlertFilter(string contextid, string ruleid, string newlevel, string url, string urlisregex, string parameter, string enabled)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("HTTPRequest", httprequest);
-			parameters.Add("HTTPResponse", httpresponse);
-			return api.CallApi("importLogFiles", "action", "ImportZAPHttpRequestResponsePair", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse PostModSecurityAuditEvent(string auditeventstring)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("AuditEventString", auditeventstring);
-			return api.CallApi("importLogFiles", "action", "PostModSecurityAuditEvent", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public byte[] OtherPostModSecurityAuditEvent(string auditeventstring)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("AuditEventString", auditeventstring);
-			return api.CallApiOther("importLogFiles", "other", "OtherPostModSecurityAuditEvent", parameters);
+			parameters.Add("contextId", contextid);
+			parameters.Add("ruleId", ruleid);
+			parameters.Add("newLevel", newlevel);
+			parameters.Add("url", url);
+			parameters.Add("urlIsRegex", urlisregex);
+			parameters.Add("parameter", parameter);
+			parameters.Add("enabled", enabled);
+			return api.CallApi("alertFilter", "action", "removeAlertFilter", parameters);
 		}
 
 	}

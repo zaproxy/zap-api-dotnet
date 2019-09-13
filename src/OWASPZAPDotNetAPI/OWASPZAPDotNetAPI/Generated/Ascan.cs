@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2017 the ZAP development team
+ * Copyright 2019 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse status(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -46,6 +50,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "status", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse scanProgress(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -78,12 +86,20 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "alertsIds", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse scans()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "scans", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse scanPolicyNames()
 		{
 			Dictionary<string, string> parameters = null;
@@ -100,6 +116,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "excludedFromScan", parameters);
 		}
 
+		/// <summary>
+		///Gets the scanners, optionally, of the given scan policy and/or scanner policy/category ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse scanners(string scanpolicyname, string policyid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -109,6 +129,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "scanners", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse policies(string scanpolicyname, string policyid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -118,6 +142,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "policies", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse attackModeQueue()
 		{
 			Dictionary<string, string> parameters = null;
@@ -156,84 +184,150 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "excludedParamTypes", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionAttackPolicy()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionAttackPolicy", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionDefaultPolicy()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionDefaultPolicy", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionDelayInMs()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionDelayInMs", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionHandleAntiCSRFTokens()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionHandleAntiCSRFTokens", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionHostPerScan()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionHostPerScan", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionMaxChartTimeInMins()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionMaxChartTimeInMins", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionMaxResultsToList()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionMaxResultsToList", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionMaxRuleDurationInMins()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionMaxRuleDurationInMins", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionMaxScanDurationInMins()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionMaxScanDurationInMins", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionMaxScansInUI()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionMaxScansInUI", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionTargetParamsEnabledRPC()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionTargetParamsEnabledRPC", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionTargetParamsInjectable()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionTargetParamsInjectable", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionThreadPerHost()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionThreadPerHost", parameters);
 		}
 
+		/// <summary>
+		///Tells whether or not the active scanner should add a query parameter to GET request that don't have parameters to start with.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionAddQueryParam()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionAddQueryParam", parameters);
+		}
+
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionAllowAttackOnStart()
 		{
 			Dictionary<string, string> parameters = null;
@@ -250,18 +344,30 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "optionInjectPluginIdInHeader", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionPromptInAttackMode()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionPromptInAttackMode", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionPromptToClearFinishedScans()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "view", "optionPromptToClearFinishedScans", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionRescanInAttackMode()
 		{
 			Dictionary<string, string> parameters = null;
@@ -278,6 +384,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "view", "optionScanHeadersAllRequests", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionShowAdvancedDialog()
 		{
 			Dictionary<string, string> parameters = null;
@@ -320,6 +430,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "scanAsUser", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse pause(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -328,6 +442,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "pause", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse resume(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -336,6 +454,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "resume", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse stop(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -344,6 +466,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "stop", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse removeScan(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -352,24 +478,40 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "removeScan", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse pauseAllScans()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "action", "pauseAllScans", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse resumeAllScans()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "action", "resumeAllScans", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse stopAllScans()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ascan", "action", "stopAllScans", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse removeAllScans()
 		{
 			Dictionary<string, string> parameters = null;
@@ -398,6 +540,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "excludeFromScan", parameters);
 		}
 
+		/// <summary>
+		///Enables all scanners of the scan policy with the given name, or the default if none given.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse enableAllScanners(string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -406,6 +552,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "enableAllScanners", parameters);
 		}
 
+		/// <summary>
+		///Disables all scanners of the scan policy with the given name, or the default if none given.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse disableAllScanners(string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -414,6 +564,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "disableAllScanners", parameters);
 		}
 
+		/// <summary>
+		///Enables the scanners with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse enableScanners(string ids, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -423,6 +577,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "enableScanners", parameters);
 		}
 
+		/// <summary>
+		///Disables the scanners with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse disableScanners(string ids, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -432,6 +590,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "disableScanners", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setEnabledPolicies(string ids, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -441,6 +603,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setEnabledPolicies", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setPolicyAttackStrength(string id, string attackstrength, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -451,6 +617,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setPolicyAttackStrength", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setPolicyAlertThreshold(string id, string alertthreshold, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -461,6 +631,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setPolicyAlertThreshold", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setScannerAttackStrength(string id, string attackstrength, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -471,6 +645,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setScannerAttackStrength", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setScannerAlertThreshold(string id, string alertthreshold, string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -481,6 +659,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setScannerAlertThreshold", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse addScanPolicy(string scanpolicyname, string alertthreshold, string attackstrength)
 		{
 			Dictionary<string, string> parameters = null;
@@ -491,6 +673,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "addScanPolicy", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse removeScanPolicy(string scanpolicyname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -499,6 +685,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "removeScanPolicy", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse updateScanPolicy(string scanpolicyname, string alertthreshold, string attackstrength)
 		{
 			Dictionary<string, string> parameters = null;
@@ -575,6 +765,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "skipScanner", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionAttackPolicy(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -583,6 +777,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionAttackPolicy", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionDefaultPolicy(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -591,6 +789,22 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionDefaultPolicy", parameters);
 		}
 
+		/// <summary>
+		///Sets whether or not the active scanner should add a query param to GET requests which do not have parameters to start with.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionAddQueryParam(bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("ascan", "action", "setOptionAddQueryParam", parameters);
+		}
+
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionAllowAttackOnStart(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -599,6 +813,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionAllowAttackOnStart", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionDelayInMs(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -607,6 +825,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionDelayInMs", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionHandleAntiCSRFTokens(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -615,6 +837,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionHandleAntiCSRFTokens", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionHostPerScan(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -635,6 +861,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionInjectPluginIdInHeader", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionMaxChartTimeInMins(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -643,6 +873,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionMaxChartTimeInMins", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionMaxResultsToList(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -651,6 +885,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionMaxResultsToList", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionMaxRuleDurationInMins(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -659,6 +897,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionMaxRuleDurationInMins", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionMaxScanDurationInMins(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -667,6 +909,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionMaxScanDurationInMins", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionMaxScansInUI(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -675,6 +921,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionMaxScansInUI", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionPromptInAttackMode(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -683,6 +933,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionPromptInAttackMode", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionPromptToClearFinishedScans(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -691,6 +945,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionPromptToClearFinishedScans", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionRescanInAttackMode(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -711,6 +969,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionScanHeadersAllRequests", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionShowAdvancedDialog(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -719,6 +981,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionShowAdvancedDialog", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionTargetParamsEnabledRPC(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -727,6 +993,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionTargetParamsEnabledRPC", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionTargetParamsInjectable(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -735,6 +1005,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("ascan", "action", "setOptionTargetParamsInjectable", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionThreadPerHost(int i)
 		{
 			Dictionary<string, string> parameters = null;

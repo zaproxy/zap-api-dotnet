@@ -29,59 +29,39 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Acsrf 
+	public class Soap 
 	{
 		private ClientApi api = null;
 
-		public Acsrf(ClientApi api) 
+		public Soap(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Lists the names of all anti-CSRF tokens
+		///Import a WSDL definition from local file.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionTokensNames()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("acsrf", "view", "optionTokensNames", parameters);
-		}
-
-		/// <summary>
-		///Adds an anti-CSRF token with the given name, enabled by default
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse addOptionToken(string str)
+		public IApiResponse importFile(string file)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("String", str);
-			return api.CallApi("acsrf", "action", "addOptionToken", parameters);
+			parameters.Add("file", file);
+			return api.CallApi("soap", "action", "importFile", parameters);
 		}
 
 		/// <summary>
-		///Removes the anti-CSRF token with the given name
+		///Import a WSDL definition from a URL.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeOptionToken(string str)
+		public IApiResponse importUrl(string url)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("String", str);
-			return api.CallApi("acsrf", "action", "removeOptionToken", parameters);
-		}
-
-		/// <summary>
-		///Generate a form for testing lack of anti-CSRF tokens - typically invoked via ZAP
-		/// </summary>
-		/// <returns></returns>
-		public byte[] genForm(string hrefid)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("hrefId", hrefid);
-			return api.CallApiOther("acsrf", "other", "genForm", parameters);
+			parameters.Add("url", url);
+			return api.CallApi("soap", "action", "importUrl", parameters);
 		}
 
 	}
