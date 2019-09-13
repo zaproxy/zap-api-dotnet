@@ -7,3 +7,11 @@ OWASP ZAP Dot NET API
 Install-Package OWASPZAPDotNetAPI -Version 2.8.0	
 ```
 
+Samples and how to:
+
+ * Simple point and click scan - [SimplePointAndClickScan.cs](https://github.com/zaproxy/zap-api-dotnet/blob/master/src/OWASPZAPDotNetAPI/OWASPZAPDotNetAPI.Samples/SimplePointAndClickScan.cs)
+ 
+ * Authenticated scan - [AuthenticatedScanWithFormsAuthentication.cs](https://github.com/zaproxy/zap-api-dotnet/blob/master/src/OWASPZAPDotNetAPI/OWASPZAPDotNetAPI.Samples/AuthenticatedScanWithFormsAuthentication.cs)
+
+
+Although the target framework for this dll is .Net framework 4.5, you could also use the library from a .Net core application.
