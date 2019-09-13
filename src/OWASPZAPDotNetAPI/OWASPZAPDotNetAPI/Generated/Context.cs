@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2017 the ZAP development team
+ * Copyright 2019 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -119,6 +119,18 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Lists the URLs accessed through/by ZAP, that belong to the context with the given name.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse urls(string contextname)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextName", contextname);
+			return api.CallApi("context", "view", "urls", parameters);
+		}
+
+		/// <summary>
 		///Add exclude regex to context
 		/// </summary>
 		/// <returns></returns>
@@ -142,6 +154,20 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("contextName", contextname);
 			parameters.Add("regex", regex);
 			return api.CallApi("context", "action", "includeInContext", parameters);
+		}
+
+		/// <summary>
+		///Set the regexs to include and exclude for a context, both supplied as JSON string arrays
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setContextRegexs(string contextname, string incregexs, string excregexs)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextName", contextname);
+			parameters.Add("incRegexs", incregexs);
+			parameters.Add("excRegexs", excregexs);
+			return api.CallApi("context", "action", "setContextRegexs", parameters);
 		}
 
 		/// <summary>
