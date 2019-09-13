@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2017 the ZAP development team
+ * Copyright 2019 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,12 +38,20 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
+		/// <summary>
+		///Gets the name of the session management methods.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getSupportedSessionManagementMethods()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("sessionManagement", "view", "getSupportedSessionManagementMethods", parameters);
 		}
 
+		/// <summary>
+		///Gets the configuration parameters for the session management method with the given name.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getSessionManagementMethodConfigParams(string methodname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -52,6 +60,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("sessionManagement", "view", "getSessionManagementMethodConfigParams", parameters);
 		}
 
+		/// <summary>
+		///Gets the name of the session management method for the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getSessionManagementMethod(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -60,6 +72,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("sessionManagement", "view", "getSessionManagementMethod", parameters);
 		}
 
+		/// <summary>
+		///Sets the session management method for the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setSessionManagementMethod(string contextid, string methodname, string methodconfigparams)
 		{
 			Dictionary<string, string> parameters = null;

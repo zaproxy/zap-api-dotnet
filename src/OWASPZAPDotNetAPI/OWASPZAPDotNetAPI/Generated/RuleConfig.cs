@@ -29,59 +29,70 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Acsrf 
+	public class RuleConfig 
 	{
 		private ClientApi api = null;
 
-		public Acsrf(ClientApi api) 
+		public RuleConfig(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Lists the names of all anti-CSRF tokens
+		///Show the specified rule configuration
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionTokensNames()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("acsrf", "view", "optionTokensNames", parameters);
-		}
-
-		/// <summary>
-		///Adds an anti-CSRF token with the given name, enabled by default
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse addOptionToken(string str)
+		public IApiResponse ruleConfigValue(string key)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("String", str);
-			return api.CallApi("acsrf", "action", "addOptionToken", parameters);
+			parameters.Add("key", key);
+			return api.CallApi("ruleConfig", "view", "ruleConfigValue", parameters);
 		}
 
 		/// <summary>
-		///Removes the anti-CSRF token with the given name
+		///Show all of the rule configurations
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse removeOptionToken(string str)
+		public IApiResponse allRuleConfigs()
 		{
 			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("String", str);
-			return api.CallApi("acsrf", "action", "removeOptionToken", parameters);
+			return api.CallApi("ruleConfig", "view", "allRuleConfigs", parameters);
 		}
 
 		/// <summary>
-		///Generate a form for testing lack of anti-CSRF tokens - typically invoked via ZAP
+		///Reset the specified rule configuration, which must already exist
 		/// </summary>
 		/// <returns></returns>
-		public byte[] genForm(string hrefid)
+		public IApiResponse resetRuleConfigValue(string key)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("hrefId", hrefid);
-			return api.CallApiOther("acsrf", "other", "genForm", parameters);
+			parameters.Add("key", key);
+			return api.CallApi("ruleConfig", "action", "resetRuleConfigValue", parameters);
+		}
+
+		/// <summary>
+		///Reset all of the rule configurations
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse resetAllRuleConfigValues()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ruleConfig", "action", "resetAllRuleConfigValues", parameters);
+		}
+
+		/// <summary>
+		///Set the specified rule configuration, which must already exist
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setRuleConfigValue(string key, string value)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("key", key);
+			parameters.Add("value", value);
+			return api.CallApi("ruleConfig", "action", "setRuleConfigValue", parameters);
 		}
 
 	}

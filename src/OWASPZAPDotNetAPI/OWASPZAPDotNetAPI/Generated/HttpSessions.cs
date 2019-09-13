@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2017 the ZAP development team
+ * Copyright 2019 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,6 +83,16 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters = new Dictionary<string, string>();
 			parameters.Add("site", site);
 			return api.CallApi("httpSessions", "view", "sessionTokens", parameters);
+		}
+
+		/// <summary>
+		///Gets the default session tokens.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse defaultSessionTokens()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("httpSessions", "view", "defaultSessionTokens", parameters);
 		}
 
 		/// <summary>
@@ -189,6 +199,44 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("oldSessionName", oldsessionname);
 			parameters.Add("newSessionName", newsessionname);
 			return api.CallApi("httpSessions", "action", "renameSession", parameters);
+		}
+
+		/// <summary>
+		///Adds a default session token with the given name and enabled state.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse addDefaultSessionToken(string sessiontoken, string tokenenabled)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("sessionToken", sessiontoken);
+			parameters.Add("tokenEnabled", tokenenabled);
+			return api.CallApi("httpSessions", "action", "addDefaultSessionToken", parameters);
+		}
+
+		/// <summary>
+		///Sets whether or not the default session token with the given name is enabled.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setDefaultSessionTokenEnabled(string sessiontoken, string tokenenabled)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("sessionToken", sessiontoken);
+			parameters.Add("tokenEnabled", tokenenabled);
+			return api.CallApi("httpSessions", "action", "setDefaultSessionTokenEnabled", parameters);
+		}
+
+		/// <summary>
+		///Removes the default session token with the given name.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse removeDefaultSessionToken(string sessiontoken)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("sessionToken", sessiontoken);
+			return api.CallApi("httpSessions", "action", "removeDefaultSessionToken", parameters);
 		}
 
 	}

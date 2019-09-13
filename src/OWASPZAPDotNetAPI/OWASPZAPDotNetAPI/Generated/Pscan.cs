@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2017 the ZAP development team
+ * Copyright 2019 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,6 +66,26 @@ namespace OWASPZAPDotNetAPI.Generated
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("pscan", "view", "scanners", parameters);
+		}
+
+		/// <summary>
+		///Show information about the passive scan rule currently being run (if any).
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse currentRule()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("pscan", "view", "currentRule", parameters);
+		}
+
+		/// <summary>
+		///Gets the maximum number of alerts a passive scan rule should raise.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse maxAlertsPerRule()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("pscan", "view", "maxAlertsPerRule", parameters);
 		}
 
 		/// <summary>
@@ -147,6 +167,18 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("id", id);
 			parameters.Add("alertThreshold", alertthreshold);
 			return api.CallApi("pscan", "action", "setScannerAlertThreshold", parameters);
+		}
+
+		/// <summary>
+		///Sets the maximum number of alerts a passive scan rule should raise.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setMaxAlertsPerRule(string maxalerts)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("maxAlerts", maxalerts);
+			return api.CallApi("pscan", "action", "setMaxAlertsPerRule", parameters);
 		}
 
 	}

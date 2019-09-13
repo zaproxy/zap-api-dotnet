@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2017 the ZAP development team
+ * Copyright 2019 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,12 +38,20 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
+		/// <summary>
+		///Gets the name of the authentication methods.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getSupportedAuthenticationMethods()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("authentication", "view", "getSupportedAuthenticationMethods", parameters);
 		}
 
+		/// <summary>
+		///Gets the configuration parameters for the authentication method with the given name.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getAuthenticationMethodConfigParams(string authmethodname)
 		{
 			Dictionary<string, string> parameters = null;
@@ -52,6 +60,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "view", "getAuthenticationMethodConfigParams", parameters);
 		}
 
+		/// <summary>
+		///Gets the name of the authentication method for the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getAuthenticationMethod(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -60,6 +72,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "view", "getAuthenticationMethod", parameters);
 		}
 
+		/// <summary>
+		///Gets the logged in indicator for the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getLoggedInIndicator(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -68,6 +84,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "view", "getLoggedInIndicator", parameters);
 		}
 
+		/// <summary>
+		///Gets the logged out indicator for the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getLoggedOutIndicator(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -76,6 +96,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "view", "getLoggedOutIndicator", parameters);
 		}
 
+		/// <summary>
+		///Sets the authentication method for the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setAuthenticationMethod(string contextid, string authmethodname, string authmethodconfigparams)
 		{
 			Dictionary<string, string> parameters = null;
@@ -86,6 +110,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "action", "setAuthenticationMethod", parameters);
 		}
 
+		/// <summary>
+		///Sets the logged in indicator for the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setLoggedInIndicator(string contextid, string loggedinindicatorregex)
 		{
 			Dictionary<string, string> parameters = null;
@@ -95,6 +123,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("authentication", "action", "setLoggedInIndicator", parameters);
 		}
 
+		/// <summary>
+		///Sets the logged out indicator for the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setLoggedOutIndicator(string contextid, string loggedoutindicatorregex)
 		{
 			Dictionary<string, string> parameters = null;

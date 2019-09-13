@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2017 the ZAP development team
+ * Copyright 2019 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse status(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -46,6 +50,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "status", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse results(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -54,6 +62,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "results", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse fullResults(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -62,6 +74,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "fullResults", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse scans()
 		{
 			Dictionary<string, string> parameters = null;
@@ -134,6 +150,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "optionDomainsAlwaysInScopeEnabled", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionHandleParameters()
 		{
 			Dictionary<string, string> parameters = null;
@@ -150,12 +170,20 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "optionMaxChildren", parameters);
 		}
 
+		/// <summary>
+		///Gets the maximum depth the spider can crawl, 0 if unlimited.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionMaxDepth()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionMaxDepth", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionMaxDuration()
 		{
 			Dictionary<string, string> parameters = null;
@@ -172,44 +200,74 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "optionMaxParseSizeBytes", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionMaxScansInUI()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionMaxScansInUI", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionRequestWaitTime()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionRequestWaitTime", parameters);
 		}
 
-		[Obsolete]
+		/// <summary>
+		///
+		/// [Obsolete] Option no longer in effective use.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Option no longer in effective use.")]
 		public IApiResponse optionScope()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionScope", parameters);
 		}
 
-		[Obsolete]
+		/// <summary>
+		///
+		/// [Obsolete] Option no longer in effective use.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Option no longer in effective use.")]
 		public IApiResponse optionScopeText()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionScopeText", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionSkipURLString()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionSkipURLString", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionThreadCount()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionThreadCount", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionUserAgent()
 		{
 			Dictionary<string, string> parameters = null;
@@ -226,48 +284,80 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "optionAcceptCookies", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionHandleODataParametersVisited()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionHandleODataParametersVisited", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionParseComments()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionParseComments", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionParseGit()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionParseGit", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionParseRobotsTxt()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionParseRobotsTxt", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionParseSVNEntries()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionParseSVNEntries", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionParseSitemapXml()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionParseSitemapXml", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionPostForm()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "view", "optionPostForm", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionProcessForm()
 		{
 			Dictionary<string, string> parameters = null;
@@ -284,6 +374,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "view", "optionSendRefererHeader", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionShowAdvancedDialog()
 		{
 			Dictionary<string, string> parameters = null;
@@ -323,6 +417,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "scanAsUser", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse pause(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -331,6 +429,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "pause", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse resume(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -339,6 +441,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "resume", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse stop(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -347,6 +453,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "stop", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse removeScan(string scanid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -355,24 +465,40 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "removeScan", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse pauseAllScans()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "action", "pauseAllScans", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse resumeAllScans()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "action", "resumeAllScans", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse stopAllScans()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("spider", "action", "stopAllScans", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse removeAllScans()
 		{
 			Dictionary<string, string> parameters = null;
@@ -462,6 +588,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "disableAllDomainsAlwaysInScope", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionHandleParameters(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -472,10 +602,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Use actions [add|modify|remove]DomainAlwaysInScope instead.
-		/// [Obsolete]
+		/// [Obsolete] Option no longer in effective use.
 		/// </summary>
 		/// <returns></returns>
-		[Obsolete]
+		[Obsolete("Option no longer in effective use.")]
 		public IApiResponse setOptionScopeString(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -484,6 +614,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionScopeString", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionSkipURLString(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -492,6 +626,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionSkipURLString", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionUserAgent(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -512,6 +650,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionAcceptCookies", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionHandleODataParametersVisited(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -532,6 +674,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionMaxChildren", parameters);
 		}
 
+		/// <summary>
+		///Sets the maximum depth the spider can crawl, 0 for unlimited depth.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionMaxDepth(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -540,6 +686,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionMaxDepth", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionMaxDuration(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -560,6 +710,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionMaxParseSizeBytes", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionMaxScansInUI(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -568,6 +722,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionMaxScansInUI", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionParseComments(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -576,6 +734,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionParseComments", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionParseGit(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -584,6 +746,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionParseGit", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionParseRobotsTxt(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -592,6 +758,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionParseRobotsTxt", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionParseSVNEntries(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -600,6 +770,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionParseSVNEntries", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionParseSitemapXml(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -608,6 +782,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionParseSitemapXml", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionPostForm(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -616,6 +794,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionPostForm", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionProcessForm(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -624,6 +806,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionProcessForm", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionRequestWaitTime(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -644,6 +830,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionSendRefererHeader", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionShowAdvancedDialog(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -652,6 +842,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("spider", "action", "setOptionShowAdvancedDialog", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionThreadCount(int i)
 		{
 			Dictionary<string, string> parameters = null;

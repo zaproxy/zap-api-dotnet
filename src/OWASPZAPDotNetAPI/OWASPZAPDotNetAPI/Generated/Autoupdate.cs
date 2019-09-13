@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2017 the ZAP development team
+ * Copyright 2019 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,6 +69,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Returns a list with all local add-ons, installed or not.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse localAddons()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("autoupdate", "view", "localAddons", parameters);
+		}
+
+		/// <summary>
 		///Return a list of any add-ons that have been added to the Marketplace since the last check for updates
 		/// </summary>
 		/// <returns></returns>
@@ -98,78 +108,130 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("autoupdate", "view", "marketplaceAddons", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionAddonDirectories()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionAddonDirectories", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionDayLastChecked()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionDayLastChecked", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionDayLastInstallWarned()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionDayLastInstallWarned", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionDayLastUpdateWarned()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionDayLastUpdateWarned", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionDownloadDirectory()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionDownloadDirectory", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionCheckAddonUpdates()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionCheckAddonUpdates", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionCheckOnStart()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionCheckOnStart", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionDownloadNewRelease()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionDownloadNewRelease", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionInstallAddonUpdates()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionInstallAddonUpdates", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionInstallScannerRules()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionInstallScannerRules", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionReportAlphaAddons()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionReportAlphaAddons", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionReportBetaAddons()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("autoupdate", "view", "optionReportBetaAddons", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse optionReportReleaseAddons()
 		{
 			Dictionary<string, string> parameters = null;
@@ -199,6 +261,18 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse installLocalAddon(string file)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("file", file);
+			return api.CallApi("autoupdate", "action", "installLocalAddon", parameters);
+		}
+
+		/// <summary>
 		///Uninstalls the specified add-on 
 		/// </summary>
 		/// <returns></returns>
@@ -210,6 +284,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("autoupdate", "action", "uninstallAddon", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionCheckAddonUpdates(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -218,6 +296,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("autoupdate", "action", "setOptionCheckAddonUpdates", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionCheckOnStart(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -226,6 +308,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("autoupdate", "action", "setOptionCheckOnStart", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionDownloadNewRelease(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -234,6 +320,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("autoupdate", "action", "setOptionDownloadNewRelease", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionInstallAddonUpdates(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -242,6 +332,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("autoupdate", "action", "setOptionInstallAddonUpdates", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionInstallScannerRules(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -250,6 +344,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("autoupdate", "action", "setOptionInstallScannerRules", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionReportAlphaAddons(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -258,6 +356,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("autoupdate", "action", "setOptionReportAlphaAddons", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionReportBetaAddons(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -266,6 +368,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("autoupdate", "action", "setOptionReportBetaAddons", parameters);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setOptionReportReleaseAddons(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;

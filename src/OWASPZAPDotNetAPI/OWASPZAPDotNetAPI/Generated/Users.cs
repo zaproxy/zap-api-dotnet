@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2017 the ZAP development team
+ * Copyright 2019 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			this.api = api;
 		}
 
+		/// <summary>
+		///Gets a list of users that belong to the context with the given ID, or all users if none provided.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse usersList(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -46,6 +50,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "view", "usersList", parameters);
 		}
 
+		/// <summary>
+		///Gets the data of the user with the given ID that belongs to the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getUserById(string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -55,6 +63,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "view", "getUserById", parameters);
 		}
 
+		/// <summary>
+		///Gets the configuration parameters for the credentials of the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getAuthenticationCredentialsConfigParams(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -63,6 +75,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "view", "getAuthenticationCredentialsConfigParams", parameters);
 		}
 
+		/// <summary>
+		///Gets the authentication credentials of the user with given ID that belongs to the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse getAuthenticationCredentials(string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -72,6 +88,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "view", "getAuthenticationCredentials", parameters);
 		}
 
+		/// <summary>
+		///Creates a new user with the given name for the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse newUser(string contextid, string name)
 		{
 			Dictionary<string, string> parameters = null;
@@ -81,6 +101,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "action", "newUser", parameters);
 		}
 
+		/// <summary>
+		///Removes the user with the given ID that belongs to the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse removeUser(string contextid, string userid)
 		{
 			Dictionary<string, string> parameters = null;
@@ -90,6 +114,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "action", "removeUser", parameters);
 		}
 
+		/// <summary>
+		///Sets whether or not the user, with the given ID that belongs to the context with the given ID, should be enabled.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setUserEnabled(string contextid, string userid, string enabled)
 		{
 			Dictionary<string, string> parameters = null;
@@ -100,6 +128,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "action", "setUserEnabled", parameters);
 		}
 
+		/// <summary>
+		///Renames the user with the given ID that belongs to the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setUserName(string contextid, string userid, string name)
 		{
 			Dictionary<string, string> parameters = null;
@@ -110,6 +142,10 @@ namespace OWASPZAPDotNetAPI.Generated
 			return api.CallApi("users", "action", "setUserName", parameters);
 		}
 
+		/// <summary>
+		///Sets the authentication credentials for the user with the given ID that belongs to the context with the given ID.
+		/// </summary>
+		/// <returns></returns>
 		public IApiResponse setAuthenticationCredentials(string contextid, string userid, string authcredentialsconfigparams)
 		{
 			Dictionary<string, string> parameters = null;

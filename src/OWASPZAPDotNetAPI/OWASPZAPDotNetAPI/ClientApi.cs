@@ -39,9 +39,11 @@ namespace OWASPZAPDotNetAPI
         private string zapApiKeyHeaderName = "X-ZAP-API-Key";
         private static string _zapApiKeyParameterName = "apikey";
 
-        //New API needs to be added here
+        //New API needs to be added here, preferably in alphabetical order
         public Acsrf acsrf;
         public AjaxSpider ajaxspider;
+        public OWASPZAPDotNetAPI.Generated.Alert alert;
+        public AlertFilter alertFilter;
         public Ascan ascan;
         public Authentication authentication;
         public OWASPZAPDotNetAPI.Generated.Authorization authorization;
@@ -52,17 +54,24 @@ namespace OWASPZAPDotNetAPI
         public ForcedUser forcedUser;
         public HttpSessions httpSessions;
         public ImportLogFiles importLogFiles;
+        public Importurls importurls;
+        public LocalProxies localProxies;
+        public Openapi openapi;
         public Params parameters;
         public Pnh pnh;
         public Pscan pscan;
+        public Replacer replacer;
         public Reveal reveal;
+        public RuleConfig ruleConfig;
         public Script script;
         public Search search;
         public Selenium selenium;
         public SessionManagement sessionManagement;
+        public Soap soap;
         public Spider spider;
         public Stats stats;
         public Users users;
+        public Websocket websocket;
 
         public ClientApi(string zapAddress, int zapPort, string apiKey)
         {
@@ -75,9 +84,11 @@ namespace OWASPZAPDotNetAPI
 
         private void InitializeApiObjects()
         {
-            //New API needs to be instantiated here
+            //New API needs to be instantiated here, in the same alphabetical order as above
             acsrf = new Acsrf(this);
             ajaxspider = new AjaxSpider(this);
+            alert = new OWASPZAPDotNetAPI.Generated.Alert(this);
+            alertFilter = new AlertFilter(this);
             ascan = new Ascan(this);
             authentication = new Authentication(this);
             authorization = new OWASPZAPDotNetAPI.Generated.Authorization(this);
@@ -88,17 +99,24 @@ namespace OWASPZAPDotNetAPI
             forcedUser = new ForcedUser(this);
             httpSessions = new HttpSessions(this);
             importLogFiles = new ImportLogFiles(this);
+            importurls = new Importurls(this);
+            localProxies = new LocalProxies(this);
+            openapi = new Openapi(this);
             parameters = new Params(this);
             pnh = new Pnh(this); 
             pscan = new Pscan(this);
+            replacer = new Replacer(this);
             reveal = new Reveal(this);
+            ruleConfig = new RuleConfig(this);
             script = new Script(this);
             search = new Search(this);
             selenium = new Selenium(this);
             sessionManagement = new SessionManagement(this);
+            soap = new Soap(this);
             spider = new Spider(this);
             stats = new Stats(this);
             users = new Users(this);
+            websocket = new Websocket(this);
         }
 
         public void AccessUrl(string url)
