@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace OWASPZAPDotNetAPI.Samples
 {
@@ -36,7 +37,7 @@ namespace OWASPZAPDotNetAPI.Samples
             ProcessStartInfo zapProcessStartInfo = new ProcessStartInfo();
             zapProcessStartInfo.FileName = @"C:\Program Files (x86)\OWASP\Zed Attack Proxy\ZAP.exe";
             zapProcessStartInfo.WorkingDirectory = @"C:\Program Files (x86)\OWASP\Zed Attack Proxy";
-            zapProcessStartInfo.Arguments = "-daemon -host 127.0.0.1 -port 7070";
+            zapProcessStartInfo.Arguments = "-daemon -host "+ ConfigurationManager.AppSettings["zapHost"]+" -port "+ ConfigurationManager.AppSettings["zapPort"];
 
             Console.WriteLine("Issuing command to StartZAPDaemon");
             Console.WriteLine(zapProcessStartInfo.ToString());
@@ -58,7 +59,7 @@ namespace OWASPZAPDotNetAPI.Samples
             Stopwatch watch = new Stopwatch();
             watch.Start();
             int millisecondsToWait = minutesToWait * 60 * 1000;
-            string zapUrlToDownload = "http://localhost:7070";
+            string zapUrlToDownload = "http://"+ConfigurationManager.AppSettings["zapHost"]+":"+ConfigurationManager.AppSettings["zapPort"];
 
             while (millisecondsToWait > watch.ElapsedMilliseconds)
             {

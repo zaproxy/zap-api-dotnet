@@ -7,24 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace OWASPZAPDotNetAPI.Samples
 {
     class AuthenticatedScanWithFormsAuthentication
     {
-        private static string _target = "http://localhost:8020/SqliModernApp";
-        private static string _apikey = "vufbko8sihdfl5502df3863erg";
-        private static ClientApi _api = new ClientApi("localhost", 7070, _apikey);
+        private static string _target = "http://testfire.net";
+        private static string _apikey = ConfigurationManager.AppSettings["zapApiKey"];
+        private static int _port = Convert.ToInt32(ConfigurationManager.AppSettings["zapPort"].ToString());
+        private static string _zapHost = ConfigurationManager.AppSettings["zapHost"];
+        private static ClientApi _api = new ClientApi(_zapHost, _port, _apikey);
         private static IApiResponse _apiResponse;
 
         public static void Go()
         {
             LoadTargetUrlToSitesTree();
 
-            string contextName = "SqliModernApp";
+            string contextName = "TestFire";
             string contextId = CreateContext(contextName);
-            string urlToIncludeInContext = @"\Qhttp://localhost:8020/SqliModernApp\E.*";
+            string urlToIncludeInContext = @"http://testfire.net.*";
+            string urlToExcludeInContext = @"http://testfire.net/logout.jsp";
             IncludeUrlToContext(contextName, urlToIncludeInContext);
+            ExcludeUrlToContext(contextName, urlToExcludeInContext);
 
             if (IsFormsAuthenticationSupported())
             {
@@ -34,8 +39,8 @@ namespace OWASPZAPDotNetAPI.Samples
             }
 
             string userId = string.Empty;
-            string userName = "ZAP";
-            string password = "adminadmin";
+            string userName = "admin";
+            string password = "admin";
 
             userId = CreateNewUser(contextId, userName);
             SetUserNameAndPassword(contextId, userId, userName, password);
@@ -43,6 +48,8 @@ namespace OWASPZAPDotNetAPI.Samples
 
             SetASpecificForcedUser(contextId, userId);
             EnableForcedUserMode();
+
+            
 
             string spiderScanId = StartSpidering(contextName);
             PollTheSpiderTillCompletion(spiderScanId);
@@ -215,7 +222,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void SetLoggedInIndicatorForFormsBasedAuthentication(string contextId)
         {
-            string loggedInIndicator = @"\Q<form action=""/SqliModernApp/Account/LogOff"" id=""logoutForm"" method=""post"">\E";
+            string loggedInIndicator = @"\Q<a id=""LoginLink"" href=""/logout.jsp"">\E";
             _apiResponse = _api.authentication.setLoggedInIndicator(contextId, loggedInIndicator);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
@@ -232,9 +239,8 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static string PrepareLoginUrlAndRequestData()
         {
-            string loginUrl = "http://localhost:8020/SqliModernApp/Account/Login";
-            string loginRequestData = "username={%username%}&password={%password%}";
-
+            string loginUrl = _target+"/doLogin";
+            string loginRequestData = "uid={%username%}&passw={%password%}&btnSubmit=Login";
             string formBasedAuthenticationConfigurationFormat = "loginUrl={0}&loginRequestData={1}";
             string formBasedAuthenticationConfiguration = string.Format(formBasedAuthenticationConfigurationFormat,
                 Uri.EscapeDataString(loginUrl),
@@ -269,6 +275,14 @@ namespace OWASPZAPDotNetAPI.Samples
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)
                 Console.WriteLine("{0} included to context {1}", urlToIncludeInContext, contextName);
+        }
+
+        private static void ExcludeUrlToContext(string contextName, string urlToExcludeInContext)
+        {
+            _apiResponse = _api.context.excludeFromContext(contextName, urlToExcludeInContext);
+
+            if ("OK" == ((ApiResponseElement)_apiResponse).Value)
+                Console.WriteLine("{0} excluded from context {1}", urlToExcludeInContext, contextName);
         }
 
         private static string CreateContext(string contextName)
