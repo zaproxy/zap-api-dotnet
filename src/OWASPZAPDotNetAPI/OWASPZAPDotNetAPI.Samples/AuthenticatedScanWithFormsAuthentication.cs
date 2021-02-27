@@ -12,7 +12,7 @@ namespace OWASPZAPDotNetAPI.Samples
 {
     class AuthenticatedScanWithFormsAuthentication
     {
-        private static string _target = "http://localhost:8020/SqliModernApp";
+        private static string _target = "https://neverwind.azurewebsites.net/";
         private static string _apikey = "vufbko8sihdfl5502df3863erg";
         private static ClientApi _api = new ClientApi("localhost", 7070, _apikey);
         private static IApiResponse _apiResponse;
@@ -23,7 +23,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
             string contextName = "SqliModernApp";
             string contextId = CreateContext(contextName);
-            string urlToIncludeInContext = @"\Qhttp://localhost:8020/SqliModernApp\E.*";
+            string urlToIncludeInContext = @"\Qhttps://neverwind.azurewebsites.net/\E.*";
             IncludeUrlToContext(contextName, urlToIncludeInContext);
 
             if (IsFormsAuthenticationSupported())
@@ -34,7 +34,7 @@ namespace OWASPZAPDotNetAPI.Samples
             }
 
             string userId = string.Empty;
-            string userName = "ZAP";
+            string userName = "admin";
             string password = "adminadmin";
 
             userId = CreateNewUser(contextId, userName);
@@ -232,7 +232,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static string PrepareLoginUrlAndRequestData()
         {
-            string loginUrl = "http://localhost:8020/SqliModernApp/Account/Login";
+            string loginUrl = "https://neverwind.azurewebsites.net/Account/Login";
             string loginRequestData = "username={%username%}&password={%password%}";
 
             string formBasedAuthenticationConfigurationFormat = "loginUrl={0}&loginRequestData={1}";

@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2019 the ZAP development team
+ * Copyright 2020 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -106,7 +106,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Submits the currently intercepted message and unsets the global request/response break points
+		///Submits the currently intercepted message and unsets the global request/response breakpoints
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse cont()
@@ -152,7 +152,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Removes the specified break point
+		///Removes the specified breakpoint
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse removeHttpBreakpoint(string str, string location, string match, string inverse, string ignorecase)

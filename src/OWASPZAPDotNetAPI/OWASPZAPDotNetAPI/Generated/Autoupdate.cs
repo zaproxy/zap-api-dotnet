@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2019 the ZAP development team
+ * Copyright 2020 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -249,7 +249,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Installs or updates the specified add-on, returning when complete (ie not asynchronously)
+		///Installs or updates the specified add-on, returning when complete (i.e. not asynchronously)
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse installAddon(string id)

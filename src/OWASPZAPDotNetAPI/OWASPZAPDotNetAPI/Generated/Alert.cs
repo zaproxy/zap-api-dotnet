@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2019 the ZAP development team
+ * Copyright 2020 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -136,6 +136,54 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters = new Dictionary<string, string>();
 			parameters.Add("id", id);
 			return api.CallApi("alert", "action", "deleteAlert", parameters);
+		}
+
+		/// <summary>
+		///Update the alert with the given ID, with the provided details.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse updateAlert(string id, string name, string riskid, string confidenceid, string description, string param, string attack, string otherinfo, string solution, string references, string evidence, string cweid, string wascid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("id", id);
+			parameters.Add("name", name);
+			parameters.Add("riskId", riskid);
+			parameters.Add("confidenceId", confidenceid);
+			parameters.Add("description", description);
+			parameters.Add("param", param);
+			parameters.Add("attack", attack);
+			parameters.Add("otherInfo", otherinfo);
+			parameters.Add("solution", solution);
+			parameters.Add("references", references);
+			parameters.Add("evidence", evidence);
+			parameters.Add("cweId", cweid);
+			parameters.Add("wascId", wascid);
+			return api.CallApi("alert", "action", "updateAlert", parameters);
+		}
+
+		/// <summary>
+		///Add an alert associated with the given message ID, with the provided details. (The ID of the created alert is returned.)
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse addAlert(string messageid, string name, string riskid, string confidenceid, string description, string param, string attack, string otherinfo, string solution, string references, string evidence, string cweid, string wascid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("messageId", messageid);
+			parameters.Add("name", name);
+			parameters.Add("riskId", riskid);
+			parameters.Add("confidenceId", confidenceid);
+			parameters.Add("description", description);
+			parameters.Add("param", param);
+			parameters.Add("attack", attack);
+			parameters.Add("otherInfo", otherinfo);
+			parameters.Add("solution", solution);
+			parameters.Add("references", references);
+			parameters.Add("evidence", evidence);
+			parameters.Add("cweId", cweid);
+			parameters.Add("wascId", wascid);
+			return api.CallApi("alert", "action", "addAlert", parameters);
 		}
 
 	}

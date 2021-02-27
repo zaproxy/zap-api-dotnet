@@ -12,8 +12,8 @@ namespace OWASPZAPDotNetAPI.Samples
         {
             ZAP.StartZapUI();
             //ZAP.StartZAPDaemon();
-            //SimplePointAndClickScan.Go();
-            AuthenticatedScanWithFormsAuthentication.Go();
+            SimplePointAndClickScan.Go();
+            //AuthenticatedScanWithFormsAuthentication.Go();
         }
     }
 }

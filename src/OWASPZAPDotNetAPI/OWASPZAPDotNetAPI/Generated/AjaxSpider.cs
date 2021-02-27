@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2019 the ZAP development team
+ * Copyright 2020 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		public AjaxSpider(ClientApi api) 
 		{
 			this.api = api;
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse allowedResources()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ajaxSpider", "view", "allowedResources", parameters);
 		}
 
 		/// <summary>
@@ -182,7 +192,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Runs the spider against the given URL and/or context, optionally, spidering everything in scope. The parameter 'contextName' can be used to constrain the scan to a Context, the option 'in scope' is ignored if a context was also specified. The parameter 'subtreeOnly' allows to restrict the spider under a site's subtree (using the specified 'url').
+		///Runs the AJAX Spider against a given target.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -198,7 +208,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Runs the spider from the perspective of a User, obtained using the given context name and user name. The parameter 'url' allows to specify the starting point for the spider, otherwise it's used an existing URL from the context (if any). The parameter 'subtreeOnly' allows to restrict the spider under a site's subtree (using the specified 'url').
+		///Runs the AJAX Spider from the perspective of a User of the web application.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -221,6 +231,44 @@ namespace OWASPZAPDotNetAPI.Generated
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("ajaxSpider", "action", "stop", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse addAllowedResource(string regex, string enabled)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("regex", regex);
+			parameters.Add("enabled", enabled);
+			return api.CallApi("ajaxSpider", "action", "addAllowedResource", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse removeAllowedResource(string regex)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("regex", regex);
+			return api.CallApi("ajaxSpider", "action", "removeAllowedResource", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setEnabledAllowedResource(string regex, string enabled)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("regex", regex);
+			parameters.Add("enabled", enabled);
+			return api.CallApi("ajaxSpider", "action", "setEnabledAllowedResource", parameters);
 		}
 
 		/// <summary>

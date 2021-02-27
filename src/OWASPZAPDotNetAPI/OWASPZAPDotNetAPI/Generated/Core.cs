@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2019 the ZAP development team
+ * Copyright 2020 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -517,7 +517,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Saves the session with the name supplied, optionally overwriting existing files. If a relative path is specified it will be resolved against the "session" directory in ZAP "home" dir.
+		///Saves the session.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse saveSession(string name, string overwrite)

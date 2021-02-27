@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2019 the ZAP development team
+ * Copyright 2020 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,6 +81,18 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the value (string representation) of a global custom variable. Returns an API error (DOES_NOT_EXIST) if no value was previously set.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse globalCustomVar(string varkey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("varKey", varkey);
+			return api.CallApi("script", "view", "globalCustomVar", parameters);
+		}
+
+		/// <summary>
 		///Gets all the global variables (key/value pairs).
 		/// </summary>
 		/// <returns></returns>
@@ -88,6 +100,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("script", "view", "globalVars", parameters);
+		}
+
+		/// <summary>
+		///Gets all the global custom variables (key/value pairs, the value is the string representation).
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse globalCustomVars()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("script", "view", "globalCustomVars", parameters);
 		}
 
 		/// <summary>
@@ -104,6 +126,19 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the value (string representation) of a custom variable. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists or if no value was previously set.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse scriptCustomVar(string scriptname, string varkey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("scriptName", scriptname);
+			parameters.Add("varKey", varkey);
+			return api.CallApi("script", "view", "scriptCustomVar", parameters);
+		}
+
+		/// <summary>
 		///Gets all the variables (key/value pairs) of the given script. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists.
 		/// </summary>
 		/// <returns></returns>
@@ -113,6 +148,18 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters = new Dictionary<string, string>();
 			parameters.Add("scriptName", scriptname);
 			return api.CallApi("script", "view", "scriptVars", parameters);
+		}
+
+		/// <summary>
+		///Gets all the custom variables (key/value pairs, the value is the string representation) of a script. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse scriptCustomVars(string scriptname)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("scriptName", scriptname);
+			return api.CallApi("script", "view", "scriptCustomVars", parameters);
 		}
 
 		/// <summary>
@@ -193,6 +240,18 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Clears a global custom variable.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse clearGlobalCustomVar(string varkey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("varKey", varkey);
+			return api.CallApi("script", "action", "clearGlobalCustomVar", parameters);
+		}
+
+		/// <summary>
 		///Clears the global variables.
 		/// </summary>
 		/// <returns></returns>
@@ -213,6 +272,19 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("scriptName", scriptname);
 			parameters.Add("varKey", varkey);
 			return api.CallApi("script", "action", "clearScriptVar", parameters);
+		}
+
+		/// <summary>
+		///Clears a script custom variable.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse clearScriptCustomVar(string scriptname, string varkey)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("scriptName", scriptname);
+			parameters.Add("varKey", varkey);
+			return api.CallApi("script", "action", "clearScriptCustomVar", parameters);
 		}
 
 		/// <summary>

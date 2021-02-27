@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2019 the ZAP development team
+ * Copyright 2020 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,20 +39,21 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Import an Open API definition from a local file.
+		///Imports an OpenAPI definition from a local file.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse importFile(string file)
+		public IApiResponse importFile(string file, string target)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("file", file);
+			parameters.Add("target", target);
 			return api.CallApi("openapi", "action", "importFile", parameters);
 		}
 
 		/// <summary>
-		///Import an Open API definition from a URL, hostOverride allows the host to be replaced
+		///Imports an OpenAPI definition from a URL.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
