@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2020 the ZAP development team
+ * Copyright 2021 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -136,6 +136,32 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters = new Dictionary<string, string>();
 			parameters.Add("id", id);
 			return api.CallApi("alert", "action", "deleteAlert", parameters);
+		}
+
+		/// <summary>
+		///Update the confidence of the alerts.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse updateAlertsConfidence(string ids, string confidenceid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("ids", ids);
+			parameters.Add("confidenceId", confidenceid);
+			return api.CallApi("alert", "action", "updateAlertsConfidence", parameters);
+		}
+
+		/// <summary>
+		///Update the risk of the alerts.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse updateAlertsRisk(string ids, string riskid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("ids", ids);
+			parameters.Add("riskId", riskid);
+			return api.CallApi("alert", "action", "updateAlertsRisk", parameters);
 		}
 
 		/// <summary>

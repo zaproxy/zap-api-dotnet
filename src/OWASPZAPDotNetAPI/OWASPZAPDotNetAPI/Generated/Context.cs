@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2020 the ZAP development team
+ * Copyright 2021 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -168,6 +168,24 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("incRegexs", incregexs);
 			parameters.Add("excRegexs", excregexs);
 			return api.CallApi("context", "action", "setContextRegexs", parameters);
+		}
+
+		/// <summary>
+		///Set the checking strategy for a context - this defines how ZAP checks that a request is authenticated
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setContextCheckingStrategy(string contextname, string checkingstrategy, string pollurl, string polldata, string pollheaders, string pollfrequency, string pollfrequencyunits)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextName", contextname);
+			parameters.Add("checkingStrategy", checkingstrategy);
+			parameters.Add("pollUrl", pollurl);
+			parameters.Add("pollData", polldata);
+			parameters.Add("pollHeaders", pollheaders);
+			parameters.Add("pollFrequency", pollfrequency);
+			parameters.Add("pollFrequencyUnits", pollfrequencyunits);
+			return api.CallApi("context", "action", "setContextCheckingStrategy", parameters);
 		}
 
 		/// <summary>

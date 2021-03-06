@@ -281,7 +281,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void LoadTargetUrlToSitesTree()
         {
-            _api.AccessUrl(_target);
+            _api.core.accessUrl(_target, "true");
         }
 
         private static void Sleep(int milliseconds)

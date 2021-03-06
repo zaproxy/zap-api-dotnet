@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2020 the ZAP development team
+ * Copyright 2021 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,6 +49,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Define if ZAP should detect CSRF tokens by searching for partial matches
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionPartialMatchingEnabled()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("acsrf", "view", "optionPartialMatchingEnabled", parameters);
+		}
+
+		/// <summary>
 		///Adds an anti-CSRF token with the given name, enabled by default
 		/// </summary>
 		/// <returns></returns>
@@ -70,6 +80,18 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters = new Dictionary<string, string>();
 			parameters.Add("String", str);
 			return api.CallApi("acsrf", "action", "removeOptionToken", parameters);
+		}
+
+		/// <summary>
+		///Define if ZAP should detect CSRF tokens by searching for partial matches.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionPartialMatchingEnabled(bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("acsrf", "action", "setOptionPartialMatchingEnabled", parameters);
 		}
 
 		/// <summary>

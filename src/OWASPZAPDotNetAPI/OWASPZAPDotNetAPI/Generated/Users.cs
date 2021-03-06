@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2020 the ZAP development team
+ * Copyright 2021 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,6 +89,32 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the authentication state information for the user identified by the Context and User Ids.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse getAuthenticationState(string contextid, string userid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextId", contextid);
+			parameters.Add("userId", userid);
+			return api.CallApi("users", "view", "getAuthenticationState", parameters);
+		}
+
+		/// <summary>
+		///Gets the authentication session information for the user identified by the Context and User Ids, e.g. cookies and realm credentials.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse getAuthenticationSession(string contextid, string userid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextId", contextid);
+			parameters.Add("userId", userid);
+			return api.CallApi("users", "view", "getAuthenticationSession", parameters);
+		}
+
+		/// <summary>
 		///Creates a new user with the given name for the context with the given ID.
 		/// </summary>
 		/// <returns></returns>
@@ -154,6 +180,66 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("userId", userid);
 			parameters.Add("authCredentialsConfigParams", authcredentialsconfigparams);
 			return api.CallApi("users", "action", "setAuthenticationCredentials", parameters);
+		}
+
+		/// <summary>
+		///Tries to authenticate as the identified user, returning the authentication request and whether it appears to have succeeded.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse authenticateAsUser(string contextid, string userid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextId", contextid);
+			parameters.Add("userId", userid);
+			return api.CallApi("users", "action", "authenticateAsUser", parameters);
+		}
+
+		/// <summary>
+		///Tries to poll as the identified user, returning the authentication request and whether it appears to have succeeded. This will only work if the polling verification strategy has been configured.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse pollAsUser(string contextid, string userid)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextId", contextid);
+			parameters.Add("userId", userid);
+			return api.CallApi("users", "action", "pollAsUser", parameters);
+		}
+
+		/// <summary>
+		///Sets fields in the authentication state for the user identified by the Context and User Ids.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setAuthenticationState(string contextid, string userid, string lastpollresult, string lastpolltimeinms, string requestssincelastpoll)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextId", contextid);
+			parameters.Add("userId", userid);
+			parameters.Add("lastPollResult", lastpollresult);
+			parameters.Add("lastPollTimeInMs", lastpolltimeinms);
+			parameters.Add("requestsSinceLastPoll", requestssincelastpoll);
+			return api.CallApi("users", "action", "setAuthenticationState", parameters);
+		}
+
+		/// <summary>
+		///Sets the specified cookie for the user identified by the Context and User Ids.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setCookie(string contextid, string userid, string domain, string name, string value, string path, string secure)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("contextId", contextid);
+			parameters.Add("userId", userid);
+			parameters.Add("domain", domain);
+			parameters.Add("name", name);
+			parameters.Add("value", value);
+			parameters.Add("path", path);
+			parameters.Add("secure", secure);
+			return api.CallApi("users", "action", "setCookie", parameters);
 		}
 
 	}

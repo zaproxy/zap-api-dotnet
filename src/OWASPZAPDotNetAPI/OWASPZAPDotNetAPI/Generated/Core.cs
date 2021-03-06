@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2020 the ZAP development team
+ * Copyright 2021 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -466,6 +466,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("core", "view", "optionUseProxyChainAuth", parameters);
+		}
+
+		/// <summary>
+		///Gets whether or not the SOCKS proxy should be used.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionUseSocksProxy()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionUseSocksProxy", parameters);
 		}
 
 		/// <summary>
@@ -950,6 +960,18 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters = new Dictionary<string, string>();
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("core", "action", "setOptionUseProxyChainAuth", parameters);
+		}
+
+		/// <summary>
+		///Sets whether or not the SOCKS proxy should be used.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionUseSocksProxy(bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("core", "action", "setOptionUseSocksProxy", parameters);
 		}
 
 		/// <summary>
