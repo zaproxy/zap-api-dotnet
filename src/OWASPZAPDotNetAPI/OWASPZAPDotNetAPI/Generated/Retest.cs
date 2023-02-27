@@ -29,37 +29,25 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Reveal 
+	public class Retest 
 	{
 		private ClientApi api = null;
 
-		public Reveal(ClientApi api) 
+		public Retest(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Tells if shows hidden fields and enables disabled fields
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse reveal()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("reveal", "view", "reveal", parameters);
-		}
-
-		/// <summary>
-		///Sets if shows hidden fields and enables disabled fields
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setReveal(string reveal)
+		public IApiResponse retest(string alertids)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("reveal", reveal);
-			return api.CallApi("reveal", "action", "setReveal", parameters);
+			parameters.Add("alertIds", alertids);
+			return api.CallApi("retest", "action", "retest", parameters);
 		}
 
 	}

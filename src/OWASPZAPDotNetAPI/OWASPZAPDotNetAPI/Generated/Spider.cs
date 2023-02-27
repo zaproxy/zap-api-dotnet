@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2021 the ZAP development team
+ * Copyright 2023 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse status(string scanid)
@@ -52,6 +53,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse results(string scanid)
@@ -64,6 +66,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse fullResults(string scanid)
@@ -76,6 +79,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse scans()
@@ -86,6 +90,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the regexes of URLs excluded from the spider scans.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse excludedFromScan()
@@ -96,6 +101,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Returns a list of unique URLs from the history table based on HTTP messages added by the Spider.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse allUrls()
@@ -106,6 +112,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Returns a list of the names of the nodes added to the Sites tree by the specified scan.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse addedNodes(string scanid)
@@ -118,6 +125,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets all the domains that are always in scope. For each domain the following are shown: the index, the value (domain), if enabled, and if specified as a regex.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse domainsAlwaysInScope()
@@ -128,6 +136,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Use view domainsAlwaysInScope instead.
+		///This component is optional and therefore the API will only work if it is installed
 		/// [Obsolete]
 		/// </summary>
 		/// <returns></returns>
@@ -140,6 +149,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Use view domainsAlwaysInScope instead.
+		///This component is optional and therefore the API will only work if it is installed
 		/// [Obsolete]
 		/// </summary>
 		/// <returns></returns>
@@ -152,6 +162,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionHandleParameters()
@@ -162,6 +173,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the maximum number of child nodes (per node) that can be crawled, 0 means no limit.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionMaxChildren()
@@ -172,6 +184,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the maximum depth the spider can crawl, 0 if unlimited.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionMaxDepth()
@@ -182,6 +195,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionMaxDuration()
@@ -192,6 +206,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the maximum size, in bytes, that a response might have to be parsed.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionMaxParseSizeBytes()
@@ -202,6 +217,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionMaxScansInUI()
@@ -212,6 +228,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionRequestWaitTime()
@@ -222,30 +239,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
-		/// [Obsolete] Option no longer in effective use.
-		/// </summary>
-		/// <returns></returns>
-		[Obsolete("Option no longer in effective use.")]
-		public IApiResponse optionScope()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionScope", parameters);
-		}
-
-		/// <summary>
-		///
-		/// [Obsolete] Option no longer in effective use.
-		/// </summary>
-		/// <returns></returns>
-		[Obsolete("Option no longer in effective use.")]
-		public IApiResponse optionScopeText()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("spider", "view", "optionScopeText", parameters);
-		}
-
-		/// <summary>
-		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionSkipURLString()
@@ -256,6 +250,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionThreadCount()
@@ -266,6 +261,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionUserAgent()
@@ -276,6 +272,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets whether or not a spider process should accept cookies while spidering.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionAcceptCookies()
@@ -286,6 +283,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionHandleODataParametersVisited()
@@ -296,6 +294,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionParseComments()
@@ -305,7 +304,18 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionParseDsStore()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("spider", "view", "optionParseDsStore", parameters);
+		}
+
+		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionParseGit()
@@ -316,6 +326,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionParseRobotsTxt()
@@ -326,6 +337,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionParseSVNEntries()
@@ -336,6 +348,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionParseSitemapXml()
@@ -346,6 +359,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionPostForm()
@@ -356,6 +370,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionProcessForm()
@@ -366,6 +381,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets whether or not the 'Referer' header should be sent while spidering.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionSendRefererHeader()
@@ -376,6 +392,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionShowAdvancedDialog()
@@ -386,6 +403,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Runs the spider against the given URL (or context). Optionally, the 'maxChildren' parameter can be set to limit the number of children scanned, the 'recurse' parameter can be used to prevent the spider from seeding recursively, the parameter 'contextName' can be used to constrain the scan to a Context and the parameter 'subtreeOnly' allows to restrict the spider under a site's subtree (using the specified 'url').
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse scan(string url, string maxchildren, string recurse, string contextname, string subtreeonly)
@@ -402,6 +420,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Runs the spider from the perspective of a User, obtained using the given Context ID and User ID. See 'scan' action for more details.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse scanAsUser(string contextid, string userid, string url, string maxchildren, string recurse, string subtreeonly)
@@ -419,6 +438,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse pause(string scanid)
@@ -431,6 +451,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse resume(string scanid)
@@ -443,6 +464,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse stop(string scanid)
@@ -455,6 +477,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse removeScan(string scanid)
@@ -467,6 +490,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse pauseAllScans()
@@ -477,6 +501,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse resumeAllScans()
@@ -487,6 +512,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse stopAllScans()
@@ -497,6 +523,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse removeAllScans()
@@ -507,6 +534,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Clears the regexes of URLs excluded from the spider scans.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse clearExcludedFromScan()
@@ -517,6 +545,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Adds a regex of URLs that should be excluded from the spider scans.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse excludeFromScan(string regex)
@@ -529,6 +558,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Adds a new domain that's always in scope, using the specified value. Optionally sets if the new entry is enabled (default, true) and whether or not the new value is specified as a regex (default, false).
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse addDomainAlwaysInScope(string value, string isregex, string isenabled)
@@ -543,6 +573,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Modifies a domain that's always in scope. Allows to modify the value, if enabled or if a regex. The domain is selected with its index, which can be obtained with the view domainsAlwaysInScope.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse modifyDomainAlwaysInScope(string idx, string value, string isregex, string isenabled)
@@ -558,6 +589,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Removes a domain that's always in scope, with the given index. The index can be obtained with the view domainsAlwaysInScope.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse removeDomainAlwaysInScope(string idx)
@@ -570,6 +602,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Enables all domains that are always in scope.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse enableAllDomainsAlwaysInScope()
@@ -580,6 +613,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Disables all domains that are always in scope.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse disableAllDomainsAlwaysInScope()
@@ -590,6 +624,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionHandleParameters(string str)
@@ -601,21 +636,8 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Use actions [add|modify|remove]DomainAlwaysInScope instead.
-		/// [Obsolete] Option no longer in effective use.
-		/// </summary>
-		/// <returns></returns>
-		[Obsolete("Option no longer in effective use.")]
-		public IApiResponse setOptionScopeString(string str)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("String", str);
-			return api.CallApi("spider", "action", "setOptionScopeString", parameters);
-		}
-
-		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionSkipURLString(string str)
@@ -628,6 +650,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionUserAgent(string str)
@@ -640,6 +663,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sets whether or not a spider process should accept cookies while spidering.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionAcceptCookies(bool boolean)
@@ -652,6 +676,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionHandleODataParametersVisited(bool boolean)
@@ -664,6 +689,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sets the maximum number of child nodes (per node) that can be crawled, 0 means no limit.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionMaxChildren(int i)
@@ -676,6 +702,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sets the maximum depth the spider can crawl, 0 for unlimited depth.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionMaxDepth(int i)
@@ -688,6 +715,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionMaxDuration(int i)
@@ -700,6 +728,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sets the maximum size, in bytes, that a response might have to be parsed. This allows the spider to skip big responses/files.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionMaxParseSizeBytes(int i)
@@ -712,6 +741,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionMaxScansInUI(int i)
@@ -724,6 +754,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionParseComments(bool boolean)
@@ -735,7 +766,20 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionParseDsStore(bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("spider", "action", "setOptionParseDsStore", parameters);
+		}
+
+		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionParseGit(bool boolean)
@@ -748,6 +792,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionParseRobotsTxt(bool boolean)
@@ -760,6 +805,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionParseSVNEntries(bool boolean)
@@ -772,6 +818,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionParseSitemapXml(bool boolean)
@@ -784,6 +831,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionPostForm(bool boolean)
@@ -796,6 +844,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionProcessForm(bool boolean)
@@ -808,6 +857,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionRequestWaitTime(int i)
@@ -820,6 +870,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sets whether or not the 'Referer' header should be sent while spidering.
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionSendRefererHeader(bool boolean)
@@ -832,6 +883,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionShowAdvancedDialog(bool boolean)
@@ -844,6 +896,7 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionThreadCount(int i)

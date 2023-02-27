@@ -29,37 +29,49 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Reveal 
+	public class Revisit 
 	{
 		private ClientApi api = null;
 
-		public Reveal(ClientApi api) 
+		public Revisit(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Tells if shows hidden fields and enables disabled fields
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse reveal()
+		public IApiResponse revisitList()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("reveal", "view", "reveal", parameters);
+			return api.CallApi("revisit", "view", "revisitList", parameters);
 		}
 
 		/// <summary>
-		///Sets if shows hidden fields and enables disabled fields
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setReveal(string reveal)
+		public IApiResponse revisitSiteOn(string site, string starttime, string endtime)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("reveal", reveal);
-			return api.CallApi("reveal", "action", "setReveal", parameters);
+			parameters.Add("site", site);
+			parameters.Add("startTime", starttime);
+			parameters.Add("endTime", endtime);
+			return api.CallApi("revisit", "action", "revisitSiteOn", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse revisitSiteOff(string site)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("site", site);
+			return api.CallApi("revisit", "action", "revisitSiteOff", parameters);
 		}
 
 	}

@@ -29,102 +29,70 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Pnh 
+	public class AccessControl 
 	{
 		private ClientApi api = null;
 
-		public Pnh(ClientApi api) 
+		public AccessControl(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
+		///Gets the Access Control scan progress (percentage integer) for the given context ID.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse monitor(string id, string message)
+		public IApiResponse getScanProgress(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("id", id);
-			parameters.Add("message", message);
-			return api.CallApi("pnh", "action", "monitor", parameters);
+			parameters.Add("contextId", contextid);
+			return api.CallApi("accessControl", "view", "getScanProgress", parameters);
 		}
 
 		/// <summary>
+		///Gets the Access Control scan status (description string) for the given context ID.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse oracle(string id)
+		public IApiResponse getScanStatus(string contextid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("id", id);
-			return api.CallApi("pnh", "action", "oracle", parameters);
+			parameters.Add("contextId", contextid);
+			return api.CallApi("accessControl", "view", "getScanStatus", parameters);
 		}
 
 		/// <summary>
+		///Starts an Access Control scan with the given context ID and user ID. (Optional parameters: user ID for Unauthenticated user, boolean identifying whether or not Alerts are raised, and the Risk level for the Alerts.) [This assumes the Access Control rules were previously established via ZAP gui and the necessary Context exported/imported.]
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse startMonitoring(string url)
+		public IApiResponse scan(string contextid, string userid, string scanasunauthuser, string raisealert, string alertrisklevel)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("url", url);
-			return api.CallApi("pnh", "action", "startMonitoring", parameters);
+			parameters.Add("contextId", contextid);
+			parameters.Add("userId", userid);
+			parameters.Add("scanAsUnAuthUser", scanasunauthuser);
+			parameters.Add("raiseAlert", raisealert);
+			parameters.Add("alertRiskLevel", alertrisklevel);
+			return api.CallApi("accessControl", "action", "scan", parameters);
 		}
 
 		/// <summary>
+		///Generates an Access Control report for the given context ID and saves it based on the provided filename (path). 
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse stopMonitoring(string id)
+		public IApiResponse writeHTMLreport(string contextid, string filename)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("id", id);
-			return api.CallApi("pnh", "action", "stopMonitoring", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public byte[] pnh()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApiOther("pnh", "other", "pnh", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public byte[] manifest()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApiOther("pnh", "other", "manifest", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public byte[] service()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApiOther("pnh", "other", "service", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public byte[] fx_pnhxpi()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApiOther("pnh", "other", "fx_pnh.xpi", parameters);
+			parameters.Add("contextId", contextid);
+			parameters.Add("fileName", filename);
+			return api.CallApi("accessControl", "action", "writeHTMLreport", parameters);
 		}
 
 	}
