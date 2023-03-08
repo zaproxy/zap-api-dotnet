@@ -283,7 +283,7 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("behindNat", behindnat);
 			parameters.Add("decodeResponse", decoderesponse);
 			parameters.Add("removeAcceptEncoding", removeacceptencoding);
-			return api.CallApi("network", "action", "addLocalServer", parameters);
+			return this.api.CallApi("network", "action", "addLocalServer", parameters);
 		}
 
 		/// <summary>
