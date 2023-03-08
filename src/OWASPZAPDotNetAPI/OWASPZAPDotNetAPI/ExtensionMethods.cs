@@ -28,10 +28,24 @@ namespace OWASPZAPDotNetAPI
 {
     public static class ExtensionMethods
     {
-        public static string TryGetDictionaryString(this Dictionary<string, string> dictionary, string key)
+        public static string TryGetDictionaryString(this Dictionary<string, IApiResponse> dictionary, string key)
         {
             string retVal = string.Empty;
-            dictionary.TryGetValue(key, out retVal);
+            IApiResponse response = null;
+            dictionary.TryGetValue(key, out response);
+            if (response != null)
+            {
+                if (response is ApiResponseElement)
+                {
+                    retVal = ((ApiResponseElement)response).Value;
+                }
+                else if (response is ApiResponseList)
+                {
+                    // If the response is a List, then it is probably the tags introduced in ZAP 2.11.0
+                    // TODO
+                    // Retrieving tag information is not supported yet
+                }
+            }
             return retVal;
         }
     }

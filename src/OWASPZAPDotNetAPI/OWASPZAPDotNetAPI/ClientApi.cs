@@ -127,7 +127,7 @@ namespace OWASPZAPDotNetAPI
         public List<Alert> GetAlerts(string baseUrl, int start, int count, string riskId)
         {
             List<Alert> alerts = new List<Alert>();
-            IApiResponse response = core.alerts(baseUrl, Convert.ToString(start), Convert.ToString(count), riskId);
+            IApiResponse response = alert.alerts(baseUrl, Convert.ToString(start), Convert.ToString(count), riskId);
             if (response != null && response is ApiResponseList)
             {
                 ApiResponseList apiResponseList = (ApiResponseList)response;

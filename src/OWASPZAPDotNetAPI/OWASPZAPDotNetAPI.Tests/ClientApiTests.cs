@@ -12,7 +12,7 @@ namespace OWASPZAPDotNetAPI.Tests
         [TestInitialize]
         public void InstantiateClientApi()
         {
-            zap = new ClientApi("localhost", 7070, "vufbko8sihdfl5502df3863erg");
+            zap = new ClientApi("127.0.0.1", 7070, "on6qbod07ssf92587pme6rd5u8");
         }
 
         [TestCleanup]

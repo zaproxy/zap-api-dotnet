@@ -21,13 +21,14 @@ namespace OWASPZAPDotNetAPI.Samples
             ProcessStartInfo zapProcessStartInfo = new ProcessStartInfo();
             zapProcessStartInfo.FileName = @"C:\Program Files\OWASP\Zed Attack Proxy\ZAP.exe";
             zapProcessStartInfo.WorkingDirectory = @"C:\Program Files\OWASP\Zed Attack Proxy";
+            zapProcessStartInfo.Arguments = "-host 127.0.0.1 -port 7070";
 
             Console.WriteLine(zapProcessStartInfo.ToString());
             Console.WriteLine("Issuing command to StartZapUI");
             Process zap = Process.Start(zapProcessStartInfo);
 
             //Sleep(120000);
-            CheckIfZAPHasStartedByPollingTheAPI(1);
+            CheckIfZAPHasStartedByPollingTheAPI(2);
         }
 
         public static void StartZAPDaemon()
@@ -43,7 +44,7 @@ namespace OWASPZAPDotNetAPI.Samples
             Process zap = Process.Start(zapProcessStartInfo);
 
             //Sleep(120000);
-            CheckIfZAPHasStartedByPollingTheAPI(1);
+            CheckIfZAPHasStartedByPollingTheAPI(2);
         }
 
         private static void Sleep(int sleepTime)
@@ -58,7 +59,7 @@ namespace OWASPZAPDotNetAPI.Samples
             Stopwatch watch = new Stopwatch();
             watch.Start();
             int millisecondsToWait = minutesToWait * 60 * 1000;
-            string zapUrlToDownload = "http://localhost:7070";
+            string zapUrlToDownload = "http://127.0.0.1:7070";
 
             while (millisecondsToWait > watch.ElapsedMilliseconds)
             {
