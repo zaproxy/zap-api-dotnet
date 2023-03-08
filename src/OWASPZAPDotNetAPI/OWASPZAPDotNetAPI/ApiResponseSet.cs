@@ -30,8 +30,8 @@ namespace OWASPZAPDotNetAPI
     public class ApiResponseSet : IApiResponse
     {
         public string Name { get; set; }
-        private Dictionary<string, string> dictionary;
-        public Dictionary<string, string> Dictionary { get { return this.dictionary; } }
+        private Dictionary<string, IApiResponse> dictionary;
+        public Dictionary<string, IApiResponse> Dictionary { get { return this.dictionary; } }
         //private string[] attributes; // attributes field is present at org.zaproxy.clientapi.core, but I couldn't track the usage in the java api client, hence ignoring it in the dot net api
 
         public ApiResponseSet(string name)
@@ -39,7 +39,7 @@ namespace OWASPZAPDotNetAPI
             this.Name = name;
         }
 
-        public ApiResponseSet(string name, Dictionary<string, string> dictionary)
+        public ApiResponseSet(string name, Dictionary<string, IApiResponse> dictionary)
         {
             this.Name = name;
             this.dictionary = dictionary;
@@ -49,11 +49,11 @@ namespace OWASPZAPDotNetAPI
         {
             this.Name = node.Name;
             XmlNode childNode = node.FirstChild;
-            this.dictionary = new Dictionary<string, string>();
+            this.dictionary = new Dictionary<string, IApiResponse>();
             while (childNode != null)
             {
-                ApiResponseElement apiResponseElement = (ApiResponseElement)ApiResponseFactory.GetResponse(childNode);
-                this.dictionary.Add(apiResponseElement.Name, apiResponseElement.Value);
+                IApiResponse apiResponse = ApiResponseFactory.GetResponse(childNode);
+                this.dictionary.Add(apiResponse.Name, apiResponse);
                 childNode = childNode.NextSibling;
             }
         }

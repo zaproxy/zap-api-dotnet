@@ -13,15 +13,15 @@ namespace OWASPZAPDotNetAPI.Samples
     class AuthenticatedScanWithFormsAuthentication
     {
         private static string _target = "https://neverwind.azurewebsites.net/";
-        private static string _apikey = "vufbko8sihdfl5502df3863erg";
-        private static ClientApi _api = new ClientApi("localhost", 7070, _apikey);
+        private static string _apikey = "on6qbod07ssf92587pme6rd5u8";
+        private static ClientApi _api = new ClientApi("127.0.0.1", 7070, _apikey);
         private static IApiResponse _apiResponse;
 
         public static void Go()
         {
             LoadTargetUrlToSitesTree();
 
-            string contextName = "SqliModernApp";
+            string contextName = "Neverwind";
             string contextId = CreateContext(contextName);
             string urlToIncludeInContext = @"\Qhttps://neverwind.azurewebsites.net/\E.*";
             IncludeUrlToContext(contextName, urlToIncludeInContext);
@@ -215,7 +215,7 @@ namespace OWASPZAPDotNetAPI.Samples
 
         private static void SetLoggedInIndicatorForFormsBasedAuthentication(string contextId)
         {
-            string loggedInIndicator = @"\Q<form action=""/SqliModernApp/Account/LogOff"" id=""logoutForm"" method=""post"">\E";
+            string loggedInIndicator = @"\Q<form action=""/Account/LogOff"" id=""logoutForm"" method=""post"">\E";
             _apiResponse = _api.authentication.setLoggedInIndicator(contextId, loggedInIndicator);
 
             if ("OK" == ((ApiResponseElement)_apiResponse).Value)

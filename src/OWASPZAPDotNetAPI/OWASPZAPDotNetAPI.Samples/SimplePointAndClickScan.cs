@@ -12,8 +12,8 @@ namespace OWASPZAPDotNetAPI.Samples
     class SimplePointAndClickScan
     {
         private static string _target = "https://neverwind.azurewebsites.net/";
-        private static string _apikey = "vufbko8sihdfl5502df3863erg";
-        private static ClientApi _api = new ClientApi("localhost", 7070, _apikey);
+        private static string _apikey = "on6qbod07ssf92587pme6rd5u8";
+        private static ClientApi _api = new ClientApi("127.0.0.1", 7070, _apikey);
         private static IApiResponse _apiResponse;
 
         public static void Go()
