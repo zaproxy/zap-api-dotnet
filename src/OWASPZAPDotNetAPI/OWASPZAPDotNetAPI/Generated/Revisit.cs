@@ -29,70 +29,49 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class RuleConfig 
+	public class Revisit 
 	{
 		private ClientApi api = null;
 
-		public RuleConfig(ClientApi api) 
+		public Revisit(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Show the specified rule configuration
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse ruleConfigValue(string key)
+		public IApiResponse revisitList()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("revisit", "view", "revisitList", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse revisitSiteOn(string site, string starttime, string endtime)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("key", key);
-			return api.CallApi("ruleConfig", "view", "ruleConfigValue", parameters);
+			parameters.Add("site", site);
+			parameters.Add("startTime", starttime);
+			parameters.Add("endTime", endtime);
+			return api.CallApi("revisit", "action", "revisitSiteOn", parameters);
 		}
 
 		/// <summary>
-		///Show all of the rule configurations
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse allRuleConfigs()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ruleConfig", "view", "allRuleConfigs", parameters);
-		}
-
-		/// <summary>
-		///Reset the specified rule configuration, which must already exist
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse resetRuleConfigValue(string key)
+		public IApiResponse revisitSiteOff(string site)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("key", key);
-			return api.CallApi("ruleConfig", "action", "resetRuleConfigValue", parameters);
-		}
-
-		/// <summary>
-		///Reset all of the rule configurations
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse resetAllRuleConfigValues()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ruleConfig", "action", "resetAllRuleConfigValues", parameters);
-		}
-
-		/// <summary>
-		///Set the specified rule configuration, which must already exist
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setRuleConfigValue(string key, string value)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("key", key);
-			parameters.Add("value", value);
-			return api.CallApi("ruleConfig", "action", "setRuleConfigValue", parameters);
+			parameters.Add("site", site);
+			return api.CallApi("revisit", "action", "revisitSiteOff", parameters);
 		}
 
 	}

@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2021 the ZAP development team
+ * Copyright 2023 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -117,7 +117,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Gets the scanners, optionally, of the given scan policy and/or scanner policy/category ID.
+		///Gets the scan rules, optionally, of the given scan policy or scanner policy/category ID.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse scanners(string scanpolicyname, string policyid)
@@ -335,7 +335,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Tells whether or not the active scanner should inject the HTTP request header X-ZAP-Scan-ID, with the ID of the scanner that's sending the requests.
+		///Tells whether or not the active scanner should inject the HTTP request header X-ZAP-Scan-ID, with the ID of the scan rule that's sending the requests.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse optionInjectPluginIdInHeader()
@@ -385,6 +385,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Tells whether or not the active scanner should scan null JSON values.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionScanNullJsonValues()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("ascan", "view", "optionScanNullJsonValues", parameters);
+		}
+
+		/// <summary>
 		///
 		/// </summary>
 		/// <returns></returns>
@@ -395,7 +405,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Runs the active scanner against the given URL and/or Context. Optionally, the 'recurse' parameter can be used to scan URLs under the given URL, the parameter 'inScopeOnly' can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified), the parameter 'scanPolicyName' allows to specify the scan policy (if none is given it uses the default scan policy), the parameters 'method' and 'postData' allow to select a given request in conjunction with the given URL.
+		///Runs the active scanner against the given URL or Context. Optionally, the 'recurse' parameter can be used to scan URLs under the given URL, the parameter 'inScopeOnly' can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified), the parameter 'scanPolicyName' allows to specify the scan policy (if none is given it uses the default scan policy), the parameters 'method' and 'postData' allow to select a given request in conjunction with the given URL.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse scan(string url, string recurse, string inscopeonly, string scanpolicyname, string method, string postdata, string contextid)
@@ -541,7 +551,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Enables all scanners of the scan policy with the given name, or the default if none given.
+		///Enables all scan rules of the scan policy with the given name, or the default if none given.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse enableAllScanners(string scanpolicyname)
@@ -553,7 +563,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Disables all scanners of the scan policy with the given name, or the default if none given.
+		///Disables all scan rules of the scan policy with the given name, or the default if none given.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse disableAllScanners(string scanpolicyname)
@@ -565,7 +575,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Enables the scanners with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
+		///Enables the scan rules with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse enableScanners(string ids, string scanpolicyname)
@@ -578,7 +588,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Disables the scanners with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
+		///Disables the scan rules with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse disableScanners(string ids, string scanpolicyname)
@@ -753,7 +763,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Skips the scanner using the given IDs of the scan and the scanner.
+		///Skips the scan rule using the given IDs of the scan and the scan rule.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse skipScanner(string scanid, string scannerid)
@@ -850,7 +860,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Sets whether or not the active scanner should inject the HTTP request header X-ZAP-Scan-ID, with the ID of the scanner that's sending the requests.
+		///Sets whether or not the active scanner should inject the HTTP request header X-ZAP-Scan-ID, with the ID of the scan rule that's sending the requests.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setOptionInjectPluginIdInHeader(bool boolean)
@@ -967,6 +977,18 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters = new Dictionary<string, string>();
 			parameters.Add("Boolean", Convert.ToString(boolean));
 			return api.CallApi("ascan", "action", "setOptionScanHeadersAllRequests", parameters);
+		}
+
+		/// <summary>
+		///Sets whether or not the active scanner should scan null JSON values.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionScanNullJsonValues(bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("ascan", "action", "setOptionScanNullJsonValues", parameters);
 		}
 
 		/// <summary>

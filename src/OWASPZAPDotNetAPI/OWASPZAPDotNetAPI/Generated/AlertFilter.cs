@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2021 the ZAP development team
+ * Copyright 2023 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -154,6 +154,72 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("evidence", evidence);
 			parameters.Add("evidenceIsRegex", evidenceisregex);
 			return api.CallApi("alertFilter", "action", "removeGlobalAlertFilter", parameters);
+		}
+
+		/// <summary>
+		///Applies all currently enabled Global and Context alert filters.
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse applyAll()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("alertFilter", "action", "applyAll", parameters);
+		}
+
+		/// <summary>
+		///Applies all currently enabled Context alert filters.
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse applyContext()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("alertFilter", "action", "applyContext", parameters);
+		}
+
+		/// <summary>
+		///Applies all currently enabled Global alert filters.
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse applyGlobal()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("alertFilter", "action", "applyGlobal", parameters);
+		}
+
+		/// <summary>
+		///Tests all currently enabled Global and Context alert filters.
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse testAll()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("alertFilter", "action", "testAll", parameters);
+		}
+
+		/// <summary>
+		///Tests all currently enabled Context alert filters.
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse testContext()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("alertFilter", "action", "testContext", parameters);
+		}
+
+		/// <summary>
+		///Tests all currently enabled Global alert filters.
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse testGlobal()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("alertFilter", "action", "testGlobal", parameters);
 		}
 
 	}

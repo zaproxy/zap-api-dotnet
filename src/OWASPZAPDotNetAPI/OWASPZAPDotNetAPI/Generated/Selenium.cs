@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2021 the ZAP development team
+ * Copyright 2023 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,27 @@ namespace OWASPZAPDotNetAPI.Generated
 		public Selenium(ClientApi api) 
 		{
 			this.api = api;
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionBrowserExtensions()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("selenium", "view", "optionBrowserExtensions", parameters);
+		}
+
+		/// <summary>
+		///Returns the current path to Chrome binary
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionChromeBinaryPath()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("selenium", "view", "optionChromeBinaryPath", parameters);
 		}
 
 		/// <summary>
@@ -83,6 +104,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse optionLastDirectory()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("selenium", "view", "optionLastDirectory", parameters);
+		}
+
+		/// <summary>
 		///Returns the current path to PhantomJS binary
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
@@ -91,6 +122,19 @@ namespace OWASPZAPDotNetAPI.Generated
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("selenium", "view", "optionPhantomJsBinaryPath", parameters);
+		}
+
+		/// <summary>
+		///Sets the current path to Chrome binary
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionChromeBinaryPath(string str)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("String", str);
+			return api.CallApi("selenium", "action", "setOptionChromeBinaryPath", parameters);
 		}
 
 		/// <summary>
@@ -143,6 +187,18 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters = new Dictionary<string, string>();
 			parameters.Add("String", str);
 			return api.CallApi("selenium", "action", "setOptionIeDriverPath", parameters);
+		}
+
+		/// <summary>
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse setOptionLastDirectory(string str)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("String", str);
+			return api.CallApi("selenium", "action", "setOptionLastDirectory", parameters);
 		}
 
 		/// <summary>

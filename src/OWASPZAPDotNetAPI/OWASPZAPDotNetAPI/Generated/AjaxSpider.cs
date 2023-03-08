@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2021 the ZAP development team
+ * Copyright 2023 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the allowed resources. The allowed resources are always fetched even if out of scope, allowing to include necessary resources (e.g. scripts) from 3rd-parties.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -49,6 +50,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the current status of the crawler. Actual values are Stopped and Running.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -59,6 +61,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the current results of the crawler.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -72,6 +75,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the number of resources found.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -82,6 +86,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the full crawled content detected by the AJAX Spider. Returns a set of values based on 'inScope' URLs, 'outOfScope' URLs, and 'errors' encountered during the last/current run of the AJAX Spider.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -92,6 +97,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the configured browser to use for crawling.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -102,6 +108,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the time to wait after an event (in milliseconds). For example: the wait delay after the cursor hovers over an element, in order for a menu to display, etc.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -112,6 +119,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the configured value for the max crawl depth.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -122,6 +130,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the configured value for the maximum crawl states allowed.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -132,6 +141,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the configured max duration of the crawl, the value is in minutes.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -142,6 +152,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the configured number of browsers to be used.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -152,6 +163,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the configured time to wait after reloading the page, this value is in milliseconds.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -162,6 +174,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the configured value for 'Click Default Elements Only', HTML elements such as 'a', 'button', 'input', all associated with some action or links on the page.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -172,6 +185,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets the value configured for the AJAX Spider to know if it should click on the elements only once.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -182,6 +196,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Gets if the AJAX Spider will use random values in form fields when crawling, if set to true.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -224,6 +239,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Stops the AJAX Spider.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -234,6 +250,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Adds an allowed resource.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -247,6 +264,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Removes an allowed resource.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -259,6 +277,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Sets whether or not an allowed resource is enabled.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -272,6 +291,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Sets the configuration of the AJAX Spider to use one of the supported browsers.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -284,6 +304,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Sets whether or not the the AJAX Spider will only click on the default HTML elements.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -296,6 +317,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///When enabled, the crawler attempts to interact with each element (e.g., by clicking) only once.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -308,6 +330,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Sets the time to wait after an event (in milliseconds). For example: the wait delay after the cursor hovers over an element, in order for a menu to display, etc.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -320,6 +343,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Sets the maximum depth that the crawler can reach.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -332,6 +356,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Sets the maximum number of states that the crawler should crawl.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -344,6 +369,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///The maximum time that the crawler is allowed to run.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -356,6 +382,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Sets the number of windows to be used by AJAX Spider.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -368,6 +395,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///When enabled, inserts random values into form fields.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
@@ -380,6 +408,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
+		///Sets the time to wait after the page is loaded before interacting with it.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>

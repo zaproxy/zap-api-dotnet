@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2021 the ZAP development team
+ * Copyright 2023 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Lists all passive scanners with its ID, name, enabled state and alert threshold.
+		///Lists all passive scan rules with their ID, name, enabled state, and alert threshold.
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse scanners()
@@ -70,12 +70,24 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Show information about the passive scan rule currently being run (if any).
+		/// [Obsolete] Use the currentTasks view instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the currentTasks view instead.")]
 		public IApiResponse currentRule()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("pscan", "view", "currentRule", parameters);
+		}
+
+		/// <summary>
+		///Show information about the passive scan tasks currently being run (if any).
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse currentTasks()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("pscan", "view", "currentTasks", parameters);
 		}
 
 		/// <summary>
@@ -113,7 +125,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Enables all passive scanners
+		///Enables all passive scan rules
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse enableAllScanners()
@@ -123,7 +135,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Disables all passive scanners
+		///Disables all passive scan rules
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse disableAllScanners()
@@ -133,7 +145,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Enables all passive scanners with the given IDs (comma separated list of IDs)
+		///Enables all passive scan rules with the given IDs (comma separated list of IDs)
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse enableScanners(string ids)
@@ -145,7 +157,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Disables all passive scanners with the given IDs (comma separated list of IDs)
+		///Disables all passive scan rules with the given IDs (comma separated list of IDs)
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse disableScanners(string ids)
@@ -157,7 +169,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Sets the alert threshold of the passive scanner with the given ID, accepted values for alert threshold: OFF, DEFAULT, LOW, MEDIUM and HIGH
+		///Sets the alert threshold of the passive scan rule with the given ID, accepted values for alert threshold: OFF, DEFAULT, LOW, MEDIUM and HIGH
 		/// </summary>
 		/// <returns></returns>
 		public IApiResponse setScannerAlertThreshold(string id, string alertthreshold)
@@ -199,6 +211,16 @@ namespace OWASPZAPDotNetAPI.Generated
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("pscan", "action", "enableAllTags", parameters);
+		}
+
+		/// <summary>
+		///Clears the passive scan queue.
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse clearQueue()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("pscan", "action", "clearQueue", parameters);
 		}
 
 	}

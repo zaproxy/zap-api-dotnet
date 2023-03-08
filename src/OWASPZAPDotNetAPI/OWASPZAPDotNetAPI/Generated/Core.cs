@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2021 the ZAP development team
+ * Copyright 2023 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -163,16 +163,6 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse homeDirectory()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "homeDirectory", parameters);
-		}
-
-		/// <summary>
 		///Gets the location of the current session file
 		/// </summary>
 		/// <returns></returns>
@@ -184,48 +174,14 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets all the domains that are excluded from the outgoing proxy. For each domain the following are shown: the index, the value (domain), if enabled, and if specified as a regex.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse proxyChainExcludedDomains()
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("core", "view", "proxyChainExcludedDomains", parameters);
-		}
-
-		/// <summary>
-		///Use view proxyChainExcludedDomains instead.
-		/// [Obsolete]
-		/// </summary>
-		/// <returns></returns>
-		[Obsolete]
-		public IApiResponse optionProxyChainSkipName()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainSkipName", parameters);
-		}
-
-		/// <summary>
-		///Use view proxyChainExcludedDomains instead.
-		/// [Obsolete]
-		/// </summary>
-		/// <returns></returns>
-		[Obsolete]
-		public IApiResponse optionProxyExcludedDomains()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyExcludedDomains", parameters);
-		}
-
-		/// <summary>
-		///Use view proxyChainExcludedDomains instead.
-		/// [Obsolete]
-		/// </summary>
-		/// <returns></returns>
-		[Obsolete]
-		public IApiResponse optionProxyExcludedDomainsEnabled()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyExcludedDomainsEnabled", parameters);
 		}
 
 		/// <summary>
@@ -266,6 +222,54 @@ namespace OWASPZAPDotNetAPI.Generated
 		{
 			Dictionary<string, string> parameters = null;
 			return api.CallApi("core", "view", "optionAlertOverridesFilePath", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete]
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete]
+		public IApiResponse homeDirectory()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "homeDirectory", parameters);
+		}
+
+		/// <summary>
+		///Use view proxyChainExcludedDomains instead.
+		/// [Obsolete]
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete]
+		public IApiResponse optionProxyChainSkipName()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionProxyChainSkipName", parameters);
+		}
+
+		/// <summary>
+		///Use view proxyChainExcludedDomains instead.
+		/// [Obsolete]
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete]
+		public IApiResponse optionProxyExcludedDomains()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionProxyExcludedDomains", parameters);
+		}
+
+		/// <summary>
+		///Use view proxyChainExcludedDomains instead.
+		/// [Obsolete]
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete]
+		public IApiResponse optionProxyExcludedDomainsEnabled()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionProxyExcludedDomainsEnabled", parameters);
 		}
 
 		/// <summary>
@@ -330,8 +334,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the user agent that ZAP should use when creating HTTP messages (for example, spider messages or CONNECT requests to outgoing proxy).
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse optionDefaultUserAgent()
 		{
 			Dictionary<string, string> parameters = null;
@@ -340,8 +346,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the TTL (in seconds) of successful DNS queries.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse optionDnsTtlSuccessfulQueries()
 		{
 			Dictionary<string, string> parameters = null;
@@ -350,8 +358,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse optionHttpState()
 		{
 			Dictionary<string, string> parameters = null;
@@ -360,68 +370,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse optionProxyChainName()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainName", parameters);
-		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionProxyChainPassword()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainPassword", parameters);
-		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionProxyChainPort()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainPort", parameters);
-		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionProxyChainRealm()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainRealm", parameters);
-		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionProxyChainUserName()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionProxyChainUserName", parameters);
-		}
-
-		/// <summary>
-		///Gets the connection time out, in seconds.
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse optionTimeoutInSecs()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("core", "view", "optionTimeoutInSecs", parameters);
-		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse optionHttpStateEnabled()
 		{
 			Dictionary<string, string> parameters = null;
@@ -430,8 +382,46 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse optionProxyChainName()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionProxyChainName", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse optionProxyChainPassword()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionProxyChainPassword", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse optionProxyChainPort()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionProxyChainPort", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse optionProxyChainPrompt()
 		{
 			Dictionary<string, string> parameters = null;
@@ -440,8 +430,34 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse optionProxyChainRealm()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionProxyChainRealm", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse optionProxyChainUserName()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionProxyChainUserName", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Option no longer in effective use.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Option no longer in effective use.")]
 		public IApiResponse optionSingleCookieRequestHeader()
 		{
 			Dictionary<string, string> parameters = null;
@@ -449,9 +465,23 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///
+		///Gets the connection time out (in seconds).
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse optionTimeoutInSecs()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("core", "view", "optionTimeoutInSecs", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse optionUseProxyChain()
 		{
 			Dictionary<string, string> parameters = null;
@@ -460,8 +490,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse optionUseProxyChainAuth()
 		{
 			Dictionary<string, string> parameters = null;
@@ -470,8 +502,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets whether or not the SOCKS proxy should be used.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse optionUseSocksProxy()
 		{
 			Dictionary<string, string> parameters = null;
@@ -600,8 +634,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Generates a new Root CA certificate for the local proxies.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse generateRootCA()
 		{
 			Dictionary<string, string> parameters = null;
@@ -647,8 +683,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Adds a domain to be excluded from the outgoing proxy, using the specified value. Optionally sets if the new entry is enabled (default, true) and whether or not the new value is specified as a regex (default, false).
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse addProxyChainExcludedDomain(string value, string isregex, string isenabled)
 		{
 			Dictionary<string, string> parameters = null;
@@ -661,8 +699,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Modifies a domain excluded from the outgoing proxy. Allows to modify the value, if enabled or if a regex. The domain is selected with its index, which can be obtained with the view proxyChainExcludedDomains.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse modifyProxyChainExcludedDomain(string idx, string value, string isregex, string isenabled)
 		{
 			Dictionary<string, string> parameters = null;
@@ -676,8 +716,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Removes a domain excluded from the outgoing proxy, with the given index. The index can be obtained with the view proxyChainExcludedDomains.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse removeProxyChainExcludedDomain(string idx)
 		{
 			Dictionary<string, string> parameters = null;
@@ -688,8 +730,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Enables all domains excluded from the outgoing proxy.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse enableAllProxyChainExcludedDomains()
 		{
 			Dictionary<string, string> parameters = null;
@@ -698,8 +742,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Disables all domains excluded from the outgoing proxy.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse disableAllProxyChainExcludedDomains()
 		{
 			Dictionary<string, string> parameters = null;
@@ -744,8 +790,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Enables use of a PKCS12 client certificate for the certificate with the given file system path, password, and optional index.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse enablePKCS12ClientCertificate(string filepath, string password, string index)
 		{
 			Dictionary<string, string> parameters = null;
@@ -758,8 +806,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Disables the option for use of client certificates.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse disableClientCertificate()
 		{
 			Dictionary<string, string> parameters = null;
@@ -794,8 +844,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sets the user agent that ZAP should use when creating HTTP messages (for example, spider messages or CONNECT requests to outgoing proxy).
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse setOptionDefaultUserAgent(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -805,9 +857,39 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///
+		///Sets the TTL (in seconds) of successful DNS queries (applies after ZAP restart).
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse setOptionDnsTtlSuccessfulQueries(int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("core", "action", "setOptionDnsTtlSuccessfulQueries", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse setOptionHttpStateEnabled(bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("core", "action", "setOptionHttpStateEnabled", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse setOptionProxyChainName(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -818,8 +900,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse setOptionProxyChainPassword(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -830,8 +914,38 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse setOptionProxyChainPort(int i)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("Integer", Convert.ToString(i));
+			return api.CallApi("core", "action", "setOptionProxyChainPort", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
+		public IApiResponse setOptionProxyChainPrompt(bool boolean)
+		{
+			Dictionary<string, string> parameters = null;
+			parameters = new Dictionary<string, string>();
+			parameters.Add("Boolean", Convert.ToString(boolean));
+			return api.CallApi("core", "action", "setOptionProxyChainPrompt", parameters);
+		}
+
+		/// <summary>
+		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
+		/// </summary>
+		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse setOptionProxyChainRealm(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -856,8 +970,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse setOptionProxyChainUserName(string str)
 		{
 			Dictionary<string, string> parameters = null;
@@ -867,57 +983,11 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Sets the TTL (in seconds) of successful DNS queries (applies after ZAP restart).
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionDnsTtlSuccessfulQueries(int i)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("core", "action", "setOptionDnsTtlSuccessfulQueries", parameters);
-		}
-
-		/// <summary>
 		///
+		/// [Obsolete] Option no longer in effective use.
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setOptionHttpStateEnabled(bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("core", "action", "setOptionHttpStateEnabled", parameters);
-		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionProxyChainPort(int i)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("Integer", Convert.ToString(i));
-			return api.CallApi("core", "action", "setOptionProxyChainPort", parameters);
-		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setOptionProxyChainPrompt(bool boolean)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("Boolean", Convert.ToString(boolean));
-			return api.CallApi("core", "action", "setOptionProxyChainPrompt", parameters);
-		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
+		[Obsolete("Option no longer in effective use.")]
 		public IApiResponse setOptionSingleCookieRequestHeader(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -927,9 +997,11 @@ namespace OWASPZAPDotNetAPI.Generated
 		}
 
 		/// <summary>
-		///Sets the connection time out, in seconds.
+		///Sets the connection time out (in seconds).
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse setOptionTimeoutInSecs(int i)
 		{
 			Dictionary<string, string> parameters = null;
@@ -940,8 +1012,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sets whether or not the outgoing proxy should be used. The address/hostname of the outgoing proxy must be set to enable this option.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse setOptionUseProxyChain(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -952,8 +1026,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse setOptionUseProxyChainAuth(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -964,8 +1040,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sets whether or not the SOCKS proxy should be used.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public IApiResponse setOptionUseSocksProxy(bool boolean)
 		{
 			Dictionary<string, string> parameters = null;
@@ -976,8 +1054,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public byte[] proxypac()
 		{
 			Dictionary<string, string> parameters = null;
@@ -986,8 +1066,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the Root CA certificate used by the local proxies.
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public byte[] rootcert()
 		{
 			Dictionary<string, string> parameters = null;
@@ -996,8 +1078,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///
+		/// [Obsolete] Use the API endpoints in the 'network' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'network' component instead.")]
 		public byte[] setproxy(string proxy)
 		{
 			Dictionary<string, string> parameters = null;
@@ -1008,8 +1092,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Generates a report in XML format
+		/// [Obsolete] Use the 'generate' API endpoint the 'reports' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the 'generate' API endpoint the 'reports' component instead.")]
 		public byte[] xmlreport()
 		{
 			Dictionary<string, string> parameters = null;
@@ -1018,8 +1104,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Generates a report in HTML format
+		/// [Obsolete] Use the 'generate' API endpoint the 'reports' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the 'generate' API endpoint the 'reports' component instead.")]
 		public byte[] htmlreport()
 		{
 			Dictionary<string, string> parameters = null;
@@ -1028,8 +1116,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Generates a report in JSON format
+		/// [Obsolete] Use the 'generate' API endpoint the 'reports' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the 'generate' API endpoint the 'reports' component instead.")]
 		public byte[] jsonreport()
 		{
 			Dictionary<string, string> parameters = null;
@@ -1038,8 +1128,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Generates a report in Markdown format
+		/// [Obsolete] Use the 'generate' API endpoint the 'reports' component instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the 'generate' API endpoint the 'reports' component instead.")]
 		public byte[] mdreport()
 		{
 			Dictionary<string, string> parameters = null;
@@ -1048,8 +1140,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the message with the given ID in HAR format
+		/// [Obsolete] Use the API endpoints in the 'exim' add-on instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'exim' add-on instead.")]
 		public byte[] messageHar(string id)
 		{
 			Dictionary<string, string> parameters = null;
@@ -1060,8 +1154,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the HTTP messages sent through/by ZAP, in HAR format, optionally filtered by URL and paginated with 'start' position and 'count' of messages
+		/// [Obsolete] Use the API endpoints in the 'exim' add-on instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'exim' add-on instead.")]
 		public byte[] messagesHar(string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
@@ -1074,8 +1170,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Gets the HTTP messages with the given IDs, in HAR format.
+		/// [Obsolete] Use the API endpoints in the 'exim' add-on instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'exim' add-on instead.")]
 		public byte[] messagesHarById(string ids)
 		{
 			Dictionary<string, string> parameters = null;
@@ -1086,8 +1184,10 @@ namespace OWASPZAPDotNetAPI.Generated
 
 		/// <summary>
 		///Sends the first HAR request entry, optionally following redirections. Returns, in HAR format, the request sent and response received and followed redirections, if any. The Mode is enforced when sending the request (and following redirections), custom manual requests are not allowed in 'Safe' mode nor in 'Protected' mode if out of scope.
+		/// [Obsolete] Use the API endpoints in the 'exim' add-on instead.
 		/// </summary>
 		/// <returns></returns>
+		[Obsolete("Use the API endpoints in the 'exim' add-on instead.")]
 		public byte[] sendHarRequest(string request, string followredirects)
 		{
 			Dictionary<string, string> parameters = null;

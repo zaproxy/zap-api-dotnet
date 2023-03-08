@@ -29,70 +29,47 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class RuleConfig 
+	public class Automation 
 	{
 		private ClientApi api = null;
 
-		public RuleConfig(ClientApi api) 
+		public Automation(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Show the specified rule configuration
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse ruleConfigValue(string key)
+		public IApiResponse planProgress(string planid)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("key", key);
-			return api.CallApi("ruleConfig", "view", "ruleConfigValue", parameters);
+			parameters.Add("planId", planid);
+			return api.CallApi("automation", "view", "planProgress", parameters);
 		}
 
 		/// <summary>
-		///Show all of the rule configurations
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse allRuleConfigs()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApi("ruleConfig", "view", "allRuleConfigs", parameters);
-		}
-
-		/// <summary>
-		///Reset the specified rule configuration, which must already exist
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse resetRuleConfigValue(string key)
+		public IApiResponse runPlan(string filepath)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("key", key);
-			return api.CallApi("ruleConfig", "action", "resetRuleConfigValue", parameters);
+			parameters.Add("filePath", filepath);
+			return api.CallApi("automation", "action", "runPlan", parameters);
 		}
 
 		/// <summary>
-		///Reset all of the rule configurations
+		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse resetAllRuleConfigValues()
+		public IApiResponse endDelayJob()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("ruleConfig", "action", "resetAllRuleConfigValues", parameters);
-		}
-
-		/// <summary>
-		///Set the specified rule configuration, which must already exist
-		/// </summary>
-		/// <returns></returns>
-		public IApiResponse setRuleConfigValue(string key, string value)
-		{
-			Dictionary<string, string> parameters = null;
-			parameters = new Dictionary<string, string>();
-			parameters.Add("key", key);
-			parameters.Add("value", value);
-			return api.CallApi("ruleConfig", "action", "setRuleConfigValue", parameters);
+			return api.CallApi("automation", "action", "endDelayJob", parameters);
 		}
 
 	}

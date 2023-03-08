@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2021 the ZAP development team
+ * Copyright 2023 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,11 +98,12 @@ namespace OWASPZAPDotNetAPI.Generated
 		///Generate a form for testing lack of anti-CSRF tokens - typically invoked via ZAP
 		/// </summary>
 		/// <returns></returns>
-		public byte[] genForm(string hrefid)
+		public byte[] genForm(string hrefid, string actionurl)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
 			parameters.Add("hrefId", hrefid);
+			parameters.Add("actionUrl", actionurl);
 			return api.CallApiOther("acsrf", "other", "genForm", parameters);
 		}
 

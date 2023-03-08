@@ -29,102 +29,107 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Pnh 
+	public class Exim 
 	{
 		private ClientApi api = null;
 
-		public Pnh(ClientApi api) 
+		public Exim(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
+		///Imports a HAR file.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse monitor(string id, string message)
+		public IApiResponse importHar(string filepath)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("id", id);
-			parameters.Add("message", message);
-			return api.CallApi("pnh", "action", "monitor", parameters);
+			parameters.Add("filePath", filepath);
+			return api.CallApi("exim", "action", "importHar", parameters);
 		}
 
 		/// <summary>
+		///Imports URLs (one per line) from the file with the given file system path.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse oracle(string id)
+		public IApiResponse importUrls(string filepath)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("id", id);
-			return api.CallApi("pnh", "action", "oracle", parameters);
+			parameters.Add("filePath", filepath);
+			return api.CallApi("exim", "action", "importUrls", parameters);
 		}
 
 		/// <summary>
+		///Imports previously exported ZAP messages from the file with the given file system path.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse startMonitoring(string url)
+		public IApiResponse importZapLogs(string filepath)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("url", url);
-			return api.CallApi("pnh", "action", "startMonitoring", parameters);
+			parameters.Add("filePath", filepath);
+			return api.CallApi("exim", "action", "importZapLogs", parameters);
 		}
 
 		/// <summary>
+		///Imports ModSecurity2 logs from the file with the given file system path.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse stopMonitoring(string id)
+		public IApiResponse importModsec2Logs(string filepath)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("id", id);
-			return api.CallApi("pnh", "action", "stopMonitoring", parameters);
+			parameters.Add("filePath", filepath);
+			return api.CallApi("exim", "action", "importModsec2Logs", parameters);
 		}
 
 		/// <summary>
+		///Gets the HTTP messages sent through/by ZAP, in HAR format, optionally filtered by URL and paginated with 'start' position and 'count' of messages
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] pnh()
+		public byte[] exportHar(string baseurl, string start, string count)
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApiOther("pnh", "other", "pnh", parameters);
+			parameters = new Dictionary<string, string>();
+			parameters.Add("baseurl", baseurl);
+			parameters.Add("start", start);
+			parameters.Add("count", count);
+			return api.CallApiOther("exim", "other", "exportHar", parameters);
 		}
 
 		/// <summary>
+		///Gets the HTTP messages with the given IDs, in HAR format.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] manifest()
+		public byte[] exportHarById(string ids)
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApiOther("pnh", "other", "manifest", parameters);
+			parameters = new Dictionary<string, string>();
+			parameters.Add("ids", ids);
+			return api.CallApiOther("exim", "other", "exportHarById", parameters);
 		}
 
 		/// <summary>
+		///Sends the first HAR request entry, optionally following redirections. Returns, in HAR format, the request sent and response received and followed redirections, if any. The Mode is enforced when sending the request (and following redirections), custom manual requests are not allowed in 'Safe' mode nor in 'Protected' mode if out of scope.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public byte[] service()
+		public byte[] sendHarRequest(string request, string followredirects)
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApiOther("pnh", "other", "service", parameters);
-		}
-
-		/// <summary>
-		///This component is optional and therefore the API will only work if it is installed
-		/// </summary>
-		/// <returns></returns>
-		public byte[] fx_pnhxpi()
-		{
-			Dictionary<string, string> parameters = null;
-			return api.CallApiOther("pnh", "other", "fx_pnh.xpi", parameters);
+			parameters = new Dictionary<string, string>();
+			parameters.Add("request", request);
+			parameters.Add("followRedirects", followredirects);
+			return api.CallApiOther("exim", "other", "sendHarRequest", parameters);
 		}
 
 	}

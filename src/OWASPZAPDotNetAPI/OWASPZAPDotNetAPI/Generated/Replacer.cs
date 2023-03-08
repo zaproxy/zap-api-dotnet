@@ -2,7 +2,7 @@
  *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
  *
- * Copyright 2021 the ZAP development team
+ * Copyright 2023 the ZAP development team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse addRule(string description, string enabled, string matchtype, string matchregex, string matchstring, string replacement, string initiators)
+		public IApiResponse addRule(string description, string enabled, string matchtype, string matchregex, string matchstring, string replacement, string initiators, string url)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
@@ -65,6 +65,7 @@ namespace OWASPZAPDotNetAPI.Generated
 			parameters.Add("matchString", matchstring);
 			parameters.Add("replacement", replacement);
 			parameters.Add("initiators", initiators);
+			parameters.Add("url", url);
 			return api.CallApi("replacer", "action", "addRule", parameters);
 		}
 

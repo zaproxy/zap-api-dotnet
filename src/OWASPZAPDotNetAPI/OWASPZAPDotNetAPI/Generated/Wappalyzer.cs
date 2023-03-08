@@ -29,37 +29,48 @@ using System.Text;
  */
 namespace OWASPZAPDotNetAPI.Generated
 {
-	public class Reveal 
+	public class Wappalyzer 
 	{
 		private ClientApi api = null;
 
-		public Reveal(ClientApi api) 
+		public Wappalyzer(ClientApi api) 
 		{
 			this.api = api;
 		}
 
 		/// <summary>
-		///Tells if shows hidden fields and enables disabled fields
+		///Lists all the sites recognized by the wappalyzer addon.
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse reveal()
+		public IApiResponse listSites()
 		{
 			Dictionary<string, string> parameters = null;
-			return api.CallApi("reveal", "view", "reveal", parameters);
+			return api.CallApi("wappalyzer", "view", "listSites", parameters);
 		}
 
 		/// <summary>
-		///Sets if shows hidden fields and enables disabled fields
+		///Lists all sites and their associated applications (technologies).
 		///This component is optional and therefore the API will only work if it is installed
 		/// </summary>
 		/// <returns></returns>
-		public IApiResponse setReveal(string reveal)
+		public IApiResponse listAll()
+		{
+			Dictionary<string, string> parameters = null;
+			return api.CallApi("wappalyzer", "view", "listAll", parameters);
+		}
+
+		/// <summary>
+		///Lists all the applications (technologies) associated with a specific site.
+		///This component is optional and therefore the API will only work if it is installed
+		/// </summary>
+		/// <returns></returns>
+		public IApiResponse listSite(string site)
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("reveal", reveal);
-			return api.CallApi("reveal", "action", "setReveal", parameters);
+			parameters.Add("site", site);
+			return api.CallApi("wappalyzer", "view", "listSite", parameters);
 		}
 
 	}
