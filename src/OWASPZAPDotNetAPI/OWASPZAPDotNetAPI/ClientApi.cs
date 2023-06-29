@@ -192,7 +192,17 @@ namespace OWASPZAPDotNetAPI
             Uri requestUrl = PrepareZapRequest(this.format, component, operationType, operationName, parameters);
             string responseString = webClient.DownloadString(requestUrl);
             XmlDocument responseXmlDocument = new XmlDocument();
-            responseXmlDocument.LoadXml(responseString);
+            if ( !string.IsNullOrEmpty(responseString))
+            {
+                responseXmlDocument.LoadXml(responseString);
+            }
+            else
+            {
+                var xmlstr= "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><error>EmptyResponse</error>";
+
+                responseXmlDocument.LoadXml(xmlstr);
+            }
+
             return responseXmlDocument;
         }
 
