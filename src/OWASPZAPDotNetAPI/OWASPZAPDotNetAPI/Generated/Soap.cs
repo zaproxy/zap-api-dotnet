@@ -60,8 +60,7 @@ namespace OWASPZAPDotNetAPI.Generated
 		{
 			Dictionary<string, string> parameters = null;
 			parameters = new Dictionary<string, string>();
-			parameters.Add("url", url);
-            parameters.Add("outputFormat", "JSON");
+			parameters.Add("url", url);            
             return api.CallApi("soap", "action", "importUrl", parameters);
 		}
 
